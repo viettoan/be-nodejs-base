@@ -16,13 +16,6 @@ npm install
 npm run dev
 ```
 
-3. Start the React app (in a new terminal window):
-```
-cd app
-npm install
-npm start
-```
-
 ## Disclaimer
 
 Use at your own risk; not a supported MongoDB product

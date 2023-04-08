@@ -9,5 +9,5 @@ try {
 } catch(e) {
   console.error(e);
 }
-let db = database.db("sample_training");
+let db = database.db(process.env.DATABASE);
 export default db;
