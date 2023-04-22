@@ -1,11 +1,13 @@
-import User from "../app/Http/Models/User.mjs"
 import express from "express";
+import UserController from "../app/Http/Controllers/UserController.mjs";
+import { validateStoreOrUpdateUser, validateIndexUser} from "../app/Http/Requests/UserRequest.mjs";
 const router = express.Router();
 
-router.get("/users", async (req, res) => {
-    const newUser = new User({email: 'test'});
-    const insertedUser = await newUser.save();
-    return res.status(201).json(insertedUser)
-});
+// Users
+router.get("/users", validateIndexUser, UserController.index);
+router.post('/users', validateStoreOrUpdateUser, UserController.store);
+router.get("/users/:userId", UserController.show);
+router.put("/users/:userId", validateStoreOrUpdateUser, UserController.update);
+router.delete("/users/:userId", UserController.destroy);
 
 export default router;

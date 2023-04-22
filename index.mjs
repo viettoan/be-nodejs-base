@@ -3,7 +3,6 @@ import cors from "cors";
 import mongoose from 'mongoose';
 import "./loadEnvironment.mjs";
 import "express-async-errors";
-import posts from "./routes/posts.mjs";
 import api from "./routes/api.mjs";
 mongoose.connect(process.env.ATLAS_URI)
     .then(() => console.log('Connected!'));
@@ -13,13 +12,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Load the /posts routes
-app.use("/posts", posts);
+// Load routes
 app.use("/", api);
 
 // Global error handling
 app.use((err, _req, res, next) => {
-  res.status(500).send("Uh oh! An unexpected error occured.")
+  res.status(500).send(err)
 })
 
 // start the Express server
