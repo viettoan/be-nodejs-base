@@ -20,7 +20,7 @@ const validationsStoreOrUpdateUser = [
             throw new Error('Số điện thoại phải từ 10 - 11 ký tự')
         }
     }),
-    body('level').isIn(Object.values(USERS.level)),
+    body('level').isIn(Object.values(USERS.level)).withMessage('Giá trị đã chọn trong trường level không hợp lệ.'),
 ];
 
 const validationsIndexUser = [
@@ -34,7 +34,7 @@ const validationsIndexUser = [
             throw new Error('Số điện thoại phải từ 10 - 11 ký tự')
         }
     }),
-    query('level').isIn([...Object.values(USERS.level), null]),
+    query('level').isIn([...Object.values(USERS.level), null]).withMessage('Giá trị đã chọn trong trường level không hợp lệ.'),
 ];
 export const validateStoreOrUpdateUser = baseRequest(validationsStoreOrUpdateUser);
 export const validateIndexUser = baseRequest(validationsIndexUser);

@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import "./loadEnvironment.mjs";
 import "express-async-errors";
 import api from "./routes/api.mjs";
+
 mongoose.connect(process.env.ATLAS_URI)
     .then(() => console.log('Connected!'));
 const PORT = process.env.PORT || 5050;
