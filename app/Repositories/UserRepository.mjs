@@ -7,6 +7,12 @@ class UserRepository extends BaseRepository
         super(User);
     }
 
+    async findByPhone(phone) {
+        return await this.getModel().findOne({
+            phone,
+            deleted_at: null
+        })
+    }
 }
 
 export default new UserRepository();

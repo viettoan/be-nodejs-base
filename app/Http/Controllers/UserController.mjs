@@ -32,9 +32,9 @@ class UserController extends BaseController
     async show(req, res)
     {
         try {
-            const users = await UserRepository.findById(req.params.userId)
+            const user = await UserRepository.findById(req.params.userId)
 
-            return responseSuccess(res, users);
+            return responseSuccess(res, user);
         } catch (e) {
             return responseErrors(res, 400, e);
         }

@@ -16,8 +16,12 @@ const validationsStoreOrUpdateUser = [
             throw new Error('Số điện thoại phải là kiểu chuỗi')
         }
 
-        if (value.length > 11 || value.length < 10) {
-            throw new Error('Số điện thoại phải từ 10 - 11 ký tự')
+        if (nameValue.length > 11) {
+            throw new Error('Số điện thoại không được lớn hơn 11 ký tự')
+        }
+
+        if (nameValue.length < 10) {
+            throw new Error('Số điện thoại không được ít hơn 10 ký tự')
         }
     }),
     body('level').isIn(Object.values(USERS.level)).withMessage('Giá trị đã chọn trong trường phân quyền không hợp lệ.'),

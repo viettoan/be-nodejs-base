@@ -1,12 +1,29 @@
 import crypto from "crypto";
-
+import moment from "moment";
 export const hashHmacString = (string, algorithm = 'sha1') => {
     return crypto.createHmac(algorithm, process.env.PRIVATE_KEY)
         .update(string)
         .digest('hex');
 }
 
-export const responseSuccess = (res, data, statusCode = 200, message) => {
+export const generateAccessToken = (user, algorithm = 'sha1') => {
+    const header = JSON.stringify({
+        alg: algorithm,
+        type: 'JWT'
+    });
+    const payload = JSON.stringify({
+        id: user.id,
+        iat: moment().unix(),
+        exp: moment().add(1, 'months').unix()
+    });
+    const base64Header = Buffer.from(header).toString('base64').replace('==', '').replace('=', '');
+    const base64Payload = Buffer.from(payload).toString('base64').replace('==', '').replace('=', '');
+    const signature = hashHmacString(base64Header + "." + base64Payload);
+
+    return base64Header + "." + base64Payload + "." + signature;
+}
+
+export const responseSuccess = (res, data, statusCode = 200, message = '') => {
     return res.status(statusCode).json(
         {
             now: new Date(),
@@ -19,8 +36,10 @@ export const responseSuccess = (res, data, statusCode = 200, message) => {
 
 export const responseErrors = (res, statusCode = 500, errors) => {
     let dataErrors = {};
+    let message = '';
 
-    if (errors) {
+    if (typeof errors === 'object') {
+        message = errors.message ?? '';
         dataErrors = Object.values(errors.errors).map(error => {
             let message = '';
 
@@ -41,12 +60,16 @@ export const responseErrors = (res, statusCode = 500, errors) => {
         })
     }
 
+    if (typeof errors === 'string') {
+        message = errors;
+    }
+
     return res.status(statusCode).json(
         {
             now: new Date(),
             status_code: statusCode,
             errors: dataErrors,
-            message: errors.message ?? ''
+            message: message
         }
     );
 }

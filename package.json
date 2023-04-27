@@ -19,6 +19,7 @@
     "express-validator": "^7.0.0",
     "migrate": "^1.8.0",
     "migrate-mongo": "^9.0.0",
+    "moment": "^2.29.4",
     "mongodb": "^4.13.0",
     "mongoose": "^7.0.3"
   },
