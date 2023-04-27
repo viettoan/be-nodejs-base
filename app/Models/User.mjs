@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         enum: {
             values: Object.values(USERS.level),
-            message: 'Giá trị đã chọn trong trường level không hợp lệ.'
+            message: 'Giá trị đã chọn trong trường phân quyền không hợp lệ.'
         },
         default: USERS.level.user
     },
