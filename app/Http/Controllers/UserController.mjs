@@ -3,9 +3,7 @@ import { DEFAULT_PASWORD } from "../../../config/common.mjs";
 import {hashHmacString, responseSuccess, responseErrors, generateConfirmUrl} from "../../Common/helper.mjs";
 import UserRepository from "../../Repositories/UserRepository.mjs";
 import EmailService from "../../Services/EmailService.mjs";
-import {render, renderFile} from "ejs";
-import path from "path";
-console.log()
+
 class UserController extends BaseController
 {
     async index(req, res)

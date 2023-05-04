@@ -14,7 +14,7 @@ export const generateAccessToken = (userId, algorithm = 'sha1', exp = moment().a
     const payload = JSON.stringify({
         id: userId,
         iat: moment().unix(),
-        exp: moment().add(1, 'months').unix()
+        exp: exp
     });
     const base64Header = Buffer.from(header).toString('base64').replace('==', '').replace('=', '');
     const base64Payload = Buffer.from(payload).toString('base64').replace('==', '').replace('=', '');
@@ -75,7 +75,6 @@ export const responseErrors = (res, statusCode = 500, errors) => {
 }
 
 export const generateConfirmUrl = (userId) => {
-    console.log(userId);
     const token = generateAccessToken(userId, 'sha1', moment().add(1, 'days').unix());
 
     return process.env.FE_DOMAIN + 'confirm-account?token=' + token;

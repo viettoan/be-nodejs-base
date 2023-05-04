@@ -25,14 +25,16 @@ const validationsStoreOrUpdateUser = [
         }
     }),
     body('level').isIn(Object.values(USERS.level)).withMessage('Giá trị đã chọn trong trường phân quyền không hợp lệ.'),
-    body('email').custom( async  nameValue => {
-        if (typeof nameValue !== 'string') {
-            throw new Error('Họ tên phải là kiểu chuỗi');
-        }
-        if (nameValue.length > 50) {
-            throw new Error('Họ tên không được lớn hơn 50 ký tự');
-        }
-    }).isEmail().withMessage('Email không đúng định dạng'),
+    body('email').custom( async  emailValue => {
+            if (typeof emailValue !== 'string') {
+                throw new Error('Họ tên phải là kiểu chuỗi');
+            }
+            if (emailValue.length > 50) {
+                throw new Error('Họ tên không được lớn hơn 50 ký tự');
+            }
+        })
+        .isEmail()
+        .withMessage('Email không đúng định dạng'),
 ];
 
 const validationsIndexUser = [
