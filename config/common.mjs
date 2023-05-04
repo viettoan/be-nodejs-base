@@ -6,4 +6,8 @@ export const USERS = {
         admin: 2,
         user: 3
     },
+    is_confirm_account: {
+        true: 1,
+        false: 2
+    }
 }

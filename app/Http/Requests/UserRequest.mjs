@@ -11,20 +11,28 @@ const validationsStoreOrUpdateUser = [
            throw new Error('Họ tên không được lớn hơn 50 ký tự');
         }
     }),
-    body('phone').custom( async value => {
-        if (typeof value !== 'string') {
+    body('phone').custom( async phoneValue => {
+        if (typeof phoneValue !== 'string') {
             throw new Error('Số điện thoại phải là kiểu chuỗi')
         }
 
-        if (nameValue.length > 11) {
+        if (phoneValue.length > 11) {
             throw new Error('Số điện thoại không được lớn hơn 11 ký tự')
         }
 
-        if (nameValue.length < 10) {
+        if (phoneValue.length < 10) {
             throw new Error('Số điện thoại không được ít hơn 10 ký tự')
         }
     }),
     body('level').isIn(Object.values(USERS.level)).withMessage('Giá trị đã chọn trong trường phân quyền không hợp lệ.'),
+    body('email').custom( async  nameValue => {
+        if (typeof nameValue !== 'string') {
+            throw new Error('Họ tên phải là kiểu chuỗi');
+        }
+        if (nameValue.length > 50) {
+            throw new Error('Họ tên không được lớn hơn 50 ký tự');
+        }
+    }).isEmail().withMessage('Email không đúng định dạng'),
 ];
 
 const validationsIndexUser = [

@@ -6,13 +6,13 @@ export const hashHmacString = (string, algorithm = 'sha1') => {
         .digest('hex');
 }
 
-export const generateAccessToken = (user, algorithm = 'sha1') => {
+export const generateAccessToken = (userId, algorithm = 'sha1', exp = moment().add(1, 'months').unix()) => {
     const header = JSON.stringify({
         alg: algorithm,
         type: 'JWT'
     });
     const payload = JSON.stringify({
-        id: user.id,
+        id: userId,
         iat: moment().unix(),
         exp: moment().add(1, 'months').unix()
     });
@@ -72,4 +72,11 @@ export const responseErrors = (res, statusCode = 500, errors) => {
             message: message
         }
     );
+}
+
+export const generateConfirmUrl = (userId) => {
+    console.log(userId);
+    const token = generateAccessToken(userId, 'sha1', moment().add(1, 'days').unix());
+
+    return process.env.FE_DOMAIN + 'confirm-account?token=' + token;
 }

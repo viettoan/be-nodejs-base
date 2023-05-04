@@ -8,6 +8,11 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Họ tên không được để trống'],
         maxLength: [50, 'Họ tên không được lớn hơn {MAXLENGTH} ký tự'],
     },
+    email: {
+        type: String,
+        required: [true, 'Email không được để trống'],
+        maxLength: [50, 'Email không được lớn hơn {MAXLENGTH} ký tự'],
+    },
     phone: {
         type: String,
         required: [true, 'Số điện thoại không được để trống'],
@@ -29,6 +34,14 @@ const userSchema = new mongoose.Schema({
             message: 'Giá trị đã chọn trong trường phân quyền không hợp lệ.'
         },
         default: USERS.level.user
+    },
+    is_confirm_account: {
+        type: Number,
+        required: true,
+        enum: {
+            values: Object.values(USERS.is_confirm_account),
+        },
+        default: USERS.is_confirm_account.false
     },
     created_by: {
         type: ObjectId,

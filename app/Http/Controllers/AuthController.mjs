@@ -9,14 +9,34 @@ class AuthController extends BaseController
         const user = await UserRepository.findByPhone(phone)
 
         if (!user) {
-            responseErrors(res, 400, 'Số điện thoại không hợp lệ')
+            responseErrors(res, 401, {
+                errors: [
+                    {
+                        path: 'phone',
+                        msg: 'Số điện thoại không hợp lệ',
+                        value: phone
+                    }
+                ]
+            })
+
+            return;
         }
 
         if (user.password !== hashHmacString(password)) {
-            responseErrors(res, 400, 'Mật khẩu không chính xác')
+            responseErrors(res, 401, {
+                errors: [
+                    {
+                        path: 'password',
+                        msg: 'Mật khẩu không chính xác',
+                        value: password
+                    }
+                ]
+            })
+
+            return;
         }
         responseSuccess(res, {
-            access_token: generateAccessToken(user)
+            user_token: generateAccessToken(user.id)
         });
     }
 }
