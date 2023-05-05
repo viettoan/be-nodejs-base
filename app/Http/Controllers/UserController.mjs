@@ -9,7 +9,6 @@ class UserController extends BaseController
     async index(req, res)
     {
         try {
-
             const users = await UserRepository.findBy(req.query)
 
             return responseSuccess(res, users);

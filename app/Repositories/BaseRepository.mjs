@@ -31,7 +31,7 @@ class BaseRepository
 
     async findById(id)
     {
-        return await this.getModel().find({
+        return await this.getModel().findOne({
             _id: id,
             deleted_at: null
         });
