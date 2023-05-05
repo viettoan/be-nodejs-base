@@ -6,7 +6,7 @@ export const hashHmacString = (string, algorithm = 'sha1') => {
         .digest('hex');
 }
 
-export const generateAccessToken = (userId, algorithm = 'sha1', exp = moment().add(1, 'months').unix()) => {
+export const generateJWTToken = (userId, algorithm = 'sha1', exp = moment().add(1, 'months').unix()) => {
     const header = JSON.stringify({
         alg: algorithm,
         type: 'JWT'
@@ -21,6 +21,45 @@ export const generateAccessToken = (userId, algorithm = 'sha1', exp = moment().a
     const signature = hashHmacString(base64Header + "." + base64Payload);
 
     return base64Header + "." + base64Payload + "." + signature;
+}
+
+export const parserJWTToken = (bearerToken, withBearerPrefix = true) => {
+    const responseToken = {
+        success: false,
+    }
+
+    if (!bearerToken) {
+        return {...responseToken, errors: 'Token không được để trống!'};
+    }
+
+    try {
+        let token = [];
+
+        if (withBearerPrefix) {
+            token = bearerToken.split(' ')[1].split('.');
+        } else {
+            token = bearerToken.split('.');
+        }
+        const base64Header = token[0];
+        const base64Payload = token[1];
+        const signature = token[2];
+        const header = JSON.parse(Buffer.from(base64Header, 'base64').toString());
+
+        if (hashHmacString(base64Header + "." + base64Payload, header.alg) !== signature) {
+
+            return {...responseToken, errors: 'Token không đúng định dạng!'};
+        }
+        const payload = JSON.parse(Buffer.from(base64Payload, 'base64').toString());
+
+        if (moment().unix() > payload.exp) {
+            return {...responseToken, errors: 'Token đã hết hạn!'};
+        }
+
+        return {...responseToken, success: true, payload};
+    } catch (e) {
+
+        return {...responseToken, errors: e.message};
+    }
 }
 
 export const responseSuccess = (res, data, statusCode = 200, message = '') => {
@@ -75,7 +114,7 @@ export const responseErrors = (res, statusCode = 500, errors) => {
 }
 
 export const generateConfirmUrl = (userId) => {
-    const token = generateAccessToken(userId, 'sha1', moment().add(1, 'days').unix());
+    const token = generateJWTToken(userId, 'sha1', moment().add(1, 'days').unix());
 
     return process.env.FE_DOMAIN + 'confirm-account?token=' + token;
 }

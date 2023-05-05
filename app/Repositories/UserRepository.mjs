@@ -1,5 +1,6 @@
 import BaseRepository from "./BaseRepository.mjs";
 import User from "../Models/User.mjs";
+import {USERS} from "../../config/common.mjs";
 
 class UserRepository extends BaseRepository
 {
@@ -7,9 +8,10 @@ class UserRepository extends BaseRepository
         super(User);
     }
 
-    async findByPhone(phone) {
+    async findUserConfirmedAccountByPhone(phone) {
         return await this.getModel().findOne({
             phone,
+            is_confirm_account: USERS.is_confirm_account.true,
             deleted_at: null
         })
     }
