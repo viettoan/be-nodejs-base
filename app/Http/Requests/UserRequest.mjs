@@ -27,10 +27,10 @@ const validationsStoreOrUpdateUser = [
     body('level').isIn(Object.values(USERS.level)).withMessage('Giá trị đã chọn trong trường phân quyền không hợp lệ.'),
     body('email').custom( async  emailValue => {
             if (typeof emailValue !== 'string') {
-                throw new Error('Họ tên phải là kiểu chuỗi');
+                throw new Error('Email phải là kiểu chuỗi');
             }
             if (emailValue.length > 50) {
-                throw new Error('Họ tên không được lớn hơn 50 ký tự');
+                throw new Error('Email không được lớn hơn 50 ký tự');
             }
         })
         .isEmail()
