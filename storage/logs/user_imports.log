@@ -1,0 +1,380 @@
+{
+  message: 'test',
+  level: 'info',
+  timestamp: '2023-05-13T08:06:13.883Z'
+}
+2023-05-13T08:07:03.470Z info: test
+2023-05-13T08:07:25.868Z info: test
+2023-05-13T08:07:54.939Z info: test
+2023-05-13T08:08:43.060Z info: test
+2023-05-13T08:09:31.004Z info: test undefined
+info: test {"0":{"__v":0,"_id":"64475b57bf6a631bc5a6453b","created_at":"2023-04-25T04:47:19.023Z","is_confirm_account":1,"level":2,"name":"Viet Toan","password":"e9f00c43cbaf6bfbd008115177fe651ebe1a199b","phone":"0987654321","updated_at":"2023-05-05T10:07:20.418Z"},"1":{"__v":0,"_id":"64475bedbf6a631bc5a6453f","created_at":"2023-04-25T04:49:49.622Z","is_confirm_account":2,"level":2,"name":"Viet Toan","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0987654323","updated_at":"2023-04-25T04:49:49.622Z"},"10":{"__v":0,"_id":"644b87ff5c7affcc78c33255","created_at":"2023-04-28T08:46:55.084Z","is_confirm_account":2,"level":2,"name":"test 280404","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0312345674","updated_at":"2023-04-28T08:46:55.084Z"},"11":{"__v":0,"_id":"64537d17ac0e7f2cd3125588","created_at":"2023-05-04T09:38:31.722Z","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556932","updated_at":"2023-05-04T09:38:31.722Z"},"12":{"__v":0,"_id":"64537e71ce64a000b3af6895","created_at":"2023-05-04T09:44:17.794Z","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556942","updated_at":"2023-05-04T09:44:17.794Z"},"13":{"__v":0,"_id":"64537e86ec96b9e94e82f1ab","created_at":"2023-05-04T09:44:38.380Z","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556952","updated_at":"2023-05-04T09:44:38.380Z"},"14":{"__v":0,"_id":"64537ed8f7d372c5efd996ce","created_at":"2023-05-04T09:46:00.153Z","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556962","updated_at":"2023-05-04T09:46:00.153Z"},"15":{"__v":0,"_id":"64537f07701554d53b74ad8b","created_at":"2023-05-04T09:46:47.118Z","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556972","updated_at":"2023-05-04T09:46:47.118Z"},"16":{"__v":0,"_id":"6453886bfec593d722ed44a1","created_at":"2023-05-04T10:26:51.012Z","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556982","updated_at":"2023-05-04T10:26:51.012Z"},"17":{"__v":0,"_id":"64538b0312edcbc0379b1b78","created_at":"2023-05-04T10:37:55.517Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556992","updated_at":"2023-05-04T10:37:55.517Z"},"18":{"__v":0,"_id":"64538c9ac1e0373e13e64257","created_at":"2023-05-04T10:44:42.251Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234551991","updated_at":"2023-05-04T10:44:42.251Z"},"19":{"__v":0,"_id":"64538cb6b0347af4f56bebdf","created_at":"2023-05-04T10:45:10.939Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234552991","updated_at":"2023-05-04T10:45:10.939Z"},"2":{"__v":0,"_id":"644761dcbf6a631bc5a64559","created_at":"2023-04-25T05:15:08.206Z","is_confirm_account":2,"level":2,"name":"Viet Toan User","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0987654324","updated_at":"2023-04-25T05:15:08.206Z"},"20":{"__v":0,"_id":"64538d06b0347af4f56bebe1","created_at":"2023-05-04T10:46:30.041Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234553991","updated_at":"2023-05-04T10:46:30.041Z"},"21":{"__v":0,"_id":"64538d49b0347af4f56bebe3","created_at":"2023-05-04T10:47:37.249Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234554991","updated_at":"2023-05-04T10:47:37.249Z"},"22":{"__v":0,"_id":"64538d9db0347af4f56bebe5","created_at":"2023-05-04T10:49:01.613Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234555991","updated_at":"2023-05-04T10:49:01.613Z"},"23":{"__v":0,"_id":"64538dcc56e269232aae797a","created_at":"2023-05-04T10:49:48.554Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test 1","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234557991","updated_at":"2023-05-04T10:49:48.554Z"},"24":{"__v":0,"_id":"64538ecd55a579d8c7960c05","created_at":"2023-05-04T10:54:05.072Z","email":"test@gmail.com","is_confirm_account":1,"level":3,"name":"test 1","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234558991","updated_at":"2023-05-05T09:29:41.797Z"},"25":{"__v":0,"_id":"64561bbccc748e4c0e8ddaef","created_at":"2023-05-06T09:19:56.585Z","email":"admin@gmail.com","is_confirm_account":1,"level":3,"name":"admin update","password":"e9f00c43cbaf6bfbd008115177fe651ebe1a199b","phone":"0987654332","updated_at":"2023-05-06T10:10:29.914Z"},"26":{"__v":0,"_id":"64562a0aed0d56eb9ac12864","created_at":"2023-05-06T10:20:58.691Z","email":"admin1@gmail.com","is_confirm_account":1,"level":2,"name":"Admin1","password":"a7d2267620e3c6fd9d674688f561389706302119","phone":"0987654392","updated_at":"2023-05-06T10:21:45.881Z"},"27":{"__v":0,"_id":"645b72ae5a37341df49f7566","created_at":"2023-05-10T10:32:14.959Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test 1","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0234558991","updated_at":"2023-05-10T10:32:14.959Z"},"28":{"__v":0,"_id":"645b731fbbe46fcec6c17ee5","created_at":"2023-05-10T10:34:07.409Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test 1","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0234551991","updated_at":"2023-05-10T10:34:07.409Z"},"29":{"__v":0,"_id":"645e0c4717e1cfca71e472cf","created_at":"2023-05-12T09:52:07.091Z","email":"viettoan@gmail.com","is_confirm_account":2,"level":3,"name":"Viet Toan 1","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0987954321","updated_at":"2023-05-12T09:52:07.091Z"},"3":{"__v":0,"_id":"644762f2cb59934701fb497a","created_at":"2023-04-25T05:19:46.122Z","is_confirm_account":2,"level":2,"name":"Viet Toan User update","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0987654326","updated_at":"2023-04-26T10:54:22.110Z"},"30":{"__v":0,"_id":"645e0c4717e1cfca71e472d1","created_at":"2023-05-12T09:52:07.362Z","email":"viettoan@gmail.com","is_confirm_account":2,"level":3,"name":"Viet Toan 2","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0987854321","updated_at":"2023-05-12T09:52:07.362Z"},"4":{"__v":0,"_id":"6447a80630a72943518f9560","created_at":"2023-04-25T10:14:30.700Z","is_confirm_account":2,"level":3,"name":"test update","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556921","updated_at":"2023-04-26T05:00:35.588Z"},"5":{"__v":0,"_id":"6447b1cf8eaf2e7df72832f2","created_at":"2023-04-25T10:56:15.932Z","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556922","updated_at":"2023-04-25T10:56:15.932Z"},"6":{"__v":0,"_id":"6448fb7845e1cc0920c7db45","created_at":"2023-04-26T10:22:48.921Z","is_confirm_account":2,"level":3,"name":"admin","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0312345678","updated_at":"2023-04-26T10:22:48.921Z"},"7":{"__v":0,"_id":"644b84eb5c7affcc78c3323f","created_at":"2023-04-28T08:33:47.773Z","is_confirm_account":2,"level":3,"name":"test 280401","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0312345671","updated_at":"2023-04-28T08:33:47.773Z"},"8":{"__v":0,"_id":"644b85be5c7affcc78c33242","created_at":"2023-04-28T08:37:18.003Z","is_confirm_account":2,"level":3,"name":"test 280402","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0312345672","updated_at":"2023-04-28T08:37:18.003Z"},"9":{"__v":0,"_id":"644b85d95c7affcc78c33245","created_at":"2023-04-28T08:37:45.524Z","is_confirm_account":2,"level":3,"name":"test 280403","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0312345673","updated_at":"2023-04-28T08:37:45.524Z"}}
+info: test {"0":{"__v":0,"_id":"64475b57bf6a631bc5a6453b","created_at":"2023-04-25T04:47:19.023Z","is_confirm_account":1,"level":2,"name":"Viet Toan","password":"e9f00c43cbaf6bfbd008115177fe651ebe1a199b","phone":"0987654321","updated_at":"2023-05-05T10:07:20.418Z"},"1":{"__v":0,"_id":"64475bedbf6a631bc5a6453f","created_at":"2023-04-25T04:49:49.622Z","is_confirm_account":2,"level":2,"name":"Viet Toan","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0987654323","updated_at":"2023-04-25T04:49:49.622Z"},"10":{"__v":0,"_id":"644b87ff5c7affcc78c33255","created_at":"2023-04-28T08:46:55.084Z","is_confirm_account":2,"level":2,"name":"test 280404","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0312345674","updated_at":"2023-04-28T08:46:55.084Z"},"11":{"__v":0,"_id":"64537d17ac0e7f2cd3125588","created_at":"2023-05-04T09:38:31.722Z","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556932","updated_at":"2023-05-04T09:38:31.722Z"},"12":{"__v":0,"_id":"64537e71ce64a000b3af6895","created_at":"2023-05-04T09:44:17.794Z","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556942","updated_at":"2023-05-04T09:44:17.794Z"},"13":{"__v":0,"_id":"64537e86ec96b9e94e82f1ab","created_at":"2023-05-04T09:44:38.380Z","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556952","updated_at":"2023-05-04T09:44:38.380Z"},"14":{"__v":0,"_id":"64537ed8f7d372c5efd996ce","created_at":"2023-05-04T09:46:00.153Z","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556962","updated_at":"2023-05-04T09:46:00.153Z"},"15":{"__v":0,"_id":"64537f07701554d53b74ad8b","created_at":"2023-05-04T09:46:47.118Z","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556972","updated_at":"2023-05-04T09:46:47.118Z"},"16":{"__v":0,"_id":"6453886bfec593d722ed44a1","created_at":"2023-05-04T10:26:51.012Z","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556982","updated_at":"2023-05-04T10:26:51.012Z"},"17":{"__v":0,"_id":"64538b0312edcbc0379b1b78","created_at":"2023-05-04T10:37:55.517Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556992","updated_at":"2023-05-04T10:37:55.517Z"},"18":{"__v":0,"_id":"64538c9ac1e0373e13e64257","created_at":"2023-05-04T10:44:42.251Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234551991","updated_at":"2023-05-04T10:44:42.251Z"},"19":{"__v":0,"_id":"64538cb6b0347af4f56bebdf","created_at":"2023-05-04T10:45:10.939Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234552991","updated_at":"2023-05-04T10:45:10.939Z"},"2":{"__v":0,"_id":"644761dcbf6a631bc5a64559","created_at":"2023-04-25T05:15:08.206Z","is_confirm_account":2,"level":2,"name":"Viet Toan User","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0987654324","updated_at":"2023-04-25T05:15:08.206Z"},"20":{"__v":0,"_id":"64538d06b0347af4f56bebe1","created_at":"2023-05-04T10:46:30.041Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234553991","updated_at":"2023-05-04T10:46:30.041Z"},"21":{"__v":0,"_id":"64538d49b0347af4f56bebe3","created_at":"2023-05-04T10:47:37.249Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234554991","updated_at":"2023-05-04T10:47:37.249Z"},"22":{"__v":0,"_id":"64538d9db0347af4f56bebe5","created_at":"2023-05-04T10:49:01.613Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234555991","updated_at":"2023-05-04T10:49:01.613Z"},"23":{"__v":0,"_id":"64538dcc56e269232aae797a","created_at":"2023-05-04T10:49:48.554Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test 1","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234557991","updated_at":"2023-05-04T10:49:48.554Z"},"24":{"__v":0,"_id":"64538ecd55a579d8c7960c05","created_at":"2023-05-04T10:54:05.072Z","email":"test@gmail.com","is_confirm_account":1,"level":3,"name":"test 1","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234558991","updated_at":"2023-05-05T09:29:41.797Z"},"25":{"__v":0,"_id":"64561bbccc748e4c0e8ddaef","created_at":"2023-05-06T09:19:56.585Z","email":"admin@gmail.com","is_confirm_account":1,"level":3,"name":"admin update","password":"e9f00c43cbaf6bfbd008115177fe651ebe1a199b","phone":"0987654332","updated_at":"2023-05-06T10:10:29.914Z"},"26":{"__v":0,"_id":"64562a0aed0d56eb9ac12864","created_at":"2023-05-06T10:20:58.691Z","email":"admin1@gmail.com","is_confirm_account":1,"level":2,"name":"Admin1","password":"a7d2267620e3c6fd9d674688f561389706302119","phone":"0987654392","updated_at":"2023-05-06T10:21:45.881Z"},"27":{"__v":0,"_id":"645b72ae5a37341df49f7566","created_at":"2023-05-10T10:32:14.959Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test 1","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0234558991","updated_at":"2023-05-10T10:32:14.959Z"},"28":{"__v":0,"_id":"645b731fbbe46fcec6c17ee5","created_at":"2023-05-10T10:34:07.409Z","email":"test@gmail.com","is_confirm_account":2,"level":3,"name":"test 1","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0234551991","updated_at":"2023-05-10T10:34:07.409Z"},"29":{"__v":0,"_id":"645e0c4717e1cfca71e472cf","created_at":"2023-05-12T09:52:07.091Z","email":"viettoan@gmail.com","is_confirm_account":2,"level":3,"name":"Viet Toan 1","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0987954321","updated_at":"2023-05-12T09:52:07.091Z"},"3":{"__v":0,"_id":"644762f2cb59934701fb497a","created_at":"2023-04-25T05:19:46.122Z","is_confirm_account":2,"level":2,"name":"Viet Toan User update","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0987654326","updated_at":"2023-04-26T10:54:22.110Z"},"30":{"__v":0,"_id":"645e0c4717e1cfca71e472d1","created_at":"2023-05-12T09:52:07.362Z","email":"viettoan@gmail.com","is_confirm_account":2,"level":3,"name":"Viet Toan 2","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0987854321","updated_at":"2023-05-12T09:52:07.362Z"},"4":{"__v":0,"_id":"6447a80630a72943518f9560","created_at":"2023-04-25T10:14:30.700Z","is_confirm_account":2,"level":3,"name":"test update","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556921","updated_at":"2023-04-26T05:00:35.588Z"},"5":{"__v":0,"_id":"6447b1cf8eaf2e7df72832f2","created_at":"2023-04-25T10:56:15.932Z","is_confirm_account":2,"level":3,"name":"test","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"1234556922","updated_at":"2023-04-25T10:56:15.932Z"},"6":{"__v":0,"_id":"6448fb7845e1cc0920c7db45","created_at":"2023-04-26T10:22:48.921Z","is_confirm_account":2,"level":3,"name":"admin","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0312345678","updated_at":"2023-04-26T10:22:48.921Z"},"7":{"__v":0,"_id":"644b84eb5c7affcc78c3323f","created_at":"2023-04-28T08:33:47.773Z","is_confirm_account":2,"level":3,"name":"test 280401","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0312345671","updated_at":"2023-04-28T08:33:47.773Z"},"8":{"__v":0,"_id":"644b85be5c7affcc78c33242","created_at":"2023-04-28T08:37:18.003Z","is_confirm_account":2,"level":3,"name":"test 280402","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0312345672","updated_at":"2023-04-28T08:37:18.003Z"},"9":{"__v":0,"_id":"644b85d95c7affcc78c33245","created_at":"2023-04-28T08:37:45.524Z","is_confirm_account":2,"level":3,"name":"test 280403","password":"55a269aeedd546771776400dd608213e2c47e0cf","phone":"0312345673","updated_at":"2023-04-28T08:37:45.524Z"},"timestamp":"2023-05-13T08:10:54.752Z"}
+{
+  '0': {
+    _id: new ObjectId("64475b57bf6a631bc5a6453b"),
+    name: 'Viet Toan',
+    phone: '0987654321',
+    password: 'e9f00c43cbaf6bfbd008115177fe651ebe1a199b',
+    level: 2,
+    created_at: 2023-04-25T04:47:19.023Z,
+    updated_at: 2023-05-05T10:07:20.418Z,
+    __v: 0,
+    is_confirm_account: 1
+  },
+  '1': {
+    is_confirm_account: 2,
+    _id: new ObjectId("64475bedbf6a631bc5a6453f"),
+    name: 'Viet Toan',
+    phone: '0987654323',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 2,
+    created_at: 2023-04-25T04:49:49.622Z,
+    updated_at: 2023-04-25T04:49:49.622Z,
+    __v: 0
+  },
+  '2': {
+    is_confirm_account: 2,
+    _id: new ObjectId("644761dcbf6a631bc5a64559"),
+    name: 'Viet Toan User',
+    phone: '0987654324',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 2,
+    created_at: 2023-04-25T05:15:08.206Z,
+    updated_at: 2023-04-25T05:15:08.206Z,
+    __v: 0
+  },
+  '3': {
+    is_confirm_account: 2,
+    _id: new ObjectId("644762f2cb59934701fb497a"),
+    name: 'Viet Toan User update',
+    phone: '0987654326',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 2,
+    created_at: 2023-04-25T05:19:46.122Z,
+    updated_at: 2023-04-26T10:54:22.110Z,
+    __v: 0
+  },
+  '4': {
+    is_confirm_account: 2,
+    _id: new ObjectId("6447a80630a72943518f9560"),
+    name: 'test update',
+    phone: '1234556921',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    created_at: 2023-04-25T10:14:30.700Z,
+    updated_at: 2023-04-26T05:00:35.588Z,
+    __v: 0
+  },
+  '5': {
+    is_confirm_account: 2,
+    _id: new ObjectId("6447b1cf8eaf2e7df72832f2"),
+    name: 'test',
+    phone: '1234556922',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    created_at: 2023-04-25T10:56:15.932Z,
+    updated_at: 2023-04-25T10:56:15.932Z,
+    __v: 0
+  },
+  '6': {
+    is_confirm_account: 2,
+    _id: new ObjectId("6448fb7845e1cc0920c7db45"),
+    name: 'admin',
+    phone: '0312345678',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    created_at: 2023-04-26T10:22:48.921Z,
+    updated_at: 2023-04-26T10:22:48.921Z,
+    __v: 0
+  },
+  '7': {
+    is_confirm_account: 2,
+    _id: new ObjectId("644b84eb5c7affcc78c3323f"),
+    name: 'test 280401',
+    phone: '0312345671',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    created_at: 2023-04-28T08:33:47.773Z,
+    updated_at: 2023-04-28T08:33:47.773Z,
+    __v: 0
+  },
+  '8': {
+    is_confirm_account: 2,
+    _id: new ObjectId("644b85be5c7affcc78c33242"),
+    name: 'test 280402',
+    phone: '0312345672',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    created_at: 2023-04-28T08:37:18.003Z,
+    updated_at: 2023-04-28T08:37:18.003Z,
+    __v: 0
+  },
+  '9': {
+    is_confirm_account: 2,
+    _id: new ObjectId("644b85d95c7affcc78c33245"),
+    name: 'test 280403',
+    phone: '0312345673',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    created_at: 2023-04-28T08:37:45.524Z,
+    updated_at: 2023-04-28T08:37:45.524Z,
+    __v: 0
+  },
+  '10': {
+    is_confirm_account: 2,
+    _id: new ObjectId("644b87ff5c7affcc78c33255"),
+    name: 'test 280404',
+    phone: '0312345674',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 2,
+    created_at: 2023-04-28T08:46:55.084Z,
+    updated_at: 2023-04-28T08:46:55.084Z,
+    __v: 0
+  },
+  '11': {
+    is_confirm_account: 2,
+    _id: new ObjectId("64537d17ac0e7f2cd3125588"),
+    name: 'test',
+    phone: '1234556932',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    created_at: 2023-05-04T09:38:31.722Z,
+    updated_at: 2023-05-04T09:38:31.722Z,
+    __v: 0
+  },
+  '12': {
+    is_confirm_account: 2,
+    _id: new ObjectId("64537e71ce64a000b3af6895"),
+    name: 'test',
+    phone: '1234556942',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    created_at: 2023-05-04T09:44:17.794Z,
+    updated_at: 2023-05-04T09:44:17.794Z,
+    __v: 0
+  },
+  '13': {
+    is_confirm_account: 2,
+    _id: new ObjectId("64537e86ec96b9e94e82f1ab"),
+    name: 'test',
+    phone: '1234556952',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    created_at: 2023-05-04T09:44:38.380Z,
+    updated_at: 2023-05-04T09:44:38.380Z,
+    __v: 0
+  },
+  '14': {
+    is_confirm_account: 2,
+    _id: new ObjectId("64537ed8f7d372c5efd996ce"),
+    name: 'test',
+    phone: '1234556962',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    created_at: 2023-05-04T09:46:00.153Z,
+    updated_at: 2023-05-04T09:46:00.153Z,
+    __v: 0
+  },
+  '15': {
+    is_confirm_account: 2,
+    _id: new ObjectId("64537f07701554d53b74ad8b"),
+    name: 'test',
+    phone: '1234556972',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    created_at: 2023-05-04T09:46:47.118Z,
+    updated_at: 2023-05-04T09:46:47.118Z,
+    __v: 0
+  },
+  '16': {
+    is_confirm_account: 2,
+    _id: new ObjectId("6453886bfec593d722ed44a1"),
+    name: 'test',
+    phone: '1234556982',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    created_at: 2023-05-04T10:26:51.012Z,
+    updated_at: 2023-05-04T10:26:51.012Z,
+    __v: 0
+  },
+  '17': {
+    _id: new ObjectId("64538b0312edcbc0379b1b78"),
+    name: 'test',
+    email: 'test@gmail.com',
+    phone: '1234556992',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    is_confirm_account: 2,
+    created_at: 2023-05-04T10:37:55.517Z,
+    updated_at: 2023-05-04T10:37:55.517Z,
+    __v: 0
+  },
+  '18': {
+    _id: new ObjectId("64538c9ac1e0373e13e64257"),
+    name: 'test',
+    email: 'test@gmail.com',
+    phone: '1234551991',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    is_confirm_account: 2,
+    created_at: 2023-05-04T10:44:42.251Z,
+    updated_at: 2023-05-04T10:44:42.251Z,
+    __v: 0
+  },
+  '19': {
+    _id: new ObjectId("64538cb6b0347af4f56bebdf"),
+    name: 'test',
+    email: 'test@gmail.com',
+    phone: '1234552991',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    is_confirm_account: 2,
+    created_at: 2023-05-04T10:45:10.939Z,
+    updated_at: 2023-05-04T10:45:10.939Z,
+    __v: 0
+  },
+  '20': {
+    _id: new ObjectId("64538d06b0347af4f56bebe1"),
+    name: 'test',
+    email: 'test@gmail.com',
+    phone: '1234553991',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    is_confirm_account: 2,
+    created_at: 2023-05-04T10:46:30.041Z,
+    updated_at: 2023-05-04T10:46:30.041Z,
+    __v: 0
+  },
+  '21': {
+    _id: new ObjectId("64538d49b0347af4f56bebe3"),
+    name: 'test',
+    email: 'test@gmail.com',
+    phone: '1234554991',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    is_confirm_account: 2,
+    created_at: 2023-05-04T10:47:37.249Z,
+    updated_at: 2023-05-04T10:47:37.249Z,
+    __v: 0
+  },
+  '22': {
+    _id: new ObjectId("64538d9db0347af4f56bebe5"),
+    name: 'test',
+    email: 'test@gmail.com',
+    phone: '1234555991',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    is_confirm_account: 2,
+    created_at: 2023-05-04T10:49:01.613Z,
+    updated_at: 2023-05-04T10:49:01.613Z,
+    __v: 0
+  },
+  '23': {
+    _id: new ObjectId("64538dcc56e269232aae797a"),
+    name: 'test 1',
+    email: 'test@gmail.com',
+    phone: '1234557991',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    is_confirm_account: 2,
+    created_at: 2023-05-04T10:49:48.554Z,
+    updated_at: 2023-05-04T10:49:48.554Z,
+    __v: 0
+  },
+  '24': {
+    _id: new ObjectId("64538ecd55a579d8c7960c05"),
+    name: 'test 1',
+    email: 'test@gmail.com',
+    phone: '1234558991',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    is_confirm_account: 1,
+    created_at: 2023-05-04T10:54:05.072Z,
+    updated_at: 2023-05-05T09:29:41.797Z,
+    __v: 0
+  },
+  '25': {
+    _id: new ObjectId("64561bbccc748e4c0e8ddaef"),
+    name: 'admin update',
+    email: 'admin@gmail.com',
+    phone: '0987654332',
+    password: 'e9f00c43cbaf6bfbd008115177fe651ebe1a199b',
+    level: 3,
+    is_confirm_account: 1,
+    created_at: 2023-05-06T09:19:56.585Z,
+    updated_at: 2023-05-06T10:10:29.914Z,
+    __v: 0
+  },
+  '26': {
+    _id: new ObjectId("64562a0aed0d56eb9ac12864"),
+    name: 'Admin1',
+    email: 'admin1@gmail.com',
+    phone: '0987654392',
+    password: 'a7d2267620e3c6fd9d674688f561389706302119',
+    level: 2,
+    is_confirm_account: 1,
+    created_at: 2023-05-06T10:20:58.691Z,
+    updated_at: 2023-05-06T10:21:45.881Z,
+    __v: 0
+  },
+  '27': {
+    _id: new ObjectId("645b72ae5a37341df49f7566"),
+    name: 'test 1',
+    email: 'test@gmail.com',
+    phone: '0234558991',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    is_confirm_account: 2,
+    created_at: 2023-05-10T10:32:14.959Z,
+    updated_at: 2023-05-10T10:32:14.959Z,
+    __v: 0
+  },
+  '28': {
+    _id: new ObjectId("645b731fbbe46fcec6c17ee5"),
+    name: 'test 1',
+    email: 'test@gmail.com',
+    phone: '0234551991',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    is_confirm_account: 2,
+    created_at: 2023-05-10T10:34:07.409Z,
+    updated_at: 2023-05-10T10:34:07.409Z,
+    __v: 0
+  },
+  '29': {
+    _id: new ObjectId("645e0c4717e1cfca71e472cf"),
+    name: 'Viet Toan 1',
+    email: 'viettoan@gmail.com',
+    phone: '0987954321',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    is_confirm_account: 2,
+    created_at: 2023-05-12T09:52:07.091Z,
+    updated_at: 2023-05-12T09:52:07.091Z,
+    __v: 0
+  },
+  '30': {
+    _id: new ObjectId("645e0c4717e1cfca71e472d1"),
+    name: 'Viet Toan 2',
+    email: 'viettoan@gmail.com',
+    phone: '0987854321',
+    password: '55a269aeedd546771776400dd608213e2c47e0cf',
+    level: 3,
+    is_confirm_account: 2,
+    created_at: 2023-05-12T09:52:07.362Z,
+    updated_at: 2023-05-12T09:52:07.362Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'test',
+  timestamp: '2023-05-13T08:11:31.701Z'
+}
+2023-05-13T08:13:37.511Z info: test
+2023-05-13T08:15:03.374Z info: test undefined
+2023-05-13T08:17:26.267Z info: test [object Object]
+2023-05-13T08:18:04.854Z info: test {"0":{"_id":"64475b57bf6a631bc5a6453b","name":"Viet Toan","phone":"0987654321","password":"e9f00c43cbaf6bfbd008115177fe651ebe1a199b","level":2,"created_at":"2023-04-25T04:47:19.023Z","updated_at":"2023-05-05T10:07:20.418Z","__v":0,"is_confirm_account":1},"1":{"is_confirm_account":2,"_id":"64475bedbf6a631bc5a6453f","name":"Viet Toan","phone":"0987654323","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-25T04:49:49.622Z","updated_at":"2023-04-25T04:49:49.622Z","__v":0},"2":{"is_confirm_account":2,"_id":"644761dcbf6a631bc5a64559","name":"Viet Toan User","phone":"0987654324","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-25T05:15:08.206Z","updated_at":"2023-04-25T05:15:08.206Z","__v":0},"3":{"is_confirm_account":2,"_id":"644762f2cb59934701fb497a","name":"Viet Toan User update","phone":"0987654326","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-25T05:19:46.122Z","updated_at":"2023-04-26T10:54:22.110Z","__v":0},"4":{"is_confirm_account":2,"_id":"6447a80630a72943518f9560","name":"test update","phone":"1234556921","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-25T10:14:30.700Z","updated_at":"2023-04-26T05:00:35.588Z","__v":0},"5":{"is_confirm_account":2,"_id":"6447b1cf8eaf2e7df72832f2","name":"test","phone":"1234556922","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-25T10:56:15.932Z","updated_at":"2023-04-25T10:56:15.932Z","__v":0},"6":{"is_confirm_account":2,"_id":"6448fb7845e1cc0920c7db45","name":"admin","phone":"0312345678","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-26T10:22:48.921Z","updated_at":"2023-04-26T10:22:48.921Z","__v":0},"7":{"is_confirm_account":2,"_id":"644b84eb5c7affcc78c3323f","name":"test 280401","phone":"0312345671","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-28T08:33:47.773Z","updated_at":"2023-04-28T08:33:47.773Z","__v":0},"8":{"is_confirm_account":2,"_id":"644b85be5c7affcc78c33242","name":"test 280402","phone":"0312345672","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-28T08:37:18.003Z","updated_at":"2023-04-28T08:37:18.003Z","__v":0},"9":{"is_confirm_account":2,"_id":"644b85d95c7affcc78c33245","name":"test 280403","phone":"0312345673","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-28T08:37:45.524Z","updated_at":"2023-04-28T08:37:45.524Z","__v":0},"10":{"is_confirm_account":2,"_id":"644b87ff5c7affcc78c33255","name":"test 280404","phone":"0312345674","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-28T08:46:55.084Z","updated_at":"2023-04-28T08:46:55.084Z","__v":0},"11":{"is_confirm_account":2,"_id":"64537d17ac0e7f2cd3125588","name":"test","phone":"1234556932","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:38:31.722Z","updated_at":"2023-05-04T09:38:31.722Z","__v":0},"12":{"is_confirm_account":2,"_id":"64537e71ce64a000b3af6895","name":"test","phone":"1234556942","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:44:17.794Z","updated_at":"2023-05-04T09:44:17.794Z","__v":0},"13":{"is_confirm_account":2,"_id":"64537e86ec96b9e94e82f1ab","name":"test","phone":"1234556952","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:44:38.380Z","updated_at":"2023-05-04T09:44:38.380Z","__v":0},"14":{"is_confirm_account":2,"_id":"64537ed8f7d372c5efd996ce","name":"test","phone":"1234556962","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:46:00.153Z","updated_at":"2023-05-04T09:46:00.153Z","__v":0},"15":{"is_confirm_account":2,"_id":"64537f07701554d53b74ad8b","name":"test","phone":"1234556972","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:46:47.118Z","updated_at":"2023-05-04T09:46:47.118Z","__v":0},"16":{"is_confirm_account":2,"_id":"6453886bfec593d722ed44a1","name":"test","phone":"1234556982","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T10:26:51.012Z","updated_at":"2023-05-04T10:26:51.012Z","__v":0},"17":{"_id":"64538b0312edcbc0379b1b78","name":"test","email":"test@gmail.com","phone":"1234556992","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:37:55.517Z","updated_at":"2023-05-04T10:37:55.517Z","__v":0},"18":{"_id":"64538c9ac1e0373e13e64257","name":"test","email":"test@gmail.com","phone":"1234551991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:44:42.251Z","updated_at":"2023-05-04T10:44:42.251Z","__v":0},"19":{"_id":"64538cb6b0347af4f56bebdf","name":"test","email":"test@gmail.com","phone":"1234552991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:45:10.939Z","updated_at":"2023-05-04T10:45:10.939Z","__v":0},"20":{"_id":"64538d06b0347af4f56bebe1","name":"test","email":"test@gmail.com","phone":"1234553991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:46:30.041Z","updated_at":"2023-05-04T10:46:30.041Z","__v":0},"21":{"_id":"64538d49b0347af4f56bebe3","name":"test","email":"test@gmail.com","phone":"1234554991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:47:37.249Z","updated_at":"2023-05-04T10:47:37.249Z","__v":0},"22":{"_id":"64538d9db0347af4f56bebe5","name":"test","email":"test@gmail.com","phone":"1234555991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:49:01.613Z","updated_at":"2023-05-04T10:49:01.613Z","__v":0},"23":{"_id":"64538dcc56e269232aae797a","name":"test 1","email":"test@gmail.com","phone":"1234557991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:49:48.554Z","updated_at":"2023-05-04T10:49:48.554Z","__v":0},"24":{"_id":"64538ecd55a579d8c7960c05","name":"test 1","email":"test@gmail.com","phone":"1234558991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":1,"created_at":"2023-05-04T10:54:05.072Z","updated_at":"2023-05-05T09:29:41.797Z","__v":0},"25":{"_id":"64561bbccc748e4c0e8ddaef","name":"admin update","email":"admin@gmail.com","phone":"0987654332","password":"e9f00c43cbaf6bfbd008115177fe651ebe1a199b","level":3,"is_confirm_account":1,"created_at":"2023-05-06T09:19:56.585Z","updated_at":"2023-05-06T10:10:29.914Z","__v":0},"26":{"_id":"64562a0aed0d56eb9ac12864","name":"Admin1","email":"admin1@gmail.com","phone":"0987654392","password":"a7d2267620e3c6fd9d674688f561389706302119","level":2,"is_confirm_account":1,"created_at":"2023-05-06T10:20:58.691Z","updated_at":"2023-05-06T10:21:45.881Z","__v":0},"27":{"_id":"645b72ae5a37341df49f7566","name":"test 1","email":"test@gmail.com","phone":"0234558991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-10T10:32:14.959Z","updated_at":"2023-05-10T10:32:14.959Z","__v":0},"28":{"_id":"645b731fbbe46fcec6c17ee5","name":"test 1","email":"test@gmail.com","phone":"0234551991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-10T10:34:07.409Z","updated_at":"2023-05-10T10:34:07.409Z","__v":0},"29":{"_id":"645e0c4717e1cfca71e472cf","name":"Viet Toan 1","email":"viettoan@gmail.com","phone":"0987954321","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-12T09:52:07.091Z","updated_at":"2023-05-12T09:52:07.091Z","__v":0},"30":{"_id":"645e0c4717e1cfca71e472d1","name":"Viet Toan 2","email":"viettoan@gmail.com","phone":"0987854321","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-12T09:52:07.362Z","updated_at":"2023-05-12T09:52:07.362Z","__v":0}}
+2023-05-13T08:20:25.617Z | [[32minfo[39m] test | {"0":{"_id":"64475b57bf6a631bc5a6453b","name":"Viet Toan","phone":"0987654321","password":"e9f00c43cbaf6bfbd008115177fe651ebe1a199b","level":2,"created_at":"2023-04-25T04:47:19.023Z","updated_at":"2023-05-05T10:07:20.418Z","__v":0,"is_confirm_account":1},"1":{"is_confirm_account":2,"_id":"64475bedbf6a631bc5a6453f","name":"Viet Toan","phone":"0987654323","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-25T04:49:49.622Z","updated_at":"2023-04-25T04:49:49.622Z","__v":0},"2":{"is_confirm_account":2,"_id":"644761dcbf6a631bc5a64559","name":"Viet Toan User","phone":"0987654324","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-25T05:15:08.206Z","updated_at":"2023-04-25T05:15:08.206Z","__v":0},"3":{"is_confirm_account":2,"_id":"644762f2cb59934701fb497a","name":"Viet Toan User update","phone":"0987654326","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-25T05:19:46.122Z","updated_at":"2023-04-26T10:54:22.110Z","__v":0},"4":{"is_confirm_account":2,"_id":"6447a80630a72943518f9560","name":"test update","phone":"1234556921","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-25T10:14:30.700Z","updated_at":"2023-04-26T05:00:35.588Z","__v":0},"5":{"is_confirm_account":2,"_id":"6447b1cf8eaf2e7df72832f2","name":"test","phone":"1234556922","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-25T10:56:15.932Z","updated_at":"2023-04-25T10:56:15.932Z","__v":0},"6":{"is_confirm_account":2,"_id":"6448fb7845e1cc0920c7db45","name":"admin","phone":"0312345678","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-26T10:22:48.921Z","updated_at":"2023-04-26T10:22:48.921Z","__v":0},"7":{"is_confirm_account":2,"_id":"644b84eb5c7affcc78c3323f","name":"test 280401","phone":"0312345671","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-28T08:33:47.773Z","updated_at":"2023-04-28T08:33:47.773Z","__v":0},"8":{"is_confirm_account":2,"_id":"644b85be5c7affcc78c33242","name":"test 280402","phone":"0312345672","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-28T08:37:18.003Z","updated_at":"2023-04-28T08:37:18.003Z","__v":0},"9":{"is_confirm_account":2,"_id":"644b85d95c7affcc78c33245","name":"test 280403","phone":"0312345673","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-28T08:37:45.524Z","updated_at":"2023-04-28T08:37:45.524Z","__v":0},"10":{"is_confirm_account":2,"_id":"644b87ff5c7affcc78c33255","name":"test 280404","phone":"0312345674","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-28T08:46:55.084Z","updated_at":"2023-04-28T08:46:55.084Z","__v":0},"11":{"is_confirm_account":2,"_id":"64537d17ac0e7f2cd3125588","name":"test","phone":"1234556932","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:38:31.722Z","updated_at":"2023-05-04T09:38:31.722Z","__v":0},"12":{"is_confirm_account":2,"_id":"64537e71ce64a000b3af6895","name":"test","phone":"1234556942","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:44:17.794Z","updated_at":"2023-05-04T09:44:17.794Z","__v":0},"13":{"is_confirm_account":2,"_id":"64537e86ec96b9e94e82f1ab","name":"test","phone":"1234556952","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:44:38.380Z","updated_at":"2023-05-04T09:44:38.380Z","__v":0},"14":{"is_confirm_account":2,"_id":"64537ed8f7d372c5efd996ce","name":"test","phone":"1234556962","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:46:00.153Z","updated_at":"2023-05-04T09:46:00.153Z","__v":0},"15":{"is_confirm_account":2,"_id":"64537f07701554d53b74ad8b","name":"test","phone":"1234556972","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:46:47.118Z","updated_at":"2023-05-04T09:46:47.118Z","__v":0},"16":{"is_confirm_account":2,"_id":"6453886bfec593d722ed44a1","name":"test","phone":"1234556982","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T10:26:51.012Z","updated_at":"2023-05-04T10:26:51.012Z","__v":0},"17":{"_id":"64538b0312edcbc0379b1b78","name":"test","email":"test@gmail.com","phone":"1234556992","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:37:55.517Z","updated_at":"2023-05-04T10:37:55.517Z","__v":0},"18":{"_id":"64538c9ac1e0373e13e64257","name":"test","email":"test@gmail.com","phone":"1234551991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:44:42.251Z","updated_at":"2023-05-04T10:44:42.251Z","__v":0},"19":{"_id":"64538cb6b0347af4f56bebdf","name":"test","email":"test@gmail.com","phone":"1234552991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:45:10.939Z","updated_at":"2023-05-04T10:45:10.939Z","__v":0},"20":{"_id":"64538d06b0347af4f56bebe1","name":"test","email":"test@gmail.com","phone":"1234553991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:46:30.041Z","updated_at":"2023-05-04T10:46:30.041Z","__v":0},"21":{"_id":"64538d49b0347af4f56bebe3","name":"test","email":"test@gmail.com","phone":"1234554991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:47:37.249Z","updated_at":"2023-05-04T10:47:37.249Z","__v":0},"22":{"_id":"64538d9db0347af4f56bebe5","name":"test","email":"test@gmail.com","phone":"1234555991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:49:01.613Z","updated_at":"2023-05-04T10:49:01.613Z","__v":0},"23":{"_id":"64538dcc56e269232aae797a","name":"test 1","email":"test@gmail.com","phone":"1234557991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:49:48.554Z","updated_at":"2023-05-04T10:49:48.554Z","__v":0},"24":{"_id":"64538ecd55a579d8c7960c05","name":"test 1","email":"test@gmail.com","phone":"1234558991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":1,"created_at":"2023-05-04T10:54:05.072Z","updated_at":"2023-05-05T09:29:41.797Z","__v":0},"25":{"_id":"64561bbccc748e4c0e8ddaef","name":"admin update","email":"admin@gmail.com","phone":"0987654332","password":"e9f00c43cbaf6bfbd008115177fe651ebe1a199b","level":3,"is_confirm_account":1,"created_at":"2023-05-06T09:19:56.585Z","updated_at":"2023-05-06T10:10:29.914Z","__v":0},"26":{"_id":"64562a0aed0d56eb9ac12864","name":"Admin1","email":"admin1@gmail.com","phone":"0987654392","password":"a7d2267620e3c6fd9d674688f561389706302119","level":2,"is_confirm_account":1,"created_at":"2023-05-06T10:20:58.691Z","updated_at":"2023-05-06T10:21:45.881Z","__v":0},"27":{"_id":"645b72ae5a37341df49f7566","name":"test 1","email":"test@gmail.com","phone":"0234558991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-10T10:32:14.959Z","updated_at":"2023-05-10T10:32:14.959Z","__v":0},"28":{"_id":"645b731fbbe46fcec6c17ee5","name":"test 1","email":"test@gmail.com","phone":"0234551991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-10T10:34:07.409Z","updated_at":"2023-05-10T10:34:07.409Z","__v":0},"29":{"_id":"645e0c4717e1cfca71e472cf","name":"Viet Toan 1","email":"viettoan@gmail.com","phone":"0987954321","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-12T09:52:07.091Z","updated_at":"2023-05-12T09:52:07.091Z","__v":0},"30":{"_id":"645e0c4717e1cfca71e472d1","name":"Viet Toan 2","email":"viettoan@gmail.com","phone":"0987854321","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-12T09:52:07.362Z","updated_at":"2023-05-12T09:52:07.362Z","__v":0}}
+2023-05-13T08:20:58.193Z | [info] test | {"0":{"_id":"64475b57bf6a631bc5a6453b","name":"Viet Toan","phone":"0987654321","password":"e9f00c43cbaf6bfbd008115177fe651ebe1a199b","level":2,"created_at":"2023-04-25T04:47:19.023Z","updated_at":"2023-05-05T10:07:20.418Z","__v":0,"is_confirm_account":1},"1":{"is_confirm_account":2,"_id":"64475bedbf6a631bc5a6453f","name":"Viet Toan","phone":"0987654323","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-25T04:49:49.622Z","updated_at":"2023-04-25T04:49:49.622Z","__v":0},"2":{"is_confirm_account":2,"_id":"644761dcbf6a631bc5a64559","name":"Viet Toan User","phone":"0987654324","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-25T05:15:08.206Z","updated_at":"2023-04-25T05:15:08.206Z","__v":0},"3":{"is_confirm_account":2,"_id":"644762f2cb59934701fb497a","name":"Viet Toan User update","phone":"0987654326","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-25T05:19:46.122Z","updated_at":"2023-04-26T10:54:22.110Z","__v":0},"4":{"is_confirm_account":2,"_id":"6447a80630a72943518f9560","name":"test update","phone":"1234556921","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-25T10:14:30.700Z","updated_at":"2023-04-26T05:00:35.588Z","__v":0},"5":{"is_confirm_account":2,"_id":"6447b1cf8eaf2e7df72832f2","name":"test","phone":"1234556922","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-25T10:56:15.932Z","updated_at":"2023-04-25T10:56:15.932Z","__v":0},"6":{"is_confirm_account":2,"_id":"6448fb7845e1cc0920c7db45","name":"admin","phone":"0312345678","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-26T10:22:48.921Z","updated_at":"2023-04-26T10:22:48.921Z","__v":0},"7":{"is_confirm_account":2,"_id":"644b84eb5c7affcc78c3323f","name":"test 280401","phone":"0312345671","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-28T08:33:47.773Z","updated_at":"2023-04-28T08:33:47.773Z","__v":0},"8":{"is_confirm_account":2,"_id":"644b85be5c7affcc78c33242","name":"test 280402","phone":"0312345672","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-28T08:37:18.003Z","updated_at":"2023-04-28T08:37:18.003Z","__v":0},"9":{"is_confirm_account":2,"_id":"644b85d95c7affcc78c33245","name":"test 280403","phone":"0312345673","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-28T08:37:45.524Z","updated_at":"2023-04-28T08:37:45.524Z","__v":0},"10":{"is_confirm_account":2,"_id":"644b87ff5c7affcc78c33255","name":"test 280404","phone":"0312345674","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-28T08:46:55.084Z","updated_at":"2023-04-28T08:46:55.084Z","__v":0},"11":{"is_confirm_account":2,"_id":"64537d17ac0e7f2cd3125588","name":"test","phone":"1234556932","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:38:31.722Z","updated_at":"2023-05-04T09:38:31.722Z","__v":0},"12":{"is_confirm_account":2,"_id":"64537e71ce64a000b3af6895","name":"test","phone":"1234556942","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:44:17.794Z","updated_at":"2023-05-04T09:44:17.794Z","__v":0},"13":{"is_confirm_account":2,"_id":"64537e86ec96b9e94e82f1ab","name":"test","phone":"1234556952","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:44:38.380Z","updated_at":"2023-05-04T09:44:38.380Z","__v":0},"14":{"is_confirm_account":2,"_id":"64537ed8f7d372c5efd996ce","name":"test","phone":"1234556962","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:46:00.153Z","updated_at":"2023-05-04T09:46:00.153Z","__v":0},"15":{"is_confirm_account":2,"_id":"64537f07701554d53b74ad8b","name":"test","phone":"1234556972","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:46:47.118Z","updated_at":"2023-05-04T09:46:47.118Z","__v":0},"16":{"is_confirm_account":2,"_id":"6453886bfec593d722ed44a1","name":"test","phone":"1234556982","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T10:26:51.012Z","updated_at":"2023-05-04T10:26:51.012Z","__v":0},"17":{"_id":"64538b0312edcbc0379b1b78","name":"test","email":"test@gmail.com","phone":"1234556992","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:37:55.517Z","updated_at":"2023-05-04T10:37:55.517Z","__v":0},"18":{"_id":"64538c9ac1e0373e13e64257","name":"test","email":"test@gmail.com","phone":"1234551991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:44:42.251Z","updated_at":"2023-05-04T10:44:42.251Z","__v":0},"19":{"_id":"64538cb6b0347af4f56bebdf","name":"test","email":"test@gmail.com","phone":"1234552991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:45:10.939Z","updated_at":"2023-05-04T10:45:10.939Z","__v":0},"20":{"_id":"64538d06b0347af4f56bebe1","name":"test","email":"test@gmail.com","phone":"1234553991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:46:30.041Z","updated_at":"2023-05-04T10:46:30.041Z","__v":0},"21":{"_id":"64538d49b0347af4f56bebe3","name":"test","email":"test@gmail.com","phone":"1234554991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:47:37.249Z","updated_at":"2023-05-04T10:47:37.249Z","__v":0},"22":{"_id":"64538d9db0347af4f56bebe5","name":"test","email":"test@gmail.com","phone":"1234555991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:49:01.613Z","updated_at":"2023-05-04T10:49:01.613Z","__v":0},"23":{"_id":"64538dcc56e269232aae797a","name":"test 1","email":"test@gmail.com","phone":"1234557991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:49:48.554Z","updated_at":"2023-05-04T10:49:48.554Z","__v":0},"24":{"_id":"64538ecd55a579d8c7960c05","name":"test 1","email":"test@gmail.com","phone":"1234558991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":1,"created_at":"2023-05-04T10:54:05.072Z","updated_at":"2023-05-05T09:29:41.797Z","__v":0},"25":{"_id":"64561bbccc748e4c0e8ddaef","name":"admin update","email":"admin@gmail.com","phone":"0987654332","password":"e9f00c43cbaf6bfbd008115177fe651ebe1a199b","level":3,"is_confirm_account":1,"created_at":"2023-05-06T09:19:56.585Z","updated_at":"2023-05-06T10:10:29.914Z","__v":0},"26":{"_id":"64562a0aed0d56eb9ac12864","name":"Admin1","email":"admin1@gmail.com","phone":"0987654392","password":"a7d2267620e3c6fd9d674688f561389706302119","level":2,"is_confirm_account":1,"created_at":"2023-05-06T10:20:58.691Z","updated_at":"2023-05-06T10:21:45.881Z","__v":0},"27":{"_id":"645b72ae5a37341df49f7566","name":"test 1","email":"test@gmail.com","phone":"0234558991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-10T10:32:14.959Z","updated_at":"2023-05-10T10:32:14.959Z","__v":0},"28":{"_id":"645b731fbbe46fcec6c17ee5","name":"test 1","email":"test@gmail.com","phone":"0234551991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-10T10:34:07.409Z","updated_at":"2023-05-10T10:34:07.409Z","__v":0},"29":{"_id":"645e0c4717e1cfca71e472cf","name":"Viet Toan 1","email":"viettoan@gmail.com","phone":"0987954321","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-12T09:52:07.091Z","updated_at":"2023-05-12T09:52:07.091Z","__v":0},"30":{"_id":"645e0c4717e1cfca71e472d1","name":"Viet Toan 2","email":"viettoan@gmail.com","phone":"0987854321","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-12T09:52:07.362Z","updated_at":"2023-05-12T09:52:07.362Z","__v":0}}
+2023-05-13T08:25:04.059Z | [info] test | {"0":{"_id":"64475b57bf6a631bc5a6453b","name":"Viet Toan","phone":"0987654321","password":"e9f00c43cbaf6bfbd008115177fe651ebe1a199b","level":2,"created_at":"2023-04-25T04:47:19.023Z","updated_at":"2023-05-05T10:07:20.418Z","__v":0,"is_confirm_account":1},"1":{"is_confirm_account":2,"_id":"64475bedbf6a631bc5a6453f","name":"Viet Toan","phone":"0987654323","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-25T04:49:49.622Z","updated_at":"2023-04-25T04:49:49.622Z","__v":0},"2":{"is_confirm_account":2,"_id":"644761dcbf6a631bc5a64559","name":"Viet Toan User","phone":"0987654324","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-25T05:15:08.206Z","updated_at":"2023-04-25T05:15:08.206Z","__v":0},"3":{"is_confirm_account":2,"_id":"644762f2cb59934701fb497a","name":"Viet Toan User update","phone":"0987654326","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-25T05:19:46.122Z","updated_at":"2023-04-26T10:54:22.110Z","__v":0},"4":{"is_confirm_account":2,"_id":"6447a80630a72943518f9560","name":"test update","phone":"1234556921","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-25T10:14:30.700Z","updated_at":"2023-04-26T05:00:35.588Z","__v":0},"5":{"is_confirm_account":2,"_id":"6447b1cf8eaf2e7df72832f2","name":"test","phone":"1234556922","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-25T10:56:15.932Z","updated_at":"2023-04-25T10:56:15.932Z","__v":0},"6":{"is_confirm_account":2,"_id":"6448fb7845e1cc0920c7db45","name":"admin","phone":"0312345678","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-26T10:22:48.921Z","updated_at":"2023-04-26T10:22:48.921Z","__v":0},"7":{"is_confirm_account":2,"_id":"644b84eb5c7affcc78c3323f","name":"test 280401","phone":"0312345671","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-28T08:33:47.773Z","updated_at":"2023-04-28T08:33:47.773Z","__v":0},"8":{"is_confirm_account":2,"_id":"644b85be5c7affcc78c33242","name":"test 280402","phone":"0312345672","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-28T08:37:18.003Z","updated_at":"2023-04-28T08:37:18.003Z","__v":0},"9":{"is_confirm_account":2,"_id":"644b85d95c7affcc78c33245","name":"test 280403","phone":"0312345673","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-04-28T08:37:45.524Z","updated_at":"2023-04-28T08:37:45.524Z","__v":0},"10":{"is_confirm_account":2,"_id":"644b87ff5c7affcc78c33255","name":"test 280404","phone":"0312345674","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":2,"created_at":"2023-04-28T08:46:55.084Z","updated_at":"2023-04-28T08:46:55.084Z","__v":0},"11":{"is_confirm_account":2,"_id":"64537d17ac0e7f2cd3125588","name":"test","phone":"1234556932","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:38:31.722Z","updated_at":"2023-05-04T09:38:31.722Z","__v":0},"12":{"is_confirm_account":2,"_id":"64537e71ce64a000b3af6895","name":"test","phone":"1234556942","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:44:17.794Z","updated_at":"2023-05-04T09:44:17.794Z","__v":0},"13":{"is_confirm_account":2,"_id":"64537e86ec96b9e94e82f1ab","name":"test","phone":"1234556952","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:44:38.380Z","updated_at":"2023-05-04T09:44:38.380Z","__v":0},"14":{"is_confirm_account":2,"_id":"64537ed8f7d372c5efd996ce","name":"test","phone":"1234556962","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:46:00.153Z","updated_at":"2023-05-04T09:46:00.153Z","__v":0},"15":{"is_confirm_account":2,"_id":"64537f07701554d53b74ad8b","name":"test","phone":"1234556972","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T09:46:47.118Z","updated_at":"2023-05-04T09:46:47.118Z","__v":0},"16":{"is_confirm_account":2,"_id":"6453886bfec593d722ed44a1","name":"test","phone":"1234556982","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"created_at":"2023-05-04T10:26:51.012Z","updated_at":"2023-05-04T10:26:51.012Z","__v":0},"17":{"_id":"64538b0312edcbc0379b1b78","name":"test","email":"test@gmail.com","phone":"1234556992","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:37:55.517Z","updated_at":"2023-05-04T10:37:55.517Z","__v":0},"18":{"_id":"64538c9ac1e0373e13e64257","name":"test","email":"test@gmail.com","phone":"1234551991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:44:42.251Z","updated_at":"2023-05-04T10:44:42.251Z","__v":0},"19":{"_id":"64538cb6b0347af4f56bebdf","name":"test","email":"test@gmail.com","phone":"1234552991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:45:10.939Z","updated_at":"2023-05-04T10:45:10.939Z","__v":0},"20":{"_id":"64538d06b0347af4f56bebe1","name":"test","email":"test@gmail.com","phone":"1234553991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:46:30.041Z","updated_at":"2023-05-04T10:46:30.041Z","__v":0},"21":{"_id":"64538d49b0347af4f56bebe3","name":"test","email":"test@gmail.com","phone":"1234554991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:47:37.249Z","updated_at":"2023-05-04T10:47:37.249Z","__v":0},"22":{"_id":"64538d9db0347af4f56bebe5","name":"test","email":"test@gmail.com","phone":"1234555991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:49:01.613Z","updated_at":"2023-05-04T10:49:01.613Z","__v":0},"23":{"_id":"64538dcc56e269232aae797a","name":"test 1","email":"test@gmail.com","phone":"1234557991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-04T10:49:48.554Z","updated_at":"2023-05-04T10:49:48.554Z","__v":0},"24":{"_id":"64538ecd55a579d8c7960c05","name":"test 1","email":"test@gmail.com","phone":"1234558991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":1,"created_at":"2023-05-04T10:54:05.072Z","updated_at":"2023-05-05T09:29:41.797Z","__v":0},"25":{"_id":"64561bbccc748e4c0e8ddaef","name":"admin update","email":"admin@gmail.com","phone":"0987654332","password":"e9f00c43cbaf6bfbd008115177fe651ebe1a199b","level":3,"is_confirm_account":1,"created_at":"2023-05-06T09:19:56.585Z","updated_at":"2023-05-06T10:10:29.914Z","__v":0},"26":{"_id":"64562a0aed0d56eb9ac12864","name":"Admin1","email":"admin1@gmail.com","phone":"0987654392","password":"a7d2267620e3c6fd9d674688f561389706302119","level":2,"is_confirm_account":1,"created_at":"2023-05-06T10:20:58.691Z","updated_at":"2023-05-06T10:21:45.881Z","__v":0},"27":{"_id":"645b72ae5a37341df49f7566","name":"test 1","email":"test@gmail.com","phone":"0234558991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-10T10:32:14.959Z","updated_at":"2023-05-10T10:32:14.959Z","__v":0},"28":{"_id":"645b731fbbe46fcec6c17ee5","name":"test 1","email":"test@gmail.com","phone":"0234551991","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-10T10:34:07.409Z","updated_at":"2023-05-10T10:34:07.409Z","__v":0},"29":{"_id":"645e0c4717e1cfca71e472cf","name":"Viet Toan 1","email":"viettoan@gmail.com","phone":"0987954321","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-12T09:52:07.091Z","updated_at":"2023-05-12T09:52:07.091Z","__v":0},"30":{"_id":"645e0c4717e1cfca71e472d1","name":"Viet Toan 2","email":"viettoan@gmail.com","phone":"0987854321","password":"55a269aeedd546771776400dd608213e2c47e0cf","level":3,"is_confirm_account":2,"created_at":"2023-05-12T09:52:07.362Z","updated_at":"2023-05-12T09:52:07.362Z","__v":0}}
+2023-05-13T08:30:48.841Z | [error] Import Error users is not defined | {"stack":"ReferenceError: users is not defined\n    at index (file:///home/pc166/Desktop/base-admin/be-nodejs-base-admin/app/Http/Controllers/UserController.mjs:21:41)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)"}

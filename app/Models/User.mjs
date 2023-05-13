@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: [true, 'Email không được để trống'],
+        unique: [true, 'Email đã tồn tại'],
         maxLength: [50, 'Email không được lớn hơn {MAXLENGTH} ký tự'],
     },
     phone: {
