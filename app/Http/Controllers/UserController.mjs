@@ -112,7 +112,6 @@ class UserController extends BaseController
                 type: "buffer",
                 bookType: "xlsx"
             });
-            res.attachment('DataUser.xlsx');
 
             return responseSuccess(res, buf);
         } catch (e) {
