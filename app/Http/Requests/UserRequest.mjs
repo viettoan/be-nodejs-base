@@ -38,12 +38,17 @@ const validationsStoreOrUpdateUser = [
 ];
 
 const validationsIndexUser = [
-    query('name').custom( async  nameValue => {
+    query('name').optional().custom( async  nameValue => {
         if (nameValue && nameValue.length > 50) {
             throw new Error('Họ tên không được lớn hơn 50 ký tự');
         }
     }),
-    query('phone').custom( async value => {
+    query('email').optional({values:"falsy"}).custom( async  emailValue => {
+        if (emailValue && emailValue.length > 50) {
+            throw new Error('Họ tên không được lớn hơn 50 ký tự');
+        }
+    }).isEmail({require_tld:true}).withMessage('Email không đúng định dạng'),
+    query('phone').optional().custom( async value => {
         if (value && (value?.length > 11 || value?.length < 10)) {
             throw new Error('Số điện thoại phải từ 10 - 11 ký tự')
         }

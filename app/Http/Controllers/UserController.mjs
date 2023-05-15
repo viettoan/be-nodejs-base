@@ -1,8 +1,13 @@
 import BaseController from "./BaseController.mjs";
-import { DEFAULT_PASWORD } from "../../../config/common.mjs";
-import {hashHmacString, responseSuccess, responseErrors, generateConfirmUrl} from "../../Common/helper.mjs";
+import { responseSuccess, responseErrors } from "../../Common/helper.mjs";
 import UserRepository from "../../Repositories/UserRepository.mjs";
-import EmailService from "../../Services/EmailService.mjs";
+import * as XLSX from 'xlsx/xlsx.mjs';
+import * as fs from 'fs';
+import UserService from "../../Services/UserService.mjs";
+import { STORAGE_PATHS, USER_IMPORTS, USERS } from "../../../config/common.mjs";
+import UserImportRepository from "../../Repositories/UserImportRepository.mjs";
+import ImportUsers from "../Jobs/ImportUsers.mjs";
+XLSX.set_fs(fs);
 
 class UserController extends BaseController
 {
@@ -13,6 +18,7 @@ class UserController extends BaseController
 
             return responseSuccess(res, users);
         } catch (e) {
+
             return responseErrors(res, 400, e.message);
         }
     }
@@ -21,18 +27,13 @@ class UserController extends BaseController
     {
         try {
             const params = req.body;
-            params.password = hashHmacString(DEFAULT_PASWORD);
-            const insertedUser = await UserRepository.store(params);
-            EmailService.sendMail(
-                [params.email],
-                'Confirm Account Base Admin',
-                'email/confirmAccount.ejs',
-                {
-                    name: params.name,
-                    confirmUrl: generateConfirmUrl(insertedUser.id)
-                }
-            )
-            return responseSuccess(res, insertedUser, 201);
+            const userInsertedResponse = await UserService.storeUser(params);
+
+            if (userInsertedResponse.isSuccess) {
+                return responseSuccess(res, userInsertedResponse.user, 201);
+            }
+
+            return responseErrors(res, 400, userInsertedResponse.error.message);
         } catch (e) {
             return responseErrors(res, 400, e.message);
         }
@@ -70,6 +71,54 @@ class UserController extends BaseController
             return responseErrors(res, 400, e.message);
         }
     }
-}
+
+    async import(req, res)
+    {
+        try {
+            const wb = XLSX.readFile(req.file.path);
+            const users = XLSX.utils.sheet_to_json(
+                wb.Sheets[wb.SheetNames[0]],
+                {
+                    header:['name', 'phone', 'email'],
+                    range:1
+                }
+            )
+
+            if (!users.length) {
+                return responseErrors(res, 422, 'Danh sách users trống');
+            }
+            const storeUserImport = await UserImportRepository.store({
+                path: STORAGE_PATHS.importUsers + req.file.filename,
+            })
+            ImportUsers.handle(users, storeUserImport);
+
+            return responseSuccess(res, {}, 200);
+        } catch (e) {
+            return responseErrors(res, 400, e.message);
+        }
+    }
+
+    async export(req, res)
+    {
+        try {
+            let users = await UserRepository.findBy(req.query);
+            users = users.map(
+                user => [user.name, user.email, user.phone]
+            );
+            const ws = XLSX.utils.aoa_to_sheet([['name', 'email', 'phone'], ...users]);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Data");
+            const buf = XLSX.write(wb, {
+                type: "buffer",
+                bookType: "xlsx"
+            });
+            res.attachment('DataUser.xlsx');
+
+            return responseSuccess(res, buf);
+        } catch (e) {
+
+            return responseErrors(res, 400, e.message);
+        }
+    }}
 
 export default new UserController();

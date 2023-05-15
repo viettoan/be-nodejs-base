@@ -11,3 +11,23 @@ export const USERS = {
         false: 2
     }
 }
+
+export const STORAGE_PATHS = {
+    importUsers: './storage/import/users',
+}
+
+export const USER_IMPORTS = {
+    status: {
+        pending: 1,
+        processing: 2,
+        done: 3,
+    },
+    has_errors: {
+        true: 1,
+        false: 2,
+    },
+}
+
+export const JOB_QUEUES = {
+    userImports: 'user-imports'
+}

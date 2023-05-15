@@ -40,8 +40,7 @@ class BaseRepository
     async update(id, data)
     {
         data.updated_at = new Date();
-
-        await this.getModel().findByIdAndUpdate(id, data);
+        await this.getModel().findByIdAndUpdate(id, data)
 
         return true;
     }

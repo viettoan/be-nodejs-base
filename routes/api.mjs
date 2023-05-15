@@ -7,6 +7,7 @@ import { validateStoreOrUpdateUser, validateIndexUser} from "../app/Http/Request
 import { validateUserLogin, validateConfirmAccount, validateChangePassword } from "../app/Http/Requests/AuthRequest.mjs";
 // Middlewares
 import { authMiddleware } from "../app/Http/Middlewares/AuthMiddleware.mjs";
+import { importUserMiddleware } from "../app/Http/Middlewares/ImportUserMiddleware.mjs";
 
 const router = express.Router();
 
@@ -22,5 +23,7 @@ router.post('/users', validateStoreOrUpdateUser, UserController.store);
 router.get("/users/:userId", UserController.show);
 router.put("/users/:userId", validateStoreOrUpdateUser, UserController.update);
 router.delete("/users/:userId", UserController.destroy);
+router.post("/users/import", importUserMiddleware.single('file'), UserController.import);
+router.post("/users/export", validateIndexUser, UserController.export);
 
 export default router;
