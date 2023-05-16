@@ -75,6 +75,8 @@ class UserController extends BaseController
     async import(req, res)
     {
         try {
+            console.log(1111);
+            console.log(req.file);
             const wb = XLSX.readFile(req.file.path);
             const users = XLSX.utils.sheet_to_json(
                 wb.Sheets[wb.SheetNames[0]],
@@ -83,6 +85,7 @@ class UserController extends BaseController
                     range:1
                 }
             )
+            console.log(222);
 
             if (!users.length) {
                 return responseErrors(res, 422, 'Danh sách users trống');

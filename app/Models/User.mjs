@@ -21,6 +21,11 @@ const userSchema = new mongoose.Schema({
         maxLength: [11, 'Số điện thoại không được lớn hơn {MAXLENGTH} ký tự'],
         minLength: [10, 'Số điện thoại không được ít hơn {MINLENGTH} ký tự'],
     },
+    avatar: {
+        type: String,
+        required: [true, 'Ảnh đại diện không được để trống'],
+        unique: [true, 'Ảnh đại diện đã tồn tại'],
+    },
     password: {
         type: String,
         required: [true, 'Mật khẩu không được để trống'],
