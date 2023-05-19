@@ -7,6 +7,7 @@ import UserService from "../../Services/UserService.mjs";
 import { STORAGE_PATHS, USER_IMPORTS, USERS } from "../../../config/common.mjs";
 import UserImportRepository from "../../Repositories/UserImportRepository.mjs";
 import ImportUsers from "../Jobs/ImportUsers.mjs";
+import userImport from "../../Models/UserImport.mjs";
 XLSX.set_fs(fs);
 
 class UserController extends BaseController
@@ -14,7 +15,9 @@ class UserController extends BaseController
     async index(req, res)
     {
         try {
-            const users = await UserRepository.findBy(req.query)
+            const users = await UserRepository.findBy(req.query, {
+                created_at: -1
+            })
 
             return responseSuccess(res, users);
         } catch (e) {
@@ -75,8 +78,6 @@ class UserController extends BaseController
     async import(req, res)
     {
         try {
-            console.log(1111);
-            console.log(req.file);
             const wb = XLSX.readFile(req.file.path);
             const users = XLSX.utils.sheet_to_json(
                 wb.Sheets[wb.SheetNames[0]],
@@ -85,7 +86,6 @@ class UserController extends BaseController
                     range:1
                 }
             )
-            console.log(222);
 
             if (!users.length) {
                 return responseErrors(res, 422, 'Danh sách users trống');
@@ -101,10 +101,49 @@ class UserController extends BaseController
         }
     }
 
+    async showImportNewest(req, res)
+    {
+        try {
+            const userImport = await UserImportRepository.showNewest();
+
+            return responseSuccess(res, userImport, 200);
+        } catch (e) {
+            return responseErrors(res, 400, e.message);
+        }
+    }
+
+    async getImportHistory(req, res)
+    {
+        try {
+            let userImports = await UserImportRepository.findBy({}, {
+                created_at: -1
+            });
+            userImports = JSON.parse(JSON.stringify(userImports)).map(
+                userImport => {
+                    try {
+                        const wb = XLSX.readFile(userImport.path);
+                        userImport.file = XLSX.write(wb, {
+                            type: "buffer",
+                            bookType: "xlsx"
+                        });
+                    } catch (e) {
+                        userImport.file = null;
+                    }
+
+                    return userImport;
+                }
+            );
+
+            return responseSuccess(res, userImports, 200);
+        } catch (e) {
+            return responseErrors(res, 400, e.message);
+        }
+    }
+
     async export(req, res)
     {
         try {
-            let users = await UserRepository.findBy(req.query);
+            let users = await UserRepository.findBy(req.body);
             users = users.map(
                 user => [user.name, user.email, user.phone]
             );

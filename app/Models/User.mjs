@@ -23,8 +23,6 @@ const userSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
-        required: [true, 'Ảnh đại diện không được để trống'],
-        unique: [true, 'Ảnh đại diện đã tồn tại'],
     },
     password: {
         type: String,

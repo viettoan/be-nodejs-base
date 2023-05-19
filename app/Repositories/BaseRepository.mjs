@@ -24,9 +24,9 @@ class BaseRepository
         return await this.getModel().create(data);
     }
 
-    async findBy(conditions)
+    async findBy(conditions = {}, sort = {})
     {
-        return await this.getModel().find({...conditions, deleted_at: null})
+        return await this.getModel().find({...conditions, deleted_at: null}).sort(sort);
     }
 
     async findById(id)

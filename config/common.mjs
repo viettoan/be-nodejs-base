@@ -13,8 +13,8 @@ export const USERS = {
 }
 
 export const STORAGE_PATHS = {
-    importUsers: './storage/users/imports',
-    uploadAvatarUser: './storage/users/avatars'
+    importUsers: './storage/users/imports/',
+    uploadAvatarUser: './storage/users/avatars/'
 }
 
 export const USER_IMPORTS = {
