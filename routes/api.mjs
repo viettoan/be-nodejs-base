@@ -30,6 +30,8 @@ router.get("/users/:userId", UserController.show);
 router.put("/users/:userId", validateStoreOrUpdateUser, UserController.update);
 router.delete("/users/:userId", UserController.destroy);
 router.post("/users/import", importUserMiddleware.single('file'), UserController.import);
+router.get("/users/import/newest", UserController.showImportNewest);
+router.get("/users/import/history", UserController.getImportHistory);
 router.post("/users/export", validateIndexUser, UserController.export);
 
 // Profile
