@@ -7,69 +7,83 @@ import UserService from "../../Services/UserService.mjs";
 import { STORAGE_PATHS, USER_IMPORTS, USERS } from "../../../config/common.mjs";
 import UserImportRepository from "../../Repositories/UserImportRepository.mjs";
 import ImportUsers from "../Jobs/ImportUsers.mjs";
-import userImport from "../../Models/UserImport.mjs";
 XLSX.set_fs(fs);
 
 class UserController extends BaseController
 {
-    async index(req, res)
+    index(req, res)
     {
         try {
-            const users = await UserRepository.findBy(req.query, {
-                created_at: -1
-            })
-
-            return responseSuccess(res, users);
+            UserRepository.paginate(req.query, {
+                page: +req.query?.pagination?.page,
+                limit: +req.query?.pagination?.limit
+            }).then(
+                (users) => {
+                    return responseSuccess(res, users);
+                }
+            )
         } catch (e) {
 
             return responseErrors(res, 400, e.message);
         }
     }
 
-    async store(req, res)
+    store(req, res)
     {
         try {
             const params = req.body;
-            const userInsertedResponse = await UserService.storeUser(params);
+            UserService.storeUser(params).then(
+                (response) => {
+                    if (response.isSuccess) {
+                        return responseSuccess(res, response.user, 201);
+                    }
 
-            if (userInsertedResponse.isSuccess) {
-                return responseSuccess(res, userInsertedResponse.user, 201);
-            }
+                    return responseErrors(res, 400, response.error.message);
+                }
+            );
 
-            return responseErrors(res, 400, userInsertedResponse.error.message);
+
         } catch (e) {
             return responseErrors(res, 400, e.message);
         }
     }
 
-    async show(req, res)
+    show(req, res)
     {
         try {
-            const user = await UserRepository.findById(req.params.userId)
-
-            return responseSuccess(res, user);
+            UserRepository.findById(req.params.userId).then(
+                (user) => {
+                    return responseSuccess(res, user);
+                }
+            )
         } catch (e) {
             return responseErrors(res, 400, e.message);
         }
     }
 
-    async update(req, res)
+    update(req, res)
     {
         try {
-            const userUpdated = await UserRepository.update(req.params.userId, req.body);
+            UserRepository.update(req.params.userId, req.body).then(
+                (user) => {
+                    return responseSuccess(res, true);
+                }
+            );
 
-            return responseSuccess(res, userUpdated);
         } catch (e) {
             return responseErrors(res, 400, e.message);
         }
     }
 
-    async destroy(req, res)
+    destroy(req, res)
     {
         try {
-            const userUpdated = await UserRepository.delete(req.params.userId);
+            UserRepository.delete(req.params.userId).then(
+                (user) => {
+                    return responseSuccess(res, true);
+                }
+            );
 
-            return responseSuccess(res, userUpdated);
         } catch (e) {
             return responseErrors(res, 400, e.message);
         }
@@ -101,40 +115,45 @@ class UserController extends BaseController
         }
     }
 
-    async showImportNewest(req, res)
+    showImportNewest(req, res)
     {
         try {
-            const userImport = await UserImportRepository.showNewest();
-
-            return responseSuccess(res, userImport, 200);
+            UserImportRepository.showNewest().then(
+                (userImport) => {
+                    return responseSuccess(res, userImport, 200);
+                }
+            );
         } catch (e) {
             return responseErrors(res, 400, e.message);
         }
     }
 
-    async getImportHistory(req, res)
+    getImportHistory(req, res)
     {
         try {
-            let userImports = await UserImportRepository.findBy({}, {
+            UserImportRepository.findBy({}, {
                 created_at: -1
-            });
-            userImports = JSON.parse(JSON.stringify(userImports)).map(
-                userImport => {
-                    try {
-                        const wb = XLSX.readFile(userImport.path);
-                        userImport.file = XLSX.write(wb, {
-                            type: "buffer",
-                            bookType: "xlsx"
-                        });
-                    } catch (e) {
-                        userImport.file = null;
-                    }
+            }).then(
+                (userImports) => {
+                    userImports = JSON.parse(JSON.stringify(userImports)).map(
+                        userImport => {
+                            try {
+                                const wb = XLSX.readFile(userImport.path);
+                                userImport.file = XLSX.write(wb, {
+                                    type: "buffer",
+                                    bookType: "xlsx"
+                                });
+                            } catch (e) {
+                                userImport.file = null;
+                            }
 
-                    return userImport;
+                            return userImport;
+                        }
+                    );
+
+                    return responseSuccess(res, userImports, 200);
                 }
             );
-
-            return responseSuccess(res, userImports, 200);
         } catch (e) {
             return responseErrors(res, 400, e.message);
         }

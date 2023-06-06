@@ -1,5 +1,5 @@
 import BaseRepository from "./BaseRepository.mjs";
-import User from "../Models/User.mjs";
+import User from "../Models/User.js";
 import {USERS} from "../../config/common.mjs";
 
 class UserRepository extends BaseRepository

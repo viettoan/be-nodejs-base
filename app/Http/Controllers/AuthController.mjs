@@ -67,8 +67,6 @@ class AuthController extends BaseController
 
             return responseSuccess(res, userUpdated);
         } catch (e) {
-            console.log(e);
-
             return responseErrors(res, 500, e.message);
         }
     }

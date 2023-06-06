@@ -32,3 +32,11 @@ export const USER_IMPORTS = {
 export const JOB_QUEUES = {
     userImports: 'user-imports'
 }
+
+export const PAGINATE_OPTIONS = {
+    page: 1,
+    limit: 20,
+    sort: {
+        created_at: -1
+    },
+}

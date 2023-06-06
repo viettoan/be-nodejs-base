@@ -1,3 +1,4 @@
+import {PAGINATE_OPTIONS} from "../../config/common.mjs";
 class BaseRepository
 {
     model = null;
@@ -16,42 +17,52 @@ class BaseRepository
         this.model = model;
     }
 
-    async store(data)
+    store(data)
     {
-        const currentTime = new Date();
-        data.created_at = data.updated_at = currentTime;
-
-        return await this.getModel().create(data);
+        return this.getModel().create(data);
     }
 
-    async findBy(conditions = {}, sort = {})
+    findBy(conditions = {}, sort = {})
     {
-        return await this.getModel().find({...conditions, deleted_at: null}).sort(sort);
+        return this.getModel().find({...conditions, deleted_at: null}).sort(sort);
     }
 
-    async findById(id)
+    findById(id)
     {
-        return await this.getModel().findOne({
+        return this.getModel().findOne({
             _id: id,
             deleted_at: null
         });
     }
 
-    async update(id, data)
+    update(id, data)
     {
-        data.updated_at = new Date();
-        await this.getModel().findByIdAndUpdate(id, data)
-
-        return true;
+        return this.getModel().findByIdAndUpdate(id, data);
     }
 
-    async delete(id)
+    delete(id)
     {
-        await this.getModel().findByIdAndUpdate(id, {
+        return this.getModel().findByIdAndUpdate(id, {
             deleted_at: new Date()
         });
+    }
 
-        return true;
+    paginate(conditions = {}, options = {})
+    {
+        if (typeof options.sort !== 'object') {
+            options.sort = PAGINATE_OPTIONS.sort;
+        }
+
+        if (!options.page || options.page < 1) {
+            options.page = PAGINATE_OPTIONS.page;
+        }
+
+        if (!options.limit || options.limit < 0) {
+            options.limit = PAGINATE_OPTIONS.limit;
+        }
+        delete conditions.pagination;
+
+        return this.getModel().paginate({...conditions, deleted_at: null}, options);
     }
 }
 
