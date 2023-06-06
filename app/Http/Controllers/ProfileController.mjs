@@ -2,8 +2,8 @@ import BaseController from "./BaseController.mjs";
 import {hashHmacString, parserJWTToken, responseErrors, responseSuccess} from "../../Common/helper.mjs";
 import UserRepository from "../../Repositories/UserRepository.mjs";
 import * as fs from 'fs';
-import {USERS} from "../../../config/common.mjs";
-import user from "../../Models/User.mjs";
+import {STORAGE_PATHS, USERS} from "../../../config/common.mjs";
+import winston from "winston";
 
 class ProfileController extends BaseController
 {
@@ -12,16 +12,20 @@ class ProfileController extends BaseController
         const user = res.locals.authUser;
 
         if (user.avatar) {
-            user.avatar = JSON.stringify({
-                mimeType: user.avatar.split('.').pop(),
-                value: fs.readFileSync(user.avatar)
-            });
+            try {
+                user.avatar = JSON.stringify({
+                    mimeType: user.avatar.split('.').pop(),
+                    value: fs.readFileSync(user.avatar)
+                });
+            } catch (e) {
+                winston.loggers.get('system').error('ERROR', e);
+            }
         }
 
         return responseSuccess(res, user);
     }
 
-    async update (req, res)
+    update (req, res)
     {
         try {
             const data = {
@@ -29,11 +33,13 @@ class ProfileController extends BaseController
             }
 
             if (req.file) {
-                data.avatar = req.file.path;
+                data.avatar = STORAGE_PATHS.uploadAvatarUser + req.file.filename;
             }
-            const userUpdated = await UserRepository.update(res.locals.authUser._id, data);
-
-            return responseSuccess(res, userUpdated);
+            UserRepository.update(res.locals.authUser._id, data).then(
+                (response) => {
+                    return responseSuccess(res, true);
+                }
+            )
         } catch (e) {
             return responseErrors(res, 400, e.message);
         }

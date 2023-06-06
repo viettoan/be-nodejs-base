@@ -7,7 +7,6 @@ import api from "./routes/api.mjs";
 import bodyParser from "body-parser";
 import {logging} from "./config/logging.mjs";
 import winston from "winston";
-
 logging();
 mongoose.connect(process.env.ATLAS_URI)
     .then(() => console.log('Connected!'));
@@ -22,7 +21,6 @@ app.use("/", api);
 
 // Set view engine
 app.set('view engine', 'ejs');
-
 // Global error handling
 app.use((err, _req, res, next) => {
   winston.loggers.get('system').error('ERROR', err);

@@ -1,6 +1,7 @@
 import { baseRequest } from "./BaseRequest.mjs";
 import { body, query } from 'express-validator';
 import { USERS } from "../../../config/common.mjs";
+import paginateRequest from "./PaginateRequest.js";
 
 const validationsStoreOrUpdateUser = [
     body('name').custom( async  nameValue => {
@@ -55,5 +56,6 @@ const validationsIndexUser = [
     }),
     query('level').isIn([...Object.values(USERS.level), null]).withMessage('Giá trị đã chọn trong trường phân quyền không hợp lệ.'),
 ];
+
+export const validateIndexUser = baseRequest([...validationsIndexUser, ...paginateRequest]);
 export const validateStoreOrUpdateUser = baseRequest(validationsStoreOrUpdateUser);
-export const validateIndexUser = baseRequest(validationsIndexUser);
