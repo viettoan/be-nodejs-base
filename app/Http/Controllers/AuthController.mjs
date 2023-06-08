@@ -50,6 +50,10 @@ class AuthController extends BaseController
     async confirmAccount(req, res){
         try {
             const responseToken = parserJWTToken(req.body.token, false);
+
+            if (!responseToken.success) {
+                return responseErrors(res, 401, responseToken.errors);
+            }
             const userId = responseToken.payload.id;
             const user = await UserRepository.findById(userId);
 
@@ -74,6 +78,10 @@ class AuthController extends BaseController
     async changePassword(req, res) {
         try {
             const responseToken = parserJWTToken(req.body.token, false);
+
+            if (!responseToken.success) {
+                return responseErrors(res, 401, responseToken.errors);
+            }
             const userId = responseToken.payload.id;
             const user = await UserRepository.findById(userId);
 
