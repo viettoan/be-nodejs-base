@@ -3,9 +3,9 @@ import cors from "cors";
 import mongoose from 'mongoose';
 import "./loadEnvironment.mjs";
 import "express-async-errors";
-import api from "./routes/api.mjs";
+import api from "./routes/api.js";
 import bodyParser from "body-parser";
-import {logging} from "./config/logging.mjs";
+import {logging} from "./config/logging.js";
 import winston from "winston";
 logging();
 mongoose.connect(process.env.ATLAS_URI)

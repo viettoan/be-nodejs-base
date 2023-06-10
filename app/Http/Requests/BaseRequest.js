@@ -1,5 +1,5 @@
 import {validationResult} from 'express-validator';
-import { responseErrors } from "../../Common/helper.mjs";
+import { responseErrors } from "../../Common/helper.js";
 export const baseRequest = (validations) => {
     return (
         async (req, res, next) => {

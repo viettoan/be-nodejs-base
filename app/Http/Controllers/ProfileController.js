@@ -1,8 +1,8 @@
-import BaseController from "./BaseController.mjs";
-import {hashHmacString, parserJWTToken, responseErrors, responseSuccess} from "../../Common/helper.mjs";
-import UserRepository from "../../Repositories/UserRepository.mjs";
+import BaseController from "./BaseController.js";
+import {hashHmacString, parserJWTToken, responseErrors, responseSuccess} from "../../Common/helper.js";
+import UserRepository from "../../Repositories/UserRepository.js";
 import * as fs from 'fs';
-import {STORAGE_PATHS, USERS} from "../../../config/common.mjs";
+import {STORAGE_PATHS, USERS} from "../../../config/common.js";
 import winston from "winston";
 
 class ProfileController extends BaseController

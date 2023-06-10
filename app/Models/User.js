@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { ObjectId } from "mongodb";
-import { USERS } from "../../config/common.mjs";
+import { USERS } from "../../config/common.js";
 import { default as mongoosePaginate } from "mongoose-paginate";
 
 const userSchema = new mongoose.Schema(

@@ -1,5 +1,5 @@
-import BaseRepository from "./BaseRepository.mjs";
-import UserImport from "../Models/UserImport.mjs";
+import BaseRepository from "./BaseRepository.js";
+import UserImport from "../Models/UserImport.js";
 
 class UserImportRepository extends BaseRepository
 {

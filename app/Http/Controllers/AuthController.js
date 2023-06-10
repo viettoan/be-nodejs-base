@@ -1,13 +1,13 @@
-import BaseController from "./BaseController.mjs";
-import UserRepository from "../../Repositories/UserRepository.mjs";
+import BaseController from "./BaseController.js";
+import UserRepository from "../../Repositories/UserRepository.js";
 import {
     generateJWTToken,
     hashHmacString,
     parserJWTToken,
     responseErrors,
     responseSuccess
-} from "../../Common/helper.mjs";
-import {USERS} from "../../../config/common.mjs";
+} from "../../Common/helper.js";
+import {USERS} from "../../../config/common.js";
 class AuthController extends BaseController
 {
     async login(req, res) {

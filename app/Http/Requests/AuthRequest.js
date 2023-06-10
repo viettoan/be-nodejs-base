@@ -1,4 +1,4 @@
-import {baseRequest} from "./BaseRequest.mjs";
+import {baseRequest} from "./BaseRequest.js";
 import {body} from "express-validator";
 
 const validationsUserLogin = [

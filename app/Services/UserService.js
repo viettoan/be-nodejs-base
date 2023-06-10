@@ -1,7 +1,7 @@
-import {generateConfirmUrl, hashHmacString} from "../Common/helper.mjs";
-import {DEFAULT_PASWORD} from "../../config/common.mjs";
-import UserRepository from "../Repositories/UserRepository.mjs";
-import EmailService from "./EmailService.mjs";
+import {generateConfirmUrl, hashHmacString} from "../Common/helper.js";
+import {DEFAULT_PASWORD} from "../../config/common.js";
+import UserRepository from "../Repositories/UserRepository.js";
+import EmailService from "./EmailService.js";
 
 class UserService {
     async storeUser(data) {

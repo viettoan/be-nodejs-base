@@ -1,19 +1,19 @@
 import express from "express";
 
 // Controllers
-import UserController from "../app/Http/Controllers/UserController.mjs";
-import AuthController from "../app/Http/Controllers/AuthController.mjs";
-import ProfileController from "../app/Http/Controllers/ProfileController.mjs";
+import UserController from "../app/Http/Controllers/UserController.js";
+import AuthController from "../app/Http/Controllers/AuthController.js";
+import ProfileController from "../app/Http/Controllers/ProfileController.js";
 
 // Requests
-import { validateStoreOrUpdateUser, validateIndexUser} from "../app/Http/Requests/UserRequest.mjs";
-import { validateUserLogin, validateConfirmAccount, validateChangePassword } from "../app/Http/Requests/AuthRequest.mjs";
-import {validateUpdateDetailUser, validateProfileChangePassword } from "../app/Http/Requests/ProfileRequest.mjs";
+import { validateStoreOrUpdateUser, validateIndexUser} from "../app/Http/Requests/UserRequest.js";
+import { validateUserLogin, validateConfirmAccount, validateChangePassword } from "../app/Http/Requests/AuthRequest.js";
+import {validateUpdateDetailUser, validateProfileChangePassword } from "../app/Http/Requests/ProfileRequest.js";
 
 // Middlewares
-import { authMiddleware } from "../app/Http/Middlewares/AuthMiddleware.mjs";
-import { importUserMiddleware } from "../app/Http/Middlewares/ImportUserMiddleware.mjs";
-import { updateProfileMiddleware } from "../app/Http/Middlewares/UpdateProfileMiddleware.mjs";
+import { authMiddleware } from "../app/Http/Middlewares/AuthMiddleware.js";
+import { importUserMiddleware } from "../app/Http/Middlewares/ImportUserMiddleware.js";
+import { updateProfileMiddleware } from "../app/Http/Middlewares/UpdateProfileMiddleware.js";
 
 const router = express.Router();
 

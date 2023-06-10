@@ -1,6 +1,6 @@
-import {parserJWTToken, responseErrors} from "../../Common/helper.mjs";
-import UserRepository from "../../Repositories/UserRepository.mjs";
-import {USERS} from "../../../config/common.mjs";
+import {parserJWTToken, responseErrors} from "../../Common/helper.js";
+import UserRepository from "../../Repositories/UserRepository.js";
+import {USERS} from "../../../config/common.js";
 
 export const authMiddleware = async (req, res, next) => {
     const responseToken = parserJWTToken(req.headers.authorization);

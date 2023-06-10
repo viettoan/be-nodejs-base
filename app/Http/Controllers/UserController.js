@@ -1,12 +1,12 @@
-import BaseController from "./BaseController.mjs";
-import { responseSuccess, responseErrors } from "../../Common/helper.mjs";
-import UserRepository from "../../Repositories/UserRepository.mjs";
+import BaseController from "./BaseController.js";
+import { responseSuccess, responseErrors } from "../../Common/helper.js";
+import UserRepository from "../../Repositories/UserRepository.js";
 import * as XLSX from 'xlsx/xlsx.mjs';
 import * as fs from 'fs';
-import UserService from "../../Services/UserService.mjs";
-import { STORAGE_PATHS, USER_IMPORTS, USERS } from "../../../config/common.mjs";
-import UserImportRepository from "../../Repositories/UserImportRepository.mjs";
-import ImportUsers from "../Jobs/ImportUsers.mjs";
+import UserService from "../../Services/UserService.js";
+import { STORAGE_PATHS, USER_IMPORTS, USERS } from "../../../config/common.js";
+import UserImportRepository from "../../Repositories/UserImportRepository.js";
+import ImportUsers from "../Jobs/ImportUsers.js";
 XLSX.set_fs(fs);
 
 class UserController extends BaseController
