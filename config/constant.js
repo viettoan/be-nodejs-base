@@ -40,3 +40,14 @@ export const PAGINATE_OPTIONS = {
         created_at: -1
     },
 }
+
+export const ACTION_LOGS = {
+    name: {
+        none: 'Không xác định',
+        create_user: 'Tạo user',
+    },
+    type: {
+        none: 0,
+        create_user: 1,
+    }
+}

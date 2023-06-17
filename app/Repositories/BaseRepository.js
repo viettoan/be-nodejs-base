@@ -1,4 +1,4 @@
-import {PAGINATE_OPTIONS} from "../../config/common.js";
+import {PAGINATE_OPTIONS} from "../../config/constant.js";
 class BaseRepository
 {
     model = null;

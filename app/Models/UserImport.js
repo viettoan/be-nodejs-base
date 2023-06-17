@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { ObjectId } from "mongodb";
-import { USER_IMPORTS } from "../../config/common.js";
+import { USER_IMPORTS } from "../../config/constant.js";
 
 const userImportSchema = new mongoose.Schema(
     {

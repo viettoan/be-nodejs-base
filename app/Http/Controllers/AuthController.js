@@ -7,7 +7,7 @@ import {
     responseErrors,
     responseSuccess
 } from "../../Common/helper.js";
-import {USERS} from "../../../config/common.js";
+import {USERS} from "../../../config/constant.js";
 class AuthController extends BaseController
 {
     async login(req, res) {

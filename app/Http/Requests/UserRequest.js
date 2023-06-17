@@ -1,6 +1,6 @@
 import { baseRequest } from "./BaseRequest.js";
 import { body, query } from 'express-validator';
-import { USERS } from "../../../config/common.js";
+import { USERS } from "../../../config/constant.js";
 import paginateRequest from "./PaginateRequest.js";
 
 const validationsStoreOrUpdateUser = [
