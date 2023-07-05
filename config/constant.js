@@ -44,10 +44,10 @@ export const PAGINATE_OPTIONS = {
 export const ACTION_LOGS = {
     name: {
         none: 'Không xác định',
-        create_user: 'Tạo user',
+        admin_create_new_user: 'Admin tạo mới user',
     },
     type: {
         none: 0,
-        create_user: 1,
+        admin_create_new_user: 1,
     }
 }

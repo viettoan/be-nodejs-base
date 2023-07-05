@@ -3,7 +3,6 @@ import cors from "cors";
 import mongoose from 'mongoose';
 import "./loadEnvironment.js";
 import "express-async-errors";
-import api from "./routes/api.js";
 import bodyParser from "body-parser";
 import {logging} from "./config/logging.js";
 import winston from "winston";
@@ -12,6 +11,7 @@ import {Server} from "socket.io";
 import cluster from 'node:cluster';
 import { cpus } from 'node:os';
 import SocketServerHandler from "./app/Socket/SocketServerHandler.js";
+import router from "./routes/index.js";
 
 // init winston logger
 logging();
@@ -29,7 +29,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}))
 
 // Load routes
-app.use("/", api);
+router(app);
 
 // Set view engine
 app.set('view engine', 'ejs');
@@ -52,25 +52,27 @@ const socketIOServer = new Server(httpServer, {
 export { socketIOServer }
 const socketServerHandler = new SocketServerHandler();
 socketServerHandler.handle();
-
-const numCPUs = cpus().length;
-
-//start server using cluster
-if (cluster.isPrimary) {
-  console.log(`Primary ${process.pid} is running`);
-
-  for (let i = 0; i < numCPUs; i++) {
-    cluster.fork()
-  }
-
-  cluster.on('exit', (worker) => {
-    console.log(`worker ${worker.process.pid} died`);
-  })
-} else {
-  httpServer.listen(PORT, () => {
+httpServer.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT} and Worker ${process.pid} started`);
-  });
-}
+});
 
+// const numCPUs = cpus().length;
+//
+// //start server using cluster
+// if (cluster.isPrimary) {
+//   console.log(`Primary ${process.pid} is running`);
+//
+//   for (let i = 0; i < numCPUs; i++) {
+//     cluster.fork()
+//   }
+//
+//   cluster.on('exit', (worker) => {
+//     console.log(`worker ${worker.process.pid} died`);
+//   })
+// } else {
+//   httpServer.listen(PORT, () => {
+//     console.log(`Server is running on port: ${PORT} and Worker ${process.pid} started`);
+//   });
+// }
 
 

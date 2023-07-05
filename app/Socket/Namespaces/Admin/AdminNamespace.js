@@ -7,11 +7,11 @@ class AdminNamespace extends BaseNamespace
     }
 
     handle() {
-        console.log('admin namespace')
+        // console.log('admin namespace')
     }
 
-    createNewUser() {
-
+    emitCreateNewUser(user = {}) {
+        this.namespaceIO.emit('create_new_user', user)
     }
 }
 

@@ -8,12 +8,19 @@ import {ACTION_LOGS, STORAGE_PATHS, USER_IMPORTS, USERS} from "../../../config/c
 import UserImportRepository from "../../Repositories/UserImportRepository.js";
 import ImportUsers from "../../Jobs/ImportUsers.js";
 import ActionLogRepository from "../../Repositories/ActionLogRepository.js";
+import AdminNamespace from "../../Socket/Namespaces/Admin/AdminNamespace.js";
+
 XLSX.set_fs(fs);
 
 class UserController extends BaseController
 {
     index(req, res)
     {
+        const { name } = req.query;
+
+        if (name) {
+            req.query.name = new RegExp(`${name}`);
+        }
         UserRepository.paginate(req.query, {
             page: +req.query?.pagination?.page,
             limit: +req.query?.pagination?.limit
@@ -36,27 +43,28 @@ class UserController extends BaseController
         UserService.storeUser(params)
             .then(
                 (response) => {
-                    if (response.isSuccess) {
-                        const newUser = response.user;
-                        ActionLogRepository.store(
-                            super.handleParamsWithAuthUser(
-                                {
-                                    name: ACTION_LOGS.name.create_user,
-                                    type: ACTION_LOGS.type.create_user,
-                                    meta_data: JSON.stringify(
-                                        {
-                                            new_user: newUser
-                                        }
-                                    )
-                                },
-                                res.locals.authUser
-                            )
-                        )
-
-                        return responseSuccess(res, newUser, 201);
+                    if (!response.isSuccess) {
+                        return responseErrors(res, 400, response.error.message);
                     }
+                    const newUser = response.user;
+                    ActionLogRepository.store(
+                        super.handleParamsWithAuthUser(
+                            {
+                                name: ACTION_LOGS.name.admin_create_new_user,
+                                type: ACTION_LOGS.type.admin_create_new_user,
+                                meta_data: JSON.stringify(
+                                    {
+                                        new_user: newUser
+                                    }
+                                )
+                            },
+                            res.locals.authUser
+                        )
+                    )
+                    const socketAdminNamespace = new AdminNamespace();
+                    socketAdminNamespace.emitCreateNewUser(newUser);
 
-                    return responseErrors(res, 400, response.error.message);
+                    return responseSuccess(res, newUser, 201);
                 }
             )
             .catch(
