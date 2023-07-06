@@ -4,89 +4,118 @@ import UserRepository from "../../Repositories/UserRepository.js";
 import * as XLSX from 'xlsx/xlsx.mjs';
 import * as fs from 'fs';
 import UserService from "../../Services/UserService.js";
-import { STORAGE_PATHS, USER_IMPORTS, USERS } from "../../../config/common.js";
+import {ACTION_LOGS, STORAGE_PATHS, USER_IMPORTS, USERS} from "../../../config/constant.js";
 import UserImportRepository from "../../Repositories/UserImportRepository.js";
-import ImportUsers from "../Jobs/ImportUsers.js";
+import ImportUsers from "../../Jobs/ImportUsers.js";
+import ActionLogRepository from "../../Repositories/ActionLogRepository.js";
+import AdminNamespace from "../../Socket/Namespaces/Admin/AdminNamespace.js";
+
 XLSX.set_fs(fs);
 
 class UserController extends BaseController
 {
     index(req, res)
     {
-        try {
-            UserRepository.paginate(req.query, {
-                page: +req.query?.pagination?.page,
-                limit: +req.query?.pagination?.limit
-            }).then(
+        const { name } = req.query;
+
+        if (name) {
+            req.query.name = new RegExp(`${name}`);
+        }
+        UserRepository.paginate(req.query, {
+            page: +req.query?.pagination?.page,
+            limit: +req.query?.pagination?.limit
+        })
+            .then(
                 (users) => {
                     return responseSuccess(res, users);
                 }
-            )
-        } catch (e) {
-
-            return responseErrors(res, 400, e.message);
-        }
+            ).catch(
+                (e) => {
+                    return responseErrors(res, 400, e.message);
+                }
+            );
     }
 
     store(req, res)
     {
-        try {
-            const params = req.body;
-            UserService.storeUser(params).then(
-                (response) => {
-                    if (response.isSuccess) {
-                        return responseSuccess(res, response.user, 201);
-                    }
+        const params = super.handleParamsWithAuthUser(req.body, res.locals.authUser);
 
-                    return responseErrors(res, 400, response.error.message);
+        UserService.storeUser(params)
+            .then(
+                (response) => {
+                    if (!response.isSuccess) {
+                        return responseErrors(res, 400, response.error.message);
+                    }
+                    const newUser = response.user;
+                    ActionLogRepository.store(
+                        super.handleParamsWithAuthUser(
+                            {
+                                name: ACTION_LOGS.name.admin_create_new_user,
+                                type: ACTION_LOGS.type.admin_create_new_user,
+                                meta_data: JSON.stringify(
+                                    {
+                                        new_user: newUser
+                                    }
+                                )
+                            },
+                            res.locals.authUser
+                        )
+                    )
+                    const socketAdminNamespace = new AdminNamespace();
+                    socketAdminNamespace.emitCreateNewUser(newUser);
+
+                    return responseSuccess(res, newUser, 201);
+                }
+            )
+            .catch(
+                (e) => {
+                    return responseErrors(res, 400, e.message);
                 }
             );
-
-
-        } catch (e) {
-            return responseErrors(res, 400, e.message);
-        }
     }
 
     show(req, res)
     {
-        try {
-            UserRepository.findById(req.params.userId).then(
+        UserRepository.findById(req.params.userId)
+            .then(
                 (user) => {
                     return responseSuccess(res, user);
                 }
             )
-        } catch (e) {
-            return responseErrors(res, 400, e.message);
-        }
+            .catch(
+                (e) => {
+                    return responseErrors(res, 400, e.message);
+                }
+            );
     }
 
     update(req, res)
     {
-        try {
-            UserRepository.update(req.params.userId, req.body).then(
+        const params = super.handleParamsWithAuthUser(req.body, res.locals.authUser);
+        UserRepository.update(req.params.userId, params)
+            .then(
                 (user) => {
                     return responseSuccess(res, true);
                 }
+            ).catch(
+                (e) => {
+                    return responseErrors(res, 400, e.message);
+                }
             );
-
-        } catch (e) {
-            return responseErrors(res, 400, e.message);
-        }
     }
 
     destroy(req, res)
     {
-        try {
-            UserRepository.delete(req.params.userId).then(
+        UserRepository.delete(req.params.userId)
+            .then(
                 (user) => {
                     return responseSuccess(res, true);
                 }
+            ).catch(
+                (e) => {
+                    return responseErrors(res, 400, e.message);
+                }
             );
-
-        } catch (e) {
-            return responseErrors(res, 400, e.message);
-        }
     }
 
     async import(req, res)
@@ -117,23 +146,25 @@ class UserController extends BaseController
 
     showImportNewest(req, res)
     {
-        try {
-            UserImportRepository.showNewest().then(
+        UserImportRepository.showNewest()
+            .then(
                 (userImport) => {
                     return responseSuccess(res, userImport, 200);
                 }
+            )
+            .catch(
+                (e) => {
+                    return responseErrors(res, 400, e.message);
+                }
             );
-        } catch (e) {
-            return responseErrors(res, 400, e.message);
-        }
     }
 
     getImportHistory(req, res)
     {
-        try {
-            UserImportRepository.findBy({}, {
-                created_at: -1
-            }).then(
+        UserImportRepository.findBy({}, {
+            created_at: -1
+        })
+            .then(
                 (userImports) => {
                     userImports = JSON.parse(JSON.stringify(userImports)).map(
                         userImport => {
@@ -153,10 +184,12 @@ class UserController extends BaseController
 
                     return responseSuccess(res, userImports, 200);
                 }
+            )
+            .catch(
+                (e) => {
+                    return responseErrors(res, 400, e.message);
+                }
             );
-        } catch (e) {
-            return responseErrors(res, 400, e.message);
-        }
     }
 
     async export(req, res)

@@ -1,6 +1,6 @@
 import {parserJWTToken, responseErrors} from "../../Common/helper.js";
 import UserRepository from "../../Repositories/UserRepository.js";
-import {USERS} from "../../../config/common.js";
+import {USERS} from "../../../config/constant.js";
 
 export const authMiddleware = async (req, res, next) => {
     const responseToken = parserJWTToken(req.headers.authorization);

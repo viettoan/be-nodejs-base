@@ -1,7 +1,7 @@
 import Bull from "bull";
-import {JOB_QUEUES, USER_IMPORTS, USERS} from "../../../config/common.js";
-import UserImportRepository from "../../Repositories/UserImportRepository.js";
-import UserService from "../../Services/UserService.js";
+import {JOB_QUEUES, USER_IMPORTS, USERS} from "../../config/constant.js";
+import UserImportRepository from "../Repositories/UserImportRepository.js";
+import UserService from "../Services/UserService.js";
 import winston from "winston";
 
 class ImportUsers {

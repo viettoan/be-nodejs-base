@@ -1,10 +1,10 @@
 import {generateConfirmUrl, hashHmacString} from "../Common/helper.js";
-import {DEFAULT_PASWORD} from "../../config/common.js";
+import {DEFAULT_PASWORD} from "../../config/constant.js";
 import UserRepository from "../Repositories/UserRepository.js";
 import EmailService from "./EmailService.js";
 
 class UserService {
-    async storeUser(data) {
+    async storeUser (data) {
         const result = {
             isSuccess: true,
         };

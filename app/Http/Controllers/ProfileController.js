@@ -2,7 +2,7 @@ import BaseController from "./BaseController.js";
 import {hashHmacString, parserJWTToken, responseErrors, responseSuccess} from "../../Common/helper.js";
 import UserRepository from "../../Repositories/UserRepository.js";
 import * as fs from 'fs';
-import {STORAGE_PATHS, USERS} from "../../../config/common.js";
+import {STORAGE_PATHS, USERS} from "../../../config/constant.js";
 import winston from "winston";
 
 class ProfileController extends BaseController
@@ -27,35 +27,50 @@ class ProfileController extends BaseController
 
     update (req, res)
     {
-        try {
-            const data = {
+        const params = super.handleParamsWithAuthUser(
+            {
                 name:  req.body.name
-            }
+            },
+            res.locals.authUser
+        )
 
-            if (req.file) {
-                data.avatar = STORAGE_PATHS.uploadAvatarUser + req.file.filename;
-            }
-            UserRepository.update(res.locals.authUser._id, data).then(
+        if (req.file) {
+            params.avatar = STORAGE_PATHS.uploadAvatarUser + req.file.filename;
+        }
+
+        UserRepository.update(res.locals.authUser._id, params)
+            .then(
                 (response) => {
                     return responseSuccess(res, true);
                 }
             )
-        } catch (e) {
-            return responseErrors(res, 400, e.message);
-        }
+            .catch(
+                (e) => {
+                    return responseErrors(res, 400, e.message);
+                }
+            )
     }
 
     async changePassword (req, res)
     {
-        try {
-            const userUpdated = await UserRepository.update(res.locals.authUser._id, {
+        const params = super.handleParamsWithAuthUser(
+            {
                 password: hashHmacString(req.body.password)
-            });
+            },
+            res.locals.authUser
+        )
 
-            return responseSuccess(res, userUpdated);
-        } catch (e) {
-            return responseErrors(res, 500, e.message);
-        }
+        UserRepository.update(res.locals.authUser._id, params)
+            .then(
+                (response) => {
+                    return responseSuccess(res, true);
+                }
+            )
+            .catch(
+                (e) => {
+                    return responseErrors(res, 500, e.message);
+                }
+            );
     }
 }
 
