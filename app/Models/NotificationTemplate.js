@@ -1,25 +1,25 @@
 import mongoose from 'mongoose';
 import {ObjectId} from 'mongodb';
-import {ACTION_LOGS} from '../../config/constant.js';
 
-const actionLogSchema = new mongoose.Schema(
+const notificationTemplateSchema = new mongoose.Schema(
   {
-    name: {
+    key: {
+      type: String,
+      max: 255,
+    },
+    icon: {
+      type: String,
+      max: 255,
+    },
+    content: {
       type: String,
       required: true,
-      max: 255,
-      default: ACTION_LOGS.name.none,
     },
-    type: {
+    status: {
       type: Number,
       required: true,
-      enum: {
-        values: Object.values(ACTION_LOGS.type),
-        message: 'Giá trị đã chọn trong trường phân loại không hợp lệ.',
-      },
-      default: ACTION_LOGS.type.none,
     },
-    meta_data: {
+    description: {
       type: String,
       required: true,
     },
@@ -39,10 +39,6 @@ const actionLogSchema = new mongoose.Schema(
       type: Date,
       required: false,
     },
-    deleted_at: {
-      type: Date,
-      required: false,
-    },
   },
   {
     timestamps: {
@@ -51,4 +47,8 @@ const actionLogSchema = new mongoose.Schema(
     },
   }
 );
-export default mongoose.model('action_logs', actionLogSchema);
+
+export default mongoose.model(
+    'notification_templates',
+    notificationTemplateSchema
+);

@@ -1,11 +1,10 @@
-import AdminNamespace from "./Namespaces/Admin/AdminNamespace.js";
+import AdminNamespace from './Namespaces/Admin/AdminNamespace.js';
 
-class SocketServerHandler
-{
-    handle() {
-        const adminNamespace = new AdminNamespace();
-        adminNamespace.handle();
-    }
+class SocketServerHandler {
+  handle() {
+    const adminNamespace = new AdminNamespace();
+    adminNamespace.handle();
+  }
 }
 
 export default SocketServerHandler;
