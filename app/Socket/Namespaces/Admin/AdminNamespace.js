@@ -1,18 +1,17 @@
-import BaseNamespace from "../BaseNamespace.js";
+import BaseNamespace from '../BaseNamespace.js';
 
-class AdminNamespace extends BaseNamespace
-{
-    constructor() {
-        super('/admin');
-    }
+class AdminNamespace extends BaseNamespace {
+  constructor() {
+    super('/admin');
+  }
 
-    handle() {
-        // console.log('admin namespace')
-    }
+  handle() {
+    // console.log('admin namespace')
+  }
 
-    emitCreateNewUser(user = {}) {
-        this.namespaceIO.emit('create_new_user', user)
-    }
+  emitCreateNewUser(user = {}) {
+    this.namespaceIO.emit('create_new_user', user);
+  }
 }
 
 export default AdminNamespace;

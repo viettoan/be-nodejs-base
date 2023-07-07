@@ -1,5 +1,6 @@
 {
   "parserOptions": {
+    "ecmaVersion": 2020,
     "sourceType": "module"
   },
   "env": {
@@ -15,5 +16,5 @@
       }
     ]
   },
-  "extends": "google"
+  "extends": ["eslint:recommended"]
 }
