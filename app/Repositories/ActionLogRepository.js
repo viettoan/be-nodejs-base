@@ -7,4 +7,4 @@ class ActionLogRepository extends BaseRepository {
   }
 }
 
-export default new ActionLogRepository();
+export default ActionLogRepository;

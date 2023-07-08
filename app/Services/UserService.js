@@ -4,6 +4,9 @@ import UserRepository from "../Repositories/UserRepository.js";
 import EmailService from "./EmailService.js";
 
 class UserService {
+    static userRepository = new UserRepository();
+    static emailService = new EmailService();
+
     async storeUser (data) {
         const result = {
             isSuccess: true,
@@ -11,8 +14,8 @@ class UserService {
 
         try {
             data.password = hashHmacString(DEFAULT_PASWORD);
-            const insertedUser = await UserRepository.store(data);
-            EmailService.sendMail(
+            const insertedUser = await UserService.userRepository.store(data);
+            UserService.emailService.sendMail(
                 [data.email],
                 'Confirm Account Base Admin',
                 'email/confirmAccount.ejs',
@@ -31,4 +34,4 @@ class UserService {
     }
 }
 
-export default new UserService();
+export default UserService;

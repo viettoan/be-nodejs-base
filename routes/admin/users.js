@@ -6,16 +6,17 @@ import {importUserMiddleware} from '../../app/Http/Middlewares/ImportUserMiddlew
 
 const usersAdminRouter = (app) => {
   const router = express.Router();
+  const userController = new UserController();
   router.use(authMiddleware);
-  router.get('/', validateIndexUser, UserController.index);
-  router.post('/', validateStoreOrUpdateUser, UserController.store);
-  router.get('/:userId', UserController.show);
-  router.put('/:userId', validateStoreOrUpdateUser, UserController.update);
-  router.delete('/:userId', UserController.destroy);
-  router.post('/import', importUserMiddleware.single('file'), UserController.import);
-  router.get('/import/newest', UserController.showImportNewest);
-  router.get('/import/history', UserController.getImportHistory);
-  router.post('/export', validateIndexUser, UserController.export);
+  router.get('/', validateIndexUser, userController.index);
+  router.post('/', validateStoreOrUpdateUser, userController.store);
+  router.get('/:userId', userController.show);
+  router.put('/:userId', validateStoreOrUpdateUser, userController.update);
+  router.delete('/:userId', userController.destroy);
+  router.post('/import', importUserMiddleware.single('file'), userController.import);
+  router.get('/import/newest', userController.showImportNewest);
+  router.get('/import/history', userController.getImportHistory);
+  router.post('/export', validateIndexUser, userController.export);
 
   app.use('/users', router);
 };

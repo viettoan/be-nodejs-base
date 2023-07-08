@@ -4,9 +4,10 @@ import AuthController from '../../app/Http/Controllers/AuthController.js';
 
 const authAdminRouter = (app) => {
   const router = express.Router();
-  router.post('/login', validateUserLogin, AuthController.login);
-  router.post('/confirm-account', validateConfirmAccount, AuthController.confirmAccount);
-  router.post('/confirm-account/change-password', validateChangePassword, AuthController.changePassword);
+  const authController = new AuthController()
+  router.post('/login', validateUserLogin, authController.login);
+  router.post('/confirm-account', validateConfirmAccount, authController.confirmAccount);
+  router.post('/confirm-account/change-password', validateChangePassword, authController.changePassword);
   app.use('/auth', router);
 };
 

@@ -24,4 +24,4 @@ class EmailService {
     }
 }
 
-export default new EmailService();
+export default EmailService;

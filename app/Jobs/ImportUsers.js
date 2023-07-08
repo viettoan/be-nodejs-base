@@ -49,4 +49,4 @@ class ImportUsers {
   }
 }
 
-export default new ImportUsers();
+export default ImportUsers;
