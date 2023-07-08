@@ -1,4 +1,5 @@
 import BaseNamespace from '../BaseNamespace.js';
+import {socketIOServer} from "../../../../index.js";
 
 class AdminNamespace extends BaseNamespace {
   constructor() {
@@ -10,7 +11,7 @@ class AdminNamespace extends BaseNamespace {
   }
 
   emitCreateNewUser(user = {}) {
-    this.namespaceIO.emit('create_new_user', user);
+    socketIOServer.of(this.namespace).emit('create_new_user', user);
   }
 }
 

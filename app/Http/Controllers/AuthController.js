@@ -11,11 +11,13 @@ import {USERS} from "../../../config/constant.js";
 
 class AuthController extends BaseController
 {
+  static userRepository = new UserRepository();
+
   async login(req, res) {
     try {
       const phone = req.body.phone;
       const password = req.body.password;
-      const user = await UserRepository.findUserConfirmedAccountByPhone(phone)
+      const user = await AuthController.userRepository.findUserConfirmedAccountByPhone(phone)
 
       if (!user) {
         return responseErrors(res, 401, {
@@ -56,7 +58,7 @@ class AuthController extends BaseController
         return responseErrors(res, 401, responseToken.errors);
       }
       const userId = responseToken.payload.id;
-      const user = await UserRepository.findById(userId);
+      const user = await AuthController.userRepository.findById(userId);
 
       if (!user) {
         return responseErrors(res, 401, 'User không tồn tại.');
@@ -66,7 +68,7 @@ class AuthController extends BaseController
         return responseErrors(res, 401, 'User đã xác thực tài khoản.');
       }
 
-      const userUpdated = await UserRepository.update(userId, {
+      const userUpdated = await AuthController.userRepository.update(userId, {
         is_confirm_account: USERS.is_confirm_account.true
       });
 
@@ -84,7 +86,7 @@ class AuthController extends BaseController
         return responseErrors(res, 401, responseToken.errors);
       }
       const userId = responseToken.payload.id;
-      const user = await UserRepository.findById(userId);
+      const user = await AuthController.userRepository.findById(userId);
 
       if (!user) {
         return responseErrors(res, 401, 'User không tồn tại.');
@@ -94,7 +96,7 @@ class AuthController extends BaseController
         return responseErrors(res, 401, 'User chưa xác thực tài khoản.');
       }
 
-      const userUpdated = await UserRepository.update(userId, {
+      const userUpdated = await AuthController.userRepository.update(userId, {
         password: hashHmacString(req.body.password)
       });
 
@@ -105,4 +107,4 @@ class AuthController extends BaseController
   }
 }
 
-export default new AuthController();
+export default AuthController;

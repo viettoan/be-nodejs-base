@@ -7,6 +7,8 @@ import winston from "winston";
 
 class ProfileController extends BaseController
 {
+  static userRepository = new UserRepository();
+
   show (req, res)
   {
     const user = res.locals.authUser;
@@ -38,7 +40,7 @@ class ProfileController extends BaseController
       params.avatar = STORAGE_PATHS.uploadAvatarUser + req.file.filename;
     }
 
-    UserRepository.update(res.locals.authUser._id, params)
+    ProfileController.userRepository.update(res.locals.authUser._id, params)
       .then(
         () => {
           return responseSuccess(res, true);
@@ -60,7 +62,7 @@ class ProfileController extends BaseController
       res.locals.authUser
     )
 
-    UserRepository.update(res.locals.authUser._id, params)
+    ProfileController.userRepository.update(res.locals.authUser._id, params)
       .then(
         () => {
           return responseSuccess(res, true);
@@ -74,4 +76,4 @@ class ProfileController extends BaseController
   }
 }
 
-export default new ProfileController();
+export default ProfileController;

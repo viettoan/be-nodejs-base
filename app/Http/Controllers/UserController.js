@@ -14,9 +14,17 @@ XLSX.set_fs(fs);
 
 class UserController extends BaseController
 {
+  static userRepository= new UserRepository();
+  static actionLogRepository = new ActionLogRepository();
+  static userImportRepository = new UserImportRepository();
+  static userService= new UserService();
+  static socketAdminNamespace = new AdminNamespace();
+  static importUsers = new ImportUsers();
+
   constructor() {
     super();
   }
+
   index(req, res)
   {
     const { name } = req.query;
@@ -24,7 +32,7 @@ class UserController extends BaseController
     if (name) {
       req.query.name = new RegExp(`${name}`);
     }
-    UserRepository.paginate(req.query, {
+    UserController.userRepository.paginate(req.query, {
       page: +req.query?.pagination?.page,
       limit: +req.query?.pagination?.limit
     })
@@ -43,14 +51,14 @@ class UserController extends BaseController
   {
       const params = super.handleParamsWithAuthUser(req.body, res.locals.authUser);
 
-      UserService.storeUser(params)
+      UserController.userService.storeUser(params)
           .then(
               (response) => {
                   if (!response.isSuccess) {
                       return responseErrors(res, 400, response.error.message);
                   }
                   const newUser = response.user;
-                  ActionLogRepository.store(
+                  UserController.actionLogRepository.store(
                       super.handleParamsWithAuthUser(
                           {
                               name: ACTION_LOGS.name.admin_create_new_user,
@@ -64,8 +72,7 @@ class UserController extends BaseController
                           res.locals.authUser
                       )
                   )
-                  const socketAdminNamespace = new AdminNamespace();
-                  socketAdminNamespace.emitCreateNewUser(newUser);
+                  UserController.socketAdminNamespace.emitCreateNewUser(newUser);
 
                   return responseSuccess(res, newUser, 201);
               }
@@ -79,7 +86,7 @@ class UserController extends BaseController
 
   show(req, res)
   {
-      UserRepository.findById(req.params.userId)
+      UserController.userRepository.findById(req.params.userId)
           .then(
               (user) => {
                   return responseSuccess(res, user);
@@ -95,7 +102,7 @@ class UserController extends BaseController
   update(req, res)
   {
       const params = super.handleParamsWithAuthUser(req.body, res.locals.authUser);
-      UserRepository.update(req.params.userId, params)
+      UserController.userRepository.update(req.params.userId, params)
           .then(
               () => {
                   return responseSuccess(res, true);
@@ -109,7 +116,7 @@ class UserController extends BaseController
 
   destroy(req, res)
   {
-      UserRepository.delete(req.params.userId)
+      UserController.userRepository.delete(req.params.userId)
           .then(
               () => {
                   return responseSuccess(res, true);
@@ -136,10 +143,10 @@ class UserController extends BaseController
           if (!users.length) {
               return responseErrors(res, 422, 'Danh sách users trống');
           }
-          const storeUserImport = await UserImportRepository.store({
+          const storeUserImport = await UserController.userImportRepository.store({
               path: STORAGE_PATHS.importUsers + req.file.filename,
           })
-          ImportUsers.handle(users, storeUserImport);
+          UserController.importUsers.handle(users, storeUserImport);
 
           return responseSuccess(res, {}, 200);
       } catch (e) {
@@ -149,7 +156,7 @@ class UserController extends BaseController
 
   showImportNewest(req, res)
   {
-    UserImportRepository.showNewest()
+    UserController.userImportRepository.showNewest()
       .then(
         (userImport) => {
             return responseSuccess(res, userImport, 200);
@@ -164,7 +171,7 @@ class UserController extends BaseController
 
   getImportHistory(req, res)
   {
-    UserImportRepository.findBy({}, {
+    UserController.userImportRepository.findBy({}, {
       created_at: -1
     })
       .then(
@@ -198,7 +205,7 @@ class UserController extends BaseController
   async export(req, res)
   {
     try {
-      let users = await UserRepository.findBy(req.body);
+      let users = await UserController.userRepository.findBy(req.body);
       users = users.map(
           user => [user.name, user.email, user.phone]
       );
@@ -217,4 +224,4 @@ class UserController extends BaseController
   }
 }
 
-export default new UserController();
+export default UserController;

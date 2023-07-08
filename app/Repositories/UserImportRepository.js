@@ -15,4 +15,4 @@ class UserImportRepository extends BaseRepository {
   }
 }
 
-export default new UserImportRepository();
+export default UserImportRepository;
