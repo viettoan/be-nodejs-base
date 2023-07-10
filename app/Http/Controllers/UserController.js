@@ -2,7 +2,6 @@ import BaseController from "./BaseController.js";
 import { responseSuccess, responseErrors } from "../../Common/helper.js";
 import UserService from "../../Services/UserService.js";
 
-
 class UserController extends BaseController
 {
   static userService= new UserService();
