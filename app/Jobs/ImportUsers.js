@@ -5,6 +5,10 @@ import UserService from "../Services/UserService.js";
 import winston from "winston";
 
 class ImportUsers {
+  constructor() {
+    this.userImportRepository = new UserImportRepository();
+    this.userService = new UserService();
+  }
   async handle(users, userImport) {
     try {
       const userImportQueue = new Bull(JOB_QUEUES.userImports,  {
@@ -18,14 +22,14 @@ class ImportUsers {
         const users = job.data.users;
         const userImport = job.data.userImport;
         let errors = [];
-        await UserImportRepository.update(userImport._id, {
+        await this.userImportRepository.update(userImport._id, {
           status: USER_IMPORTS.status.processing
         })
 
         for (const user of users) {
           const originUser = {...user};
           user.level = USERS.level.user;
-          const storeUserResponse = await UserService.storeUser(user);
+          const storeUserResponse = await this.userService.storeUser(user);
 
           if (!storeUserResponse.isSuccess) {
             errors.push({
@@ -34,7 +38,7 @@ class ImportUsers {
             });
           }
         }
-        await UserImportRepository.update(userImport._id, {
+        await this.userImportRepository.update(userImport._id, {
           status: USER_IMPORTS.status.done,
           has_errors: errors.length ? USER_IMPORTS.has_errors.true : USER_IMPORTS.has_errors.false,
           log: errors.length ? JSON.stringify({errors}) : ''
