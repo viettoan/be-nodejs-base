@@ -15,8 +15,15 @@ class BaseRepository
     this.model = model;
   }
 
-  store(data)
+  store(data, user)
   {
+    if (user) {
+      return this.getModel().create({
+        ...data,
+        created_by: user._id ?? null,
+        updated_by: user._id ?? null,
+      });
+    }
     return this.getModel().create(data);
   }
 
@@ -33,8 +40,15 @@ class BaseRepository
     });
   }
 
-  update(id, data)
+  update(id, data, user)
   {
+    if (user) {
+      return this.getModel().findByIdAndUpdate(id, {
+        ...data,
+        updated_by: user._id ?? null,
+      });
+    }
+
     return this.getModel().findByIdAndUpdate(id, data);
   }
 

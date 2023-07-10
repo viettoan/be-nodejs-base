@@ -6,8 +6,7 @@ class BaseController
 
       return {
         ...params,
-        created_by: authUser._id,
-        updated_by: authUser._id,
+
       }
     }
 
