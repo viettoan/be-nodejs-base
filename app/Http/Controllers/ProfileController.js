@@ -1,14 +1,13 @@
 import BaseController from "./BaseController.js";
 import {hashHmacString, responseErrors, responseSuccess} from "../../Common/helper.js";
-import UserRepository from "../../Repositories/UserRepository.js";
 import * as fs from 'fs';
 import {STORAGE_PATHS} from "../../../config/constant.js";
 import winston from "winston";
+import UserService from "../../Services/UserService.js";
 
 class ProfileController extends BaseController
 {
-  static userRepository = new UserRepository();
-
+  static userService = new UserService();
   show (req, res)
   {
     const user = res.locals.authUser;
@@ -29,18 +28,15 @@ class ProfileController extends BaseController
 
   update (req, res)
   {
-    const params = super.handleParamsWithAuthUser(
-      {
-        name:  req.body.name
-      },
-      res.locals.authUser
-    )
+    const params = {
+      name:  req.body.name
+    };
 
     if (req.file) {
       params.avatar = STORAGE_PATHS.uploadAvatarUser + req.file.filename;
     }
 
-    ProfileController.userRepository.update(res.locals.authUser._id, params)
+    ProfileController.userService.update(res.locals.authUser._id, params, res.locals.authUser)
       .then(
         () => {
           return responseSuccess(res, true);
@@ -55,14 +51,11 @@ class ProfileController extends BaseController
 
   async changePassword (req, res)
   {
-    const params = super.handleParamsWithAuthUser(
-      {
-        password: hashHmacString(req.body.password)
-      },
-      res.locals.authUser
-    )
+    const params = {
+      password: hashHmacString(req.body.password)
+    }
 
-    ProfileController.userRepository.update(res.locals.authUser._id, params)
+    ProfileController.userService.update(res.locals.authUser._id, params, res.locals.authUser)
       .then(
         () => {
           return responseSuccess(res, true);
