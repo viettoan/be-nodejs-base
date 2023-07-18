@@ -32,6 +32,11 @@ class BaseRepository
     return this.getModel().find({...conditions, deleted_at: null}).sort(sort);
   }
 
+  findOne(conditions)
+  {
+    return this.getModel().findOne({...conditions, deleted_at: null});
+  }
+
   findById(id)
   {
     return this.getModel().findOne({

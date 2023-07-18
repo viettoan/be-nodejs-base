@@ -5,12 +5,11 @@ import UserService from "../../Services/UserService.js";
 class UserController extends BaseController
 {
   static userService= new UserService();
-
   constructor() {
     super();
   }
 
-  index(req, res)
+  async index(req, res)
   {
     const { name } = req.query;
 
@@ -119,7 +118,6 @@ class UserController extends BaseController
     UserController.userService.getImportHistory()
       .then(
         userImports => {
-          console.log(userImports);
           return responseSuccess(res, userImports, 200)
         }
       )

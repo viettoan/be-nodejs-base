@@ -10,7 +10,7 @@ class AuthService
   async login(phone, password)
   {
     try {
-      const user = this.userRepository.findUserConfirmedAccountByPhone(phone)
+      const user = await this.userRepository.findUserConfirmedAccountByPhone(phone)
 
       if (!user) {
         return Promise.reject(

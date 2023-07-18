@@ -51,3 +51,24 @@ export const ACTION_LOGS = {
     admin_create_new_user: 1,
   },
 };
+
+export const NOTIFICATIONS = {
+  status: {
+    active: 1,
+    in_active: 2,
+  }
+}
+
+export const NOTIFICATION_TEMPLATES = {
+  status: {
+    active: 1,
+    in_active: 2,
+  },
+  tags: {
+    adminName: '@admin_name',
+    userName: '@user_name',
+  },
+  types: {
+    adminCreateNewUser: 'admin_create_new_user',
+  },
+}

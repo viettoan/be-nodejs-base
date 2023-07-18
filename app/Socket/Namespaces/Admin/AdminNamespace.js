@@ -7,11 +7,17 @@ class AdminNamespace extends BaseNamespace {
   }
 
   handle() {
+    socketIOServer.of(this.namespace).on("connection", (socket) => {
+      console.log(socket.id);
+      socketIOServer.of(this.namespace).emit('test', {test: 111});
+    });
+
     // console.log('admin namespace')
   }
 
   emitCreateNewUser(user = {}) {
-    socketIOServer.of(this.namespace).emit('create_new_user', user);
+    console.log(user, this.namespace);
+    socketIOServer.of(this.namespace).emit('admin_create_new_user', user);
   }
 }
 

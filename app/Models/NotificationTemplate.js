@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
-import {ObjectId} from 'mongodb';
 
 const notificationTemplateSchema = new mongoose.Schema(
   {
-    key: {
+    type: {
       type: String,
       max: 255,
     },
@@ -23,22 +22,6 @@ const notificationTemplateSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    created_by: {
-      type: ObjectId,
-      required: false,
-    },
-    updated_by: {
-      type: ObjectId,
-      required: false,
-    },
-    created_at: {
-      type: Date,
-      required: false,
-    },
-    updated_at: {
-      type: Date,
-      required: false,
-    },
   },
   {
     timestamps: {
@@ -49,6 +32,7 @@ const notificationTemplateSchema = new mongoose.Schema(
 );
 
 export default mongoose.model(
-    'notification_templates',
-    notificationTemplateSchema
+    'NotificationTemplates',
+  notificationTemplateSchema,
+  'notification_templates'
 );

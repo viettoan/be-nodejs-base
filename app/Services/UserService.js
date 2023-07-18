@@ -1,5 +1,13 @@
-import {generateConfirmUrl, hashHmacString, responseErrors, responseSuccess} from "../Common/helper.js";
-import {ACTION_LOGS, DEFAULT_PASWORD, JOB_QUEUES, STORAGE_PATHS, USER_IMPORTS, USERS} from "../../config/constant.js";
+import {generateConfirmUrl, generateDetailUserUrl, hashHmacString} from "../Common/helper.js";
+import {
+  ACTION_LOGS,
+  DEFAULT_PASWORD,
+  JOB_QUEUES,
+  NOTIFICATION_TEMPLATES, NOTIFICATIONS,
+  STORAGE_PATHS,
+  USER_IMPORTS,
+  USERS
+} from "../../config/constant.js";
 import UserRepository from "../Repositories/UserRepository.js";
 import EmailService from "./EmailService.js";
 import ActionLogRepository from "../Repositories/ActionLogRepository.js";
@@ -10,6 +18,11 @@ import UserImportRepository from "../Repositories/UserImportRepository.js";
 import HttpError from "../Exceptions/HttpError.js";
 import Bull from "bull";
 import winston from "winston";
+import NotifyService from "./NotifyService.js";
+import User from "../Models/User.js";
+import {ObjectId} from "mongodb";
+import NotificationRepository from "../Repositories/NotificationRepository.js";
+import moment from "moment";
 
 XLSX.set_fs(fs);
 
@@ -21,6 +34,8 @@ class UserService {
     this.actionLogRepository = new ActionLogRepository();
     this.socketAdminNamespace = new AdminNamespace();
     this.userImportRepository = new UserImportRepository();
+    this.notifyService = new NotifyService();
+    this.notificationRepository = new NotificationRepository();
   }
 
   index (params)
@@ -57,8 +72,40 @@ class UserService {
           ),
         },
         authUser
-      )
-      this.socketAdminNamespace.emitCreateNewUser(user);
+      );
+
+      // Notify
+      const notification = {
+        type: NOTIFICATION_TEMPLATES.types.adminCreateNewUser,
+        redirect_url: generateDetailUserUrl(user._id),
+        status: NOTIFICATIONS.status.active,
+        created_at: moment()
+      };
+      notification.content = await this.notifyService.generateNotifyContent({
+        type: notification.type,
+        adminName: authUser.name,
+        userName: user.name
+      })
+      this.socketAdminNamespace.emitCreateNewUser(notification);
+      this.userRepository.findBy({
+        level: {$in: [USERS.level.admin, USERS.level.super_admin]}
+      })
+        .then(
+          admins => {
+            admins.forEach(
+              admin => {
+                this.notificationRepository.store({
+                  ...notification,
+                  user_id: admin._id
+                })
+              }
+            )
+          }
+        )
+        .catch(
+          e => winston.loggers.get('system').error('ERROR', e)
+        );
+
       return Promise.resolve(user);
     } catch (e) {
       return Promise.reject(e);
@@ -193,6 +240,13 @@ class UserService {
     });
 
     return buf;
+  }
+
+  getListNotifications(userId)
+  {
+    return this.notificationRepository.findBy({
+      user_id: userId
+    });
   }
 }
 

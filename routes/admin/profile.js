@@ -11,6 +11,7 @@ const profileAdminRouter = (app) => {
   router.get('/', profileController.show);
   router.post('/', updateProfileMiddleware.single('avatar'), validateUpdateDetailUser, profileController.update);
   router.put('/change-password', validateProfileChangePassword, profileController.changePassword);
+  router.get('/notifications', profileController.getListNotifications);
 
   app.use('/profile', router);
 };
