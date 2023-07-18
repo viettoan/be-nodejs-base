@@ -117,3 +117,7 @@ export const generateConfirmUrl = (userId) => {
 
   return process.env.FE_DOMAIN + 'confirm-account?token=' + token;
 }
+
+export const generateDetailUserUrl = (userId) => {
+  return process.env.FE_DOMAIN + 'users/' + userId + '/edit';
+}

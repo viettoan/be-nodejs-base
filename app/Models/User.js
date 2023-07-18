@@ -80,4 +80,9 @@ const userSchema = new mongoose.Schema(
   }
 );
 userSchema.plugin(mongoosePaginate);
-export default mongoose.model('users', userSchema);
+userSchema.virtual('notifications', {
+  ref: 'Notification',
+  localField: '_id',
+  foreignField: 'user_id',
+})
+export default mongoose.model('User', userSchema, 'users');

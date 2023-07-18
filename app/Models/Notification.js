@@ -6,6 +6,7 @@ const notificationSchema = new mongoose.Schema(
     user_id: {
       type: ObjectId,
       required: true,
+      ref: 'User',
     },
     icon: {
       type: String,
@@ -20,20 +21,12 @@ const notificationSchema = new mongoose.Schema(
       required: true,
     },
     type: {
-      type: Number,
+      type: String,
       required: true,
     },
     redirect_url: {
       type: String,
       required: true,
-    },
-    created_by: {
-      type: ObjectId,
-      required: false,
-    },
-    updated_by: {
-      type: ObjectId,
-      required: false,
     },
     created_at: {
       type: Date,
@@ -51,4 +44,4 @@ const notificationSchema = new mongoose.Schema(
     },
   }
 );
-export default mongoose.model('notifications', notificationSchema);
+export default mongoose.model('Notification', notificationSchema, 'notifications');

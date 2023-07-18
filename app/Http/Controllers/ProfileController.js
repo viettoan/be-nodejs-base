@@ -10,7 +10,7 @@ class ProfileController extends BaseController
   static userService = new UserService();
   show (req, res)
   {
-    const user = res.locals.authUser;
+    let user = res.locals.authUser;
 
     if (user.avatar) {
       try {
@@ -65,6 +65,19 @@ class ProfileController extends BaseController
         (e) => {
           return responseErrors(res, 500, e.message);
         }
+      );
+  }
+
+  getListNotifications(req, res)
+  {
+    const userId = res.locals.authUser;
+
+    ProfileController.userService.getListNotifications(userId)
+      .then(
+        notifications => responseSuccess(res, notifications)
+      )
+      .catch(
+        e => responseErrors(res, 500, e.message)
       );
   }
 }
