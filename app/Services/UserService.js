@@ -43,7 +43,12 @@ class UserService {
     return this.userRepository.paginate(params.query, {
       page: +params.query?.pagination?.page,
       limit: +params.query?.pagination?.limit
-    })
+    });
+  }
+
+  all (params)
+  {
+    return this.userRepository.findBy(params);
   }
 
   async storeUser (params, authUser)

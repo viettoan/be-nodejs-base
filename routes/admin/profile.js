@@ -1,6 +1,6 @@
 import express from 'express';
 import {authMiddleware} from '../../app/Http/Middlewares/AuthMiddleware.js';
-import ProfileController from '../../app/Http/Controllers/ProfileController.js';
+import ProfileController from '../../app/Http/Controllers/Me/ProfileController.js';
 import {updateProfileMiddleware} from '../../app/Http/Middlewares/UpdateProfileMiddleware.js';
 import {validateProfileChangePassword, validateUpdateDetailUser} from '../../app/Http/Requests/ProfileRequest.js';
 

@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import {ObjectId} from 'mongodb';
 import {USERS} from '../../config/constant.js';
 import {default as mongoosePaginate} from 'mongoose-paginate';
+import Notification from "./Notification.js";
 
 const userSchema = new mongoose.Schema(
   {
