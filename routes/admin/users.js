@@ -9,6 +9,7 @@ const usersAdminRouter = (app) => {
   const userController = new UserController();
   router.use(authMiddleware);
   router.get('/', validateIndexUser, userController.index);
+  router.get('/all', validateIndexUser, userController.all)
   router.post('/', validateStoreOrUpdateUser, userController.store);
   router.get('/:userId', userController.show);
   router.put('/:userId', validateStoreOrUpdateUser, userController.update);

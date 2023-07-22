@@ -9,22 +9,39 @@ class UserController extends BaseController
     super();
   }
 
-  async index(req, res)
+  index(req, res)
   {
-    const { name } = req.query;
+    UserController.userService
+      .index(
+        super.handleFieldSearchLike(req, ['name'])
+      )
+      .then(
+        (users) => {
+            return responseSuccess(res, users);
+        }
+      )
+      .catch(
+        (e) => {
+            return responseErrors(res, 400, e.message);
+        }
+      );
+  }
 
-    if (name) {
-      req.query.name = new RegExp(`${name}`);
-    }
-    UserController.userService.index(req).then(
-      (users) => {
+  all(req, res)
+  {
+    req = super.handleFieldSearchLike(req, ['name']);
+    UserController.userService
+      .all(req.query)
+      .then(
+        (users) => {
           return responseSuccess(res, users);
-      }
-    ).catch(
-      (e) => {
+        }
+      )
+      .catch(
+        (e) => {
           return responseErrors(res, 400, e.message);
-      }
-    );
+        }
+      );
   }
 
   store(req, res)

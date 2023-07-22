@@ -1,33 +1,31 @@
 import mongoose from 'mongoose';
 import {ObjectId} from 'mongodb';
 import User from "./User.js";
+import Room from "./Room.js";
 
-const notificationSchema = new mongoose.Schema(
+const userRoomSchema = new mongoose.Schema(
   {
     user_id: {
       type: ObjectId,
       required: true,
       ref: 'User',
     },
-    icon: {
-      type: String,
-      max: 255,
-    },
-    content: {
-      type: String,
+    room_id: {
+      type: ObjectId,
       required: true,
+      ref: 'Room',
     },
-    status: {
+    role: {
       type: Number,
       required: true,
     },
-    type: {
-      type: String,
-      required: true,
+    created_by: {
+      type: ObjectId,
+      required: false,
     },
-    redirect_url: {
-      type: String,
-      required: true,
+    updated_by: {
+      type: ObjectId,
+      required: false,
     },
     created_at: {
       type: Date,
@@ -45,4 +43,4 @@ const notificationSchema = new mongoose.Schema(
     },
   }
 );
-export default mongoose.model('Notification', notificationSchema, 'notifications');
+export default mongoose.model('UserRoom', userRoomSchema, 'user_rooms');

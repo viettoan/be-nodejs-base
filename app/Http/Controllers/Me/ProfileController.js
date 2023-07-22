@@ -1,9 +1,9 @@
-import BaseController from "./BaseController.js";
-import {hashHmacString, responseErrors, responseSuccess} from "../../Common/helper.js";
+import BaseController from "../BaseController.js";
+import {hashHmacString, responseErrors, responseSuccess} from "../../../Common/helper.js";
 import * as fs from 'fs';
-import {STORAGE_PATHS} from "../../../config/constant.js";
+import {STORAGE_PATHS} from "../../../../config/constant.js";
 import winston from "winston";
-import UserService from "../../Services/UserService.js";
+import UserService from "../../../Services/UserService.js";
 
 class ProfileController extends BaseController
 {
