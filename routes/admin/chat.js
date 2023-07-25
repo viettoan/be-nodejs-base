@@ -6,9 +6,9 @@ const chatRouter = (app) => {
   const router = express.Router();
   const roomController = new RoomController();
   router.use(authMiddleware);
-  router.get('/my-rooms', roomController.getMyRooms);
+  router.get('/my-rooms', roomController.index);
 
-  app.use('/chat', router);
+  app.use('/me/chat', router);
 };
 
 export default chatRouter;
