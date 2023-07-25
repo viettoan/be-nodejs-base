@@ -61,18 +61,16 @@ export const parserJWTToken = (bearerToken, withBearerPrefix = true) => {
   }
 }
 
-export const responseSuccess = (res, data, statusCode = 200, message = '') => {
-  return res.status(statusCode).json(
-    {
-      now: new Date(),
-      status_code: statusCode,
-      data: data,
-      message: message
-    }
-  );
+export const responseSuccess = (data, statusCode = 200, message = '') => {
+  return {
+    now: new Date(),
+    status_code: statusCode,
+    data: data,
+    message: message
+  };
 }
 
-export const responseErrors = (res, statusCode = 500, errors) => {
+export const responseErrors = (statusCode = 500, errors) => {
   let dataErrors = {};
   let message = '';
 
@@ -102,14 +100,16 @@ export const responseErrors = (res, statusCode = 500, errors) => {
     message = errors;
   }
 
-  return res.status(statusCode).json(
-    {
-      now: new Date(),
-      status_code: statusCode,
-      errors: dataErrors,
-      message: message
-    }
-  );
+  return {
+    now: new Date(),
+    status_code: statusCode,
+    errors: dataErrors,
+    message: message
+  };
+}
+
+export const responseJsonByStatus = (res, data, statusCode = 200) => {
+  return res.status(statusCode).json(data);
 }
 
 export const generateConfirmUrl = (userId) => {

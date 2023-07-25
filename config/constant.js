@@ -72,3 +72,25 @@ export const NOTIFICATION_TEMPLATES = {
     adminCreateNewUser: 'admin_create_new_user',
   },
 }
+
+export const ROOMS = {
+  type: {
+    oneToOne: 1,
+    group: 2
+  },
+};
+
+export const USER_ROOMS = {
+  role: {
+    admin: 1,
+    member: 2,
+  },
+};
+
+export const MESSAGES = {
+  type: {
+    text: 1,
+    sticker: 2,
+    call: 3,
+  },
+};

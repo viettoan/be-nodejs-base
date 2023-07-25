@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import {ObjectId} from 'mongodb';
+import {ROOMS} from "../../config/constant.js";
 
 const roomSchema = new mongoose.Schema(
   {
@@ -10,6 +11,10 @@ const roomSchema = new mongoose.Schema(
     type: {
       type: Number,
       required: true,
+      enum: {
+        values: Object.values(ROOMS.type),
+      },
+      default: ROOMS.type.oneToOne,
     },
     created_by: {
       type: ObjectId,

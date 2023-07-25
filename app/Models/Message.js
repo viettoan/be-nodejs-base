@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import {ObjectId} from 'mongodb';
 import User from "./User.js";
 import UserRoom from "./UserRoom.js";
+import {MESSAGES} from "../../config/constant.js";
 
 const messageSchema = new mongoose.Schema(
   {
@@ -22,6 +23,10 @@ const messageSchema = new mongoose.Schema(
     type: {
       type: Number,
       required: true,
+      enum: {
+        values: Object.values(MESSAGES.type),
+      },
+      default: MESSAGES.type.text,
     },
     created_by: {
       type: ObjectId,

@@ -1,5 +1,5 @@
 import BaseController from "../BaseController.js";
-import {hashHmacString, responseErrors, responseSuccess} from "../../../Common/helper.js";
+import {hashHmacString, responseErrors, responseJsonByStatus, responseSuccess} from "../../../Common/helper.js";
 import * as fs from 'fs';
 import {STORAGE_PATHS} from "../../../../config/constant.js";
 import winston from "winston";
@@ -23,7 +23,7 @@ class ProfileController extends BaseController
       }
     }
 
-    return responseSuccess(res, user);
+    return responseJsonByStatus(res, responseSuccess(user));
   }
 
   update (req, res)
@@ -39,13 +39,11 @@ class ProfileController extends BaseController
     ProfileController.userService.update(res.locals.authUser._id, params, res.locals.authUser)
       .then(
         () => {
-          return responseSuccess(res, true);
+          return responseJsonByStatus(res, responseSuccess(true));
         }
       )
       .catch(
-        (e) => {
-          return responseErrors(res, 400, e.message);
-        }
+        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
       )
   }
 
@@ -58,13 +56,11 @@ class ProfileController extends BaseController
     ProfileController.userService.update(res.locals.authUser._id, params, res.locals.authUser)
       .then(
         () => {
-          return responseSuccess(res, true);
+          return responseJsonByStatus(res, responseSuccess(true));
         }
       )
       .catch(
-        (e) => {
-          return responseErrors(res, 500, e.message);
-        }
+        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
       );
   }
 
@@ -74,10 +70,10 @@ class ProfileController extends BaseController
 
     ProfileController.userService.getListNotifications(userId)
       .then(
-        notifications => responseSuccess(res, notifications)
+        notifications => responseJsonByStatus(res, responseSuccess(notifications))
       )
       .catch(
-        e => responseErrors(res, 500, e.message)
+        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
       );
   }
 }

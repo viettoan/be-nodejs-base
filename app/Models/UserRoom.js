@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import {ObjectId} from 'mongodb';
-import User from "./User.js";
-import Room from "./Room.js";
+import {USER_ROOMS} from "../../config/constant.js";
 
 const userRoomSchema = new mongoose.Schema(
   {
@@ -18,6 +17,10 @@ const userRoomSchema = new mongoose.Schema(
     role: {
       type: Number,
       required: true,
+      enum: {
+        values: Object.values(USER_ROOMS.role),
+      },
+      default: USER_ROOMS.role.member,
     },
     created_by: {
       type: ObjectId,
@@ -41,6 +44,14 @@ const userRoomSchema = new mongoose.Schema(
       createdAt: 'created_at',
       updatedAt: 'updated_at',
     },
+    toObject: { virtuals: true },
+    toJSON: { virtuals: true },
+    id: false,
   }
 );
+userRoomSchema.virtual('room', {
+    ref: 'Room',
+    localField: 'room_id',
+    foreignField: '_id',
+})
 export default mongoose.model('UserRoom', userRoomSchema, 'user_rooms');

@@ -1,5 +1,5 @@
 import BaseController from "./BaseController.js";
-import { responseSuccess, responseErrors } from "../../Common/helper.js";
+import {responseSuccess, responseErrors, responseJsonByStatus} from "../../Common/helper.js";
 import UserService from "../../Services/UserService.js";
 
 class UserController extends BaseController
@@ -16,14 +16,10 @@ class UserController extends BaseController
         super.handleFieldSearchLike(req, ['name'])
       )
       .then(
-        (users) => {
-            return responseSuccess(res, users);
-        }
+        users => responseJsonByStatus(res, responseSuccess(users))
       )
       .catch(
-        (e) => {
-            return responseErrors(res, 400, e.message);
-        }
+        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
       );
   }
 
@@ -33,14 +29,10 @@ class UserController extends BaseController
     UserController.userService
       .all(req.query)
       .then(
-        (users) => {
-          return responseSuccess(res, users);
-        }
+        users => responseJsonByStatus(res, responseSuccess(users))
       )
       .catch(
-        (e) => {
-          return responseErrors(res, 400, e.message);
-        }
+        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
       );
   }
 
@@ -50,14 +42,10 @@ class UserController extends BaseController
 
     UserController.userService.storeUser(params, res.locals.authUser)
       .then(
-        (user) => {
-          return responseSuccess(res, user, 201);
-        }
+        user => responseJsonByStatus(res, responseSuccess(user))
       )
       .catch(
-        (e) => {
-          return responseErrors(res, 400, e.message);
-        }
+        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
       );
   }
 
@@ -65,53 +53,41 @@ class UserController extends BaseController
   {
     UserController.userService.show(req.params.userId)
       .then(
-        (user) => {
-          return responseSuccess(res, user);
-        }
+        user => responseJsonByStatus(res, responseSuccess(user))
       )
       .catch(
-        (e) => {
-          return responseErrors(res, 400, e.message);
-        }
+        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
       );
   }
 
   update(req, res)
   {
-      UserController.userService.update(req.params.userId, req.body, res.locals.authUser)
-          .then(
-              () => {
-                  return responseSuccess(res, true);
-              }
-          ).catch(
-              (e) => {
-                  return responseErrors(res, 400, e.message);
-              }
-          );
+    UserController.userService.update(req.params.userId, req.body, res.locals.authUser)
+      .then(
+        () => responseJsonByStatus(res, responseSuccess(true))
+      ).catch(
+        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
+      );
   }
 
   destroy(req, res)
   {
-      UserController.userService.destroy(req.params.userId)
-          .then(
-              () => {
-                  return responseSuccess(res, true);
-              }
-          ).catch(
-              (e) => {
-                  return responseErrors(res, 400, e.message);
-              }
-          );
+    UserController.userService.destroy(req.params.userId)
+      .then(
+        () => responseJsonByStatus(res, responseSuccess(true))
+      ).catch(
+        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
+      );
   }
 
   async import(req, res)
   {
       try {
-          UserController.userService.import(req, res.locals.authUser);
+        UserController.userService.import(req, res.locals.authUser);
 
-          return responseSuccess(res, {}, 200);
+        return responseJsonByStatus(res, responseSuccess({}));
       } catch (e) {
-          return responseErrors(res, e.statusCode, e.message);
+        return responseJsonByStatus(res, responseErrors(500, e.message), 500);
       }
   }
 
@@ -119,14 +95,10 @@ class UserController extends BaseController
   {
     UserController.userService.showImportNewest()
       .then(
-        (userImport) => {
-            return responseSuccess(res, userImport, 200);
-        }
+        userImport => responseJsonByStatus(res, responseSuccess(userImport))
       )
       .catch(
-        (e) => {
-            return responseErrors(res, 400, e.message);
-        }
+        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
       );
   }
 
@@ -134,21 +106,22 @@ class UserController extends BaseController
   {
     UserController.userService.getImportHistory()
       .then(
-        userImports => {
-          return responseSuccess(res, userImports, 200)
-        }
+        userImports => responseJsonByStatus(res, responseSuccess(userImports))
       )
       .catch(
-        e => responseErrors(res, 400, e.message)
+        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
       )
   }
 
   async export(req, res)
   {
     try {
-      return responseSuccess(res, await UserController.userService.export(req.body));
+      return responseJsonByStatus(
+        res,
+        responseSuccess(await UserController.userService.export(req.body))
+      );
     } catch (e) {
-      return responseErrors(res, 400, e.message);
+      return responseJsonByStatus(res, responseErrors(500, e.message), 500);
     }
   }
 }
