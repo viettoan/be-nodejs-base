@@ -26,55 +26,48 @@ class ProfileController extends BaseController
     return responseJsonByStatus(res, responseSuccess(user));
   }
 
-  update (req, res)
+  async update (req, res)
   {
-    const params = {
-      name:  req.body.name
-    };
+    try {
+      const params = {
+        name:  req.body.name
+      };
 
-    if (req.file) {
-      params.avatar = STORAGE_PATHS.uploadAvatarUser + req.file.filename;
+      if (req.file) {
+        params.avatar = STORAGE_PATHS.uploadAvatarUser + req.file.filename;
+      }
+      const userUpdated = await ProfileController.userService.update(res.locals.authUser._id, params, res.locals.authUser);
+
+      return responseJsonByStatus(res, responseSuccess(true));
+    } catch (e) {
+
     }
-
-    ProfileController.userService.update(res.locals.authUser._id, params, res.locals.authUser)
-      .then(
-        () => {
-          return responseJsonByStatus(res, responseSuccess(true));
-        }
-      )
-      .catch(
-        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
-      )
   }
 
   async changePassword (req, res)
   {
-    const params = {
-      password: hashHmacString(req.body.password)
-    }
+    try {
+      const params = {
+        password: hashHmacString(req.body.password)
+      }
+      const userUpdated = await ProfileController.userService.update(res.locals.authUser._id, params, res.locals.authUser);
 
-    ProfileController.userService.update(res.locals.authUser._id, params, res.locals.authUser)
-      .then(
-        () => {
-          return responseJsonByStatus(res, responseSuccess(true));
-        }
-      )
-      .catch(
-        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
-      );
+      return responseJsonByStatus(res, responseSuccess(true));
+    } catch (e) {
+      return responseJsonByStatus(res, responseErrors(500, e.message), 500);
+    }
   }
 
-  getListNotifications(req, res)
+  async getListNotifications(req, res)
   {
-    const userId = res.locals.authUser;
+    try {
+      const userId = res.locals.authUser._id;
+      const notifications = await ProfileController.userService.getListNotifications(userId);
 
-    ProfileController.userService.getListNotifications(userId)
-      .then(
-        notifications => responseJsonByStatus(res, responseSuccess(notifications))
-      )
-      .catch(
-        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
-      );
+      return responseJsonByStatus(res, responseSuccess(notifications));
+    } catch (e) {
+      return responseJsonByStatus(res, responseErrors(500, e.message), 500);
+    }
   }
 }
 

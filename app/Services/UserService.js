@@ -53,68 +53,63 @@ class UserService {
 
   async storeUser (params, authUser)
   {
-    try {
-      params.password = hashHmacString(DEFAULT_PASWORD);
-      const insertedUser = await this.userRepository.store(params, authUser);
-      this.emailService.sendMail(
-        [params.email],
-        'Confirm Account Base Admin',
-        'email/confirmAccount.ejs',
-        {
-            name: params.name,
-            confirmUrl: generateConfirmUrl(insertedUser.id)
-        }
-      );
-      const user = insertedUser;
-      this.actionLogRepository.store(
-        {
-          name: ACTION_LOGS.name.admin_create_new_user,
-          type: ACTION_LOGS.type.admin_create_new_user,
-          meta_data: JSON.stringify(
-            {
-              new_user: user
-            }
-          ),
-        },
-        authUser
-      );
-
-      // Notify
-      const notification = {
-        type: NOTIFICATION_TEMPLATES.types.adminCreateNewUser,
-        redirect_url: generateDetailUserUrl(user._id),
-        status: NOTIFICATIONS.status.active,
-        created_at: moment()
-      };
-      notification.content = await this.notifyService.generateNotifyContent({
-        type: notification.type,
-        adminName: authUser.name,
-        userName: user.name
-      })
-      this.socketAdminNamespace.emitCreateNewUser(notification);
-      this.userRepository.findBy({
+    params.password = hashHmacString(DEFAULT_PASWORD);
+    const user = await this.userRepository.store(params, authUser);
+    // Send mail
+    this.emailService.sendMail(
+      [params.email],
+      'Confirm Account Base Admin',
+      'email/confirmAccount.ejs',
+      {
+        name: params.name,
+        confirmUrl: generateConfirmUrl(user.id)
+      }
+    );
+    this.actionLogRepository.store(
+      {
+        name: ACTION_LOGS.name.admin_create_new_user,
+        type: ACTION_LOGS.type.admin_create_new_user,
+        meta_data: JSON.stringify(
+          {
+            new_user: user
+          }
+        ),
+      },
+      authUser
+    );
+    // Notify
+    const notification = {
+      type: NOTIFICATION_TEMPLATES.types.adminCreateNewUser,
+      redirect_url: generateDetailUserUrl(user._id),
+      status: NOTIFICATIONS.status.active,
+      created_at: moment()
+    };
+    notification.content = await this.notifyService.generateNotifyContent({
+      type: notification.type,
+      adminName: authUser.name,
+      userName: user.name
+    })
+    this.socketAdminNamespace.emitCreateNewUser(notification);
+    this.userRepository.findBy({
         level: {$in: [USERS.level.admin, USERS.level.super_admin]}
       })
-        .then(
-          admins => {
-            admins.forEach(
-              admin => {
-                this.notificationRepository.store({
-                  ...notification,
-                  user_id: admin._id
-                })
-              }
-            )
-          }
-        )
-        .catch(
-          e => winston.loggers.get('system').error('ERROR', e)
-        );
+      .then(
+        admins => {
+          admins.forEach(
+            admin => {
+              this.notificationRepository.store({
+                ...notification,
+                user_id: admin._id
+              })
+            }
+          )
+        }
+      )
+      .catch(
+        e => winston.loggers.get('system').error('ERROR', e)
+      );
 
-      return Promise.resolve(user);
-    } catch (e) {
-      return Promise.reject(e);
-    }
+    return user;
   }
 
   show (userId)

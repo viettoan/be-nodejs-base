@@ -6,19 +6,16 @@ class RoomController extends BaseController
 {
   static roomService = new RoomService();
 
-  index(req, res)
+  async index(req, res)
   {
-    const user = res.locals.authUser;
+    try {
+      const user = res.locals.authUser;
+      const userRooms = await RoomController.roomService.index(user._id);
 
-    return RoomController.roomService.index(user._id)
-        .then(
-            userRooms => responseJsonByStatus(res, responseSuccess(userRooms))
-        )
-        .catch(
-            e => {
-              return responseJsonByStatus(res, responseErrors(500, e.message), 500);
-            }
-        );
+      return responseJsonByStatus(res, responseSuccess(userRooms));
+    } catch (e) {
+      return responseJsonByStatus(res, responseErrors(500, e.message), 500);
+    }
   }
 }
 

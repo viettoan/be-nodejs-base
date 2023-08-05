@@ -1,6 +1,7 @@
 import UserRepository from "../Repositories/UserRepository.js";
-import {generateJWTToken, hashHmacString, parserJWTToken, responseErrors, responseSuccess} from "../Common/helper.js";
+import {generateJWTToken, hashHmacString, parserJWTToken} from "../Common/helper.js";
 import HttpError from "../Exceptions/HttpError.js";
+import HttpErrorWithMessageObject from "../Exceptions/HttpErrorWithMessageObject.js";
 import {USERS} from "../../config/constant.js";
 class AuthService
 {
@@ -9,41 +10,39 @@ class AuthService
   }
   async login(phone, password)
   {
-    try {
-      const user = await this.userRepository.findUserConfirmedAccountByPhone(phone)
+    const user = await this.userRepository.findUserConfirmedAccountByPhone(phone)
 
-      if (!user) {
-        return Promise.reject(
-          {
-            errors: [
-              {
-                path: 'phone',
-                msg: 'Số điện thoại không hợp lệ',
-                value: phone
-              }
-            ]
-          }
-        );
-      }
-
-      if (user.password !== hashHmacString(password)) {
-        return Promise.reject(
-          {
-            errors: [
-              {
-                path: 'password',
-                msg: 'Mật khẩu không chính xác',
-                value: password
-              }
-            ]
-          }
-        );
-      }
-
-      return Promise.resolve(generateJWTToken(user.id))
-    } catch (e) {
-      throw new HttpError(e.message, 500)
+    if (!user) {
+      throw new HttpErrorWithMessageObject(
+        {
+          errors: [
+            {
+              path: 'phone',
+              msg: 'Số điện thoại không hợp lệ',
+              value: phone
+            }
+          ]
+        },
+        401
+      );
     }
+
+    if (user.password !== hashHmacString(password)) {
+      throw new HttpErrorWithMessageObject(
+        {
+          errors: [
+            {
+              path: 'password',
+              msg: 'Mật khẩu không chính xác',
+              value: password
+            }
+          ]
+        },
+        401
+      );
+    }
+
+    return generateJWTToken(user.id)
   }
 
   async confirmAccount(token)
@@ -51,23 +50,17 @@ class AuthService
     const responseToken = parserJWTToken(token, false);
 
     if (!responseToken.success) {
-      return Promise.reject(
-        new HttpError(responseToken.errors, 401)
-      );
+      throw new HttpError(responseToken.errors, 401);
     }
     const userId = responseToken.payload.id;
     const user = await this.userRepository.findById(userId);
 
     if (!user) {
-      return Promise.reject(
-        new HttpError('User không tồn tại.', 401)
-      );
+      throw new HttpError('User không tồn tại.', 401);
     }
 
     if (user.is_confirm_account === USERS.is_confirm_account.true) {
-      return Promise.reject(
-        new HttpError('User đã xác thực tài khoản.', 401)
-      );
+      throw new HttpError('User đã xác thực tài khoản.', 401);
     }
 
     const userUpdated = await this.userRepository.update(
@@ -78,7 +71,7 @@ class AuthService
       user
     );
 
-    return Promise.resolve(userUpdated);
+    return true;
   }
 
   async changePassword(token, password)
@@ -86,30 +79,24 @@ class AuthService
     const responseToken = parserJWTToken(token, false);
 
     if (!responseToken.success) {
-      return Promise.reject(
-        new HttpError(responseToken.errors, 401)
-      );
+      throw new HttpError(responseToken.errors, 401);
     }
     const userId = responseToken.payload.id;
     const user = await this.userRepository.findById(userId);
 
     if (!user) {
-      return Promise.reject(
-        new HttpError('User không tồn tại.', 401)
-      );
+      throw new HttpError('User không tồn tại.', 401);
     }
 
     if (user.is_confirm_account !== USERS.is_confirm_account.true) {
-      return Promise.reject(
-        new HttpError('User chưa xác thực tài khoản.', 401)
-      );
+      throw new HttpError('User đã xác thực tài khoản.', 401);
     }
 
     const userUpdated = await this.userRepository.update(userId, {
       password: hashHmacString(password)
     });
 
-    return Promise.resolve(userUpdated);
+    return true;
   }
 }
 

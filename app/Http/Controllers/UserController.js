@@ -1,6 +1,7 @@
 import BaseController from "./BaseController.js";
 import {responseSuccess, responseErrors, responseJsonByStatus} from "../../Common/helper.js";
 import UserService from "../../Services/UserService.js";
+import {MongoServerError} from "mongodb";
 
 class UserController extends BaseController
 {
@@ -9,75 +10,72 @@ class UserController extends BaseController
     super();
   }
 
-  index(req, res)
+  async index(req, res)
   {
-    UserController.userService
-      .index(
-        super.handleFieldSearchLike(req, ['name'])
-      )
-      .then(
-        users => responseJsonByStatus(res, responseSuccess(users))
-      )
-      .catch(
-        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
-      );
+    try {
+      const users = await UserController.userService.index(super.handleFieldSearchLike(req, ['name']));
+
+      return responseJsonByStatus(res, responseSuccess(users));
+    } catch (e) {
+      return responseJsonByStatus(res, responseErrors(500, e), 500);
+    }
   }
 
-  all(req, res)
+  async all(req, res)
   {
-    req = super.handleFieldSearchLike(req, ['name']);
-    UserController.userService
-      .all(req.query)
-      .then(
-        users => responseJsonByStatus(res, responseSuccess(users))
-      )
-      .catch(
-        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
-      );
+    try {
+      req = super.handleFieldSearchLike(req, ['name']);
+      const users = await UserController.userService.all(req.query);
+
+      return responseJsonByStatus(res, responseSuccess(users));
+    } catch (e) {
+      return responseJsonByStatus(res, responseErrors(500, e), 500);
+    }
   }
 
-  store(req, res)
+  async store(req, res)
   {
-    const params = req.body;
+    try {
+      const params = req.body;
+      const user = await UserController.userService.storeUser(params, res.locals.authUser);
 
-    UserController.userService.storeUser(params, res.locals.authUser)
-      .then(
-        user => responseJsonByStatus(res, responseSuccess(user))
-      )
-      .catch(
-        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
-      );
+      return responseJsonByStatus(res, responseSuccess(user));
+    } catch (e) {
+      return responseJsonByStatus(res, responseErrors(500, e), 500);
+    }
   }
 
-  show(req, res)
+  async show(req, res)
   {
-    UserController.userService.show(req.params.userId)
-      .then(
-        user => responseJsonByStatus(res, responseSuccess(user))
-      )
-      .catch(
-        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
-      );
+    try {
+      const user = await UserController.userService.show(req.params.userId);
+
+      return responseJsonByStatus(res, responseSuccess(user));
+    } catch (e) {
+      return responseJsonByStatus(res, responseErrors(500, e), 500);
+    }
   }
 
-  update(req, res)
+  async update(req, res)
   {
-    UserController.userService.update(req.params.userId, req.body, res.locals.authUser)
-      .then(
-        () => responseJsonByStatus(res, responseSuccess(true))
-      ).catch(
-        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
-      );
+    try {
+      const userUpdated = await UserController.userService.update(req.params.userId, req.body, res.locals.authUser);
+
+      return responseJsonByStatus(res, responseSuccess(true));
+    } catch (e) {
+      return responseJsonByStatus(res, responseErrors(500, e), 500);
+    }
   }
 
-  destroy(req, res)
+  async destroy(req, res)
   {
-    UserController.userService.destroy(req.params.userId)
-      .then(
-        () => responseJsonByStatus(res, responseSuccess(true))
-      ).catch(
-        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
-      );
+    try {
+      const userDestroyed = await UserController.userService.destroy(req.params.userId);
+
+      return responseJsonByStatus(res, responseSuccess(true));
+    } catch (e) {
+      return responseJsonByStatus(res, responseErrors(500, e), 500);
+    }
   }
 
   async import(req, res)
@@ -87,30 +85,30 @@ class UserController extends BaseController
 
         return responseJsonByStatus(res, responseSuccess({}));
       } catch (e) {
-        return responseJsonByStatus(res, responseErrors(500, e.message), 500);
+        return responseJsonByStatus(res, responseErrors(500, e), 500);
       }
   }
 
-  showImportNewest(req, res)
+  async showImportNewest(req, res)
   {
-    UserController.userService.showImportNewest()
-      .then(
-        userImport => responseJsonByStatus(res, responseSuccess(userImport))
-      )
-      .catch(
-        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
-      );
+    try {
+      const userImport = await UserController.userService.showImportNewest();
+
+      return responseJsonByStatus(res, responseSuccess(userImport));
+    } catch (e) {
+      return responseJsonByStatus(res, responseErrors(500, e), 500);
+    }
   }
 
-  getImportHistory(req, res)
+  async getImportHistory(req, res)
   {
-    UserController.userService.getImportHistory()
-      .then(
-        userImports => responseJsonByStatus(res, responseSuccess(userImports))
-      )
-      .catch(
-        e => responseJsonByStatus(res, responseErrors(500, e.message), 500)
-      )
+    try {
+      const userImports = await UserController.userService.getImportHistory();
+
+      return responseJsonByStatus(res, responseSuccess(userImports));
+    } catch (e) {
+      return responseJsonByStatus(res, responseErrors(500, e), 500);
+    }
   }
 
   async export(req, res)
@@ -121,7 +119,7 @@ class UserController extends BaseController
         responseSuccess(await UserController.userService.export(req.body))
       );
     } catch (e) {
-      return responseJsonByStatus(res, responseErrors(500, e.message), 500);
+      return responseJsonByStatus(res, responseErrors(500, e), 500);
     }
   }
 }

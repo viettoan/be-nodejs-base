@@ -3,45 +3,40 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import './loadEnvironment.js';
 import 'express-async-errors';
-import bodyParser from 'body-parser';
 import {logging} from './config/logging.js';
 import winston from 'winston';
 import {createServer} from 'http';
 import {Server} from 'socket.io';
 import SocketServerHandler from './app/Socket/SocketServerHandler.js';
 import router from './routes/index.js';
-
 // init winston logger
 logging();
-
 // connect mongoose
 mongoose.connect(process.env.ATLAS_URI, {
   autoIndex: true,
 }).then(() => console.log('Connected!'));
-
 // setup express
 const PORT = process.env.PORT || 5050;
 const app = express();
+// third-party middleware: config cors
 app.use(cors());
+// built-in middleware: parse request body application/json
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended: true}));
+// built-in middleware: parse request body application/x-www-form-urlencoded
+app.use(express.urlencoded({extended:true}));
+// built-in middleware: setup static folder
 app.use(express.static('public'));
-
 // Load routes
 router(app);
-
 // Set view engine
 app.set('view engine', 'ejs');
-
-// Global error handling
-app.use((err, _req, res) => {
+// error handling middleware
+app.use((err, _req, res, next) => {
   winston.loggers.get('system').error('ERROR', err);
   res.status(500).send(err);
 });
-
 // create the Express server
 const httpServer = createServer(app);
-
 // handle socket
 const socketIOServer = new Server(httpServer, {
   cors: {

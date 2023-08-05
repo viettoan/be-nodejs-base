@@ -17,18 +17,12 @@ class RoomService
    */
   async index(userId)
   {
-    return this.userRoomRepository.findBy({
+    const userRooms = await this.userRoomRepository.findBy({
       user_id: userId
     })
-      .populate('room')
-      .then(
-        userRooms => Promise.resolve(userRooms)
-      )
-      .catch(
-        e => {
-          return Promise.reject(e)
-        }
-      );
+      .populate('room');
+
+    return userRooms;
   }
 }
 
