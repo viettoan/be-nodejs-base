@@ -1,5 +1,6 @@
 import crypto from "crypto";
 import moment from "moment";
+
 export const hashHmacString = (string, algorithm = 'sha1') => {
   return crypto.createHmac(algorithm, process.env.PRIVATE_KEY)
     .update(string)
@@ -71,12 +72,47 @@ export const responseSuccess = (data, statusCode = 200, message = '') => {
 }
 
 export const responseErrors = (statusCode = 500, errors) => {
-  let dataErrors = {};
-  let message = '';
+  const response = {
+    now: new Date(),
+    status_code: statusCode,
+    errors: [],
+    message: ''
+  }
+
+  if (typeof errors === 'string') {
+    response.message = errors;
+
+    return response;
+  }
+
+  if (errors instanceof Error && errors.name === 'MongoServerError') {
+    const [path, value] = Object.entries(errors.keyValue)[0];
+
+    switch (errors.code) {
+      case 11000:
+        response.errors.push({
+          [path]: {
+            value,
+            message: capitalizeFirstLetter(path) + ' đã tồn tại'
+          }
+        })
+        break;
+      default:
+        response.message = errors.message;
+    }
+
+    return response
+  }
+
+  if (errors instanceof Error) {
+    response.message = errors.message;
+
+    return response;
+  }
 
   if (typeof errors === 'object') {
-    message = errors.message ?? '';
-    dataErrors = Object.values(errors.errors).map(error => {
+    response.message = errors.message ?? '';
+    response.errors = Object.values(errors.errors).map(error => {
       let message = '';
 
       if (error?.message) {
@@ -96,16 +132,7 @@ export const responseErrors = (statusCode = 500, errors) => {
     })
   }
 
-  if (typeof errors === 'string') {
-    message = errors;
-  }
-
-  return {
-    now: new Date(),
-    status_code: statusCode,
-    errors: dataErrors,
-    message: message
-  };
+  return response;
 }
 
 export const responseJsonByStatus = (res, data, statusCode = 200) => {
@@ -120,4 +147,8 @@ export const generateConfirmUrl = (userId) => {
 
 export const generateDetailUserUrl = (userId) => {
   return process.env.FE_DOMAIN + 'users/' + userId + '/edit';
+}
+
+export function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }

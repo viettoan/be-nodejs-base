@@ -1,5 +1,5 @@
 import {validationResult} from 'express-validator';
-import { responseErrors } from "../../Common/helper.js";
+import {responseErrors, responseJsonByStatus} from "../../Common/helper.js";
 export const baseRequest = (validations) => {
   return (
     async (req, res, next) => {
@@ -13,7 +13,7 @@ export const baseRequest = (validations) => {
         return next();
       }
 
-      return responseErrors(res, 401, { errors: errors.array() });
+      return responseJsonByStatus(res, responseErrors(422, { errors: errors.array() }), 422);
     }
   )
 }

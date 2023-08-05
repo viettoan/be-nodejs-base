@@ -12,7 +12,6 @@ class BaseController
                 req.query[field] = new RegExp(`${fieldValue}`);
             }
         }
-        console.log(req.query);
 
         return req;
     }
