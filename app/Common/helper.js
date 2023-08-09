@@ -135,6 +135,26 @@ export const responseErrors = (statusCode = 500, errors) => {
   return response;
 }
 
+export const responseJoiError = (statusCode = 500, errors) => {
+  const response = {
+    now: new Date(),
+    status_code: statusCode,
+    errors: [],
+    message: ''
+  }
+  response.errors = errors.details.map(
+    error => {
+      return {
+        [error.context.key] : {
+          value: error.context.value,
+          message: error.message
+        }
+      };
+    }
+  )
+  return response;
+}
+
 export const responseJsonByStatus = (res, data, statusCode = 200) => {
   return res.status(statusCode).json(data);
 }
