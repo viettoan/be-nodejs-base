@@ -1,5 +1,5 @@
 import {body} from "express-validator";
-import {baseRequest} from "./BaseRequest.js";
+import {baseRequest} from "../BaseRequest.js";
 
 const validationUpdateDetailUser =[
   body('name').custom( async  nameValue => {

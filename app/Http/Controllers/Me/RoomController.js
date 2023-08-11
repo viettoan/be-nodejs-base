@@ -1,7 +1,6 @@
 import BaseController from "../BaseController.js";
 import RoomService from "../../../Services/RoomService.js";
 import {responseErrors, responseJsonByStatus, responseSuccess} from "../../../Common/helper.js";
-import {ROOMS} from "../../../../config/constant.js";
 
 class RoomController extends BaseController
 {
@@ -25,7 +24,7 @@ class RoomController extends BaseController
       const {users} = req.body;
 
       return responseJsonByStatus(
-        res, 
+        res,
         responseSuccess(await RoomController.roomService.createNewRoom(users))
       );
     } catch (e) {
