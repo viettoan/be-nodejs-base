@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
 import {ObjectId} from 'mongodb';
-import User from "./User.js";
-import UserRoom from "./UserRoom.js";
 import {MESSAGES} from "../../config/constant.js";
 
 const messageSchema = new mongoose.Schema(
@@ -14,7 +12,7 @@ const messageSchema = new mongoose.Schema(
     room_id: {
       type: ObjectId,
       required: true,
-      ref: 'UserRoom',
+      ref: 'Room',
     },
     content: {
       type: String,

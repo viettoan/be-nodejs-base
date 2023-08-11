@@ -1,6 +1,6 @@
 import Joi from "joi";
-import {ROOMS, USER_ROOMS} from "../../../config/constant.js";
-import {responseJoiError, responseJsonByStatus} from "../../Common/helper.js";
+import {USER_ROOMS} from "../../../../config/constant.js";
+import {responseJoiError, responseJsonByStatus} from "../../../Common/helper.js";
 
 export const addRoomValidator = (req, res, next) => {
   const {body} = req;
