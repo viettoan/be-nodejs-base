@@ -40,6 +40,21 @@ class RoomService
 
     return true;
   }
+
+  async show(roomId)
+  {
+    return await this.roomRepository.findById(roomId)
+      .populate([
+        'messages',
+        {
+          path: 'userRooms',
+          populate: {
+            path: 'user',
+            select: ['_id', 'name', 'avatar']
+          },
+        }
+      ]);
+  }
 }
 
 export default RoomService;
