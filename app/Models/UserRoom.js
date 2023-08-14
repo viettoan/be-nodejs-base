@@ -54,4 +54,10 @@ userRoomSchema.virtual('room', {
     localField: 'room_id',
     foreignField: '_id',
 })
+
+userRoomSchema.virtual('user', {
+  ref: 'User',
+  localField: 'user_id',
+  foreignField: '_id',
+})
 export default mongoose.model('UserRoom', userRoomSchema, 'user_rooms');

@@ -31,6 +31,21 @@ class RoomController extends BaseController
       return responseJsonByStatus(res, responseErrors(500, e.message), 500);
     }
   }
+
+  async show(req, res)
+  {
+    try {
+      const {roomId} = req.params;
+      const room = await RoomController.roomService.show(roomId);
+
+      return responseJsonByStatus(
+        res,
+        responseSuccess(room)
+      );
+    } catch (e) {
+      return responseJsonByStatus(res, responseErrors(500, e.message), 500);
+    }
+  }
 }
 
 export default RoomController;

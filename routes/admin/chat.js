@@ -12,6 +12,7 @@ const chatRouter = (app) => {
   router.use(authMiddleware);
   router.get('/rooms', roomController.index);
   router.post('/rooms', addRoomValidator, roomController.createNewRoom);
+  router.get('/rooms/:roomId', roomController.show);
   router.post('/messages', storeMessage, messageController.store);
 
   app.use('/me/chat', router);

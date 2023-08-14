@@ -38,6 +38,19 @@ const roomSchema = new mongoose.Schema(
       createdAt: 'created_at',
       updatedAt: 'updated_at',
     },
+    toObject: { virtuals: true },
+    toJSON: { virtuals: true },
+    id: false,
   }
 );
+roomSchema.virtual('messages', {
+  ref: 'Message',
+  localField: '_id',
+  foreignField: 'room_id',
+})
+roomSchema.virtual('userRooms', {
+  ref: 'UserRoom',
+  localField: '_id',
+  foreignField: 'room_id',
+})
 export default mongoose.model('Room', roomSchema, 'rooms');
