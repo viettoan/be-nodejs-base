@@ -1,8 +1,11 @@
 import BaseController from "../BaseController.js";
-import {hashHmacString, responseErrors, responseJsonByStatus, responseSuccess} from "../../../Common/helper.js";
-import * as fs from 'fs';
-import {STORAGE_PATHS} from "../../../../config/constant.js";
-import winston from "winston";
+import {
+  getUrlAvatar,
+  hashHmacString,
+  responseErrors,
+  responseJsonByStatus,
+  responseSuccess
+} from "../../../Common/helper.js";
 import UserService from "../../../Services/UserService.js";
 
 class ProfileController extends BaseController
@@ -11,17 +14,6 @@ class ProfileController extends BaseController
   show (req, res)
   {
     let user = res.locals.authUser;
-
-    if (user.avatar) {
-      try {
-        user.avatar = JSON.stringify({
-          mimeType: user.avatar.split('.').pop(),
-          value: fs.readFileSync(user.avatar)
-        });
-      } catch (e) {
-        winston.loggers.get('system').error('ERROR', e);
-      }
-    }
 
     return responseJsonByStatus(res, responseSuccess(user));
   }
@@ -34,13 +26,13 @@ class ProfileController extends BaseController
       };
 
       if (req.file) {
-        params.avatar = STORAGE_PATHS.uploadAvatarUser + req.file.filename;
+        params.avatar = req.file.filename;
       }
       const userUpdated = await ProfileController.userService.update(res.locals.authUser._id, params, res.locals.authUser);
 
       return responseJsonByStatus(res, responseSuccess(true));
     } catch (e) {
-
+      return responseJsonByStatus(res, responseErrors(500, e.message), 500);
     }
   }
 

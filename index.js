@@ -25,6 +25,7 @@ app.use(express.json());
 // built-in middleware: parse request body application/x-www-form-urlencoded
 app.use(express.urlencoded({extended:true}));
 // built-in middleware: setup static folder
+app.use(express.static('storage/users/avatars'));
 app.use(express.static('public'));
 // Load routes
 router(app);

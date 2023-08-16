@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import {ObjectId} from 'mongodb';
 import {ROOMS} from "../../config/constant.js";
+import {getUrlAvatar, getUrlAvatarRoom} from "../Common/helper.js";
 
 const roomSchema = new mongoose.Schema(
   {
@@ -15,6 +16,9 @@ const roomSchema = new mongoose.Schema(
         values: Object.values(ROOMS.type),
       },
       default: ROOMS.type.oneToOne,
+    },
+    avatar: {
+      type: String,
     },
     created_by: {
       type: ObjectId,
