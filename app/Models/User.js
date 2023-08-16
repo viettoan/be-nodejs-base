@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import {ObjectId} from 'mongodb';
 import {USERS} from '../../config/constant.js';
 import {default as mongoosePaginate} from 'mongoose-paginate';
+import {getUrlAvatar} from "../Common/helper.js";
 
 const userSchema = new mongoose.Schema(
   {
@@ -25,6 +26,7 @@ const userSchema = new mongoose.Schema(
     },
     avatar: {
       type: String,
+      get: getUrlAvatar,
     },
     password: {
       type: String,
@@ -77,6 +79,7 @@ const userSchema = new mongoose.Schema(
       createdAt: 'created_at',
       updatedAt: 'updated_at',
     },
+    toJSON: { getters: true }
   }
 );
 userSchema.plugin(mongoosePaginate);

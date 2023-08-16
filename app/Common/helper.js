@@ -172,3 +172,19 @@ export const generateDetailUserUrl = (userId) => {
 export function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+export function getUrlAvatar(avatar) {
+  if (!avatar) {
+    return process.env.DOMAIN + '/images/default.png';
+  }
+
+  return process.env.DOMAIN + '/' + avatar;
+}
+
+export function getUrlAvatarRoom(avatar) {
+  if (!avatar) {
+    return process.env.DOMAIN + '/images/default.png';
+  }
+
+  return process.env.DOMAIN + '/' + avatar;
+}
