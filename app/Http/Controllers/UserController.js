@@ -1,7 +1,6 @@
 import BaseController from "./BaseController.js";
 import {responseSuccess, responseErrors, responseJsonByStatus} from "../../Common/helper.js";
 import UserService from "../../Services/UserService.js";
-import {MongoServerError} from "mongodb";
 
 class UserController extends BaseController
 {
