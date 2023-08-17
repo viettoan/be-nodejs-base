@@ -1,4 +1,4 @@
-import {parserJWTToken, responseErrors} from "../../Common/helper.js";
+import {parserJWTToken, responseErrors, responseJsonByStatus} from "../../Common/helper.js";
 import UserRepository from "../../Repositories/UserRepository.js";
 import {USERS} from "../../../config/constant.js";
 
@@ -6,7 +6,11 @@ export const authMiddleware = async (req, res, next) => {
   const responseToken = parserJWTToken(req.headers.authorization);
 
   if (!responseToken.success) {
-    return responseErrors(res, 401, responseToken.errors ?? '');
+    return responseJsonByStatus(
+      res,
+      responseErrors(401, responseToken.errors ?? ''),
+      401
+    );
   }
 
   try {
@@ -15,15 +19,27 @@ export const authMiddleware = async (req, res, next) => {
     const user = await userRepository.findById(userId);
 
     if (!user) {
-      return responseErrors(res, 401, 'User không tồn tại.');
+      return responseJsonByStatus(
+        res,
+        responseErrors(401, 'User không tồn tại.'),
+        401
+      );
     }
 
     if (user.is_confirm_account !== USERS.is_confirm_account.true) {
-      return responseErrors(res, 401, 'User chưa xác thực tài khoản.');
+      return responseJsonByStatus(
+        res,
+        responseErrors(401, 'User chưa xác thực tài khoản.'),
+        401
+      );
     }
     res.locals.authUser = user;
     next()
   } catch (e) {
-    return responseErrors(res, 500, e.message);
+    return responseJsonByStatus(
+      res,
+      responseErrors(500, e.message),
+      500
+    );
   }
 }
