@@ -79,7 +79,8 @@ const userSchema = new mongoose.Schema(
       createdAt: 'created_at',
       updatedAt: 'updated_at',
     },
-    toJSON: { getters: true }
+    toJSON: { getters: true },
+    id: false,
   }
 );
 userSchema.plugin(mongoosePaginate);

@@ -73,7 +73,13 @@ class RoomService
   {
     return await this.roomRepository.findById(roomId)
       .populate([
-        'messages',
+        {
+          path: 'messages',
+          populate: {
+            path: 'sender',
+            select: ['_id', 'name', 'avatar']
+          }
+        },
         {
           path: 'userRooms',
           populate: {
