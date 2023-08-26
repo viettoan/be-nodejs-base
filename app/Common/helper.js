@@ -162,11 +162,11 @@ export const responseJsonByStatus = (res, data, statusCode = 200) => {
 export const generateConfirmUrl = (userId) => {
   const token = generateJWTToken(userId, 'sha1', moment().add(1, 'days').unix());
 
-  return process.env.FE_DOMAIN + 'confirm-account?token=' + token;
+  return process.env.FE_DOMAIN + '/confirm-account?token=' + token;
 }
 
 export const generateDetailUserUrl = (userId) => {
-  return process.env.FE_DOMAIN + 'users/' + userId + '/edit';
+  return process.env.FE_DOMAIN + '/users/' + userId + '/edit';
 }
 
 export function capitalizeFirstLetter(string) {

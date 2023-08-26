@@ -62,7 +62,7 @@ class UserService {
       'email/confirmAccount.ejs',
       {
         name: params.name,
-        confirmUrl: generateConfirmUrl(user.id)
+        confirmUrl: generateConfirmUrl(user._id)
       }
     );
     this.actionLogRepository.store(

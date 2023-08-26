@@ -9,6 +9,8 @@ import {createServer} from 'http';
 import {Server} from 'socket.io';
 import SocketServerHandler from './app/Socket/SocketServerHandler.js';
 import router from './routes/index.js';
+import multer from "multer";
+import {responseErrors, responseJsonByStatus} from "./app/Common/helper.js";
 // init winston logger
 logging();
 // connect mongoose
@@ -33,8 +35,14 @@ router(app);
 app.set('view engine', 'ejs');
 // error handling middleware
 app.use((err, _req, res, next) => {
-  winston.loggers.get('system').error('ERROR', err);
-  res.status(500).send(err);
+  if (!(err instanceof multer.MulterError)) {
+    winston.loggers.get('system').error('ERROR', err);
+  }
+  return responseJsonByStatus(
+    res,
+    responseErrors(err.statusCode, err.message),
+    err.statusCode
+  )
 });
 // create the Express server
 const httpServer = createServer(app);

@@ -48,6 +48,15 @@ const messageSchema = new mongoose.Schema(
       createdAt: 'created_at',
       updatedAt: 'updated_at',
     },
+    toObject: { virtuals: true },
+    toJSON: { virtuals: true },
+    id: false,
   }
 );
+
+messageSchema.virtual('sender', {
+  ref: 'User',
+  localField: 'sender_id',
+  foreignField: '_id',
+})
 export default mongoose.model('Message', messageSchema, 'messages');

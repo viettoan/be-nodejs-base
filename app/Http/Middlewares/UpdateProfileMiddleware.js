@@ -11,4 +11,18 @@ const storage = multer.diskStorage({
     cb(null, uniqueSuffix + '-' + file.originalname);
   },
 });
-export const updateProfileMiddleware = multer({storage: storage});
+const fileFilter = (req, file, cb) => {
+  const allowedMimes = ['image/jpeg', 'image/png', 'application/pdf']; // Add more allowed types as needed
+  if (allowedMimes.includes(file.mimetype)) {
+    cb(null, true); // Allow the upload
+  } else {
+    cb(new Error('Invalid file type')); // Reject the upload
+  }
+};
+export const updateProfileMiddleware = multer({
+  storage: storage,
+  limits:{
+    fileSize: 2000000
+  },
+  fileFilter: fileFilter,
+});

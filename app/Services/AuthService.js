@@ -42,7 +42,7 @@ class AuthService
       );
     }
 
-    return generateJWTToken(user.id)
+    return generateJWTToken(user._id)
   }
 
   async confirmAccount(token)
