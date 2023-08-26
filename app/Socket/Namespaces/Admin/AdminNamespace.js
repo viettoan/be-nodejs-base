@@ -4,6 +4,8 @@ import { sprintf } from "sprintf-js";
 import {ROOMS} from "../../../../config/socket.js";
 import MessageService from "../../../Services/MessageService.js";
 import {responseErrors, responseSuccess} from "../../../Common/helper.js";
+import {authMiddleware} from "../../Middlewares/AuthMiddleware.js";
+
 class AdminNamespace extends BaseNamespace {
   constructor() {
     super('/admin');
@@ -11,7 +13,7 @@ class AdminNamespace extends BaseNamespace {
   }
 
   handle() {
-    socketIOServer.of(this.namespace).on("connection", (socket) => {
+    socketIOServer.of(this.namespace).use(authMiddleware).on("connection", (socket) => {
       socket.on('join_room', data => {
         socket.join(sprintf(ROOMS.name, {roomId: data.room_id}));
       });
