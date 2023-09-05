@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import {ObjectId} from 'mongodb';
 import {USERS} from '../../config/constant.js';
-import {default as mongoosePaginate} from 'mongoose-paginate';
 import {getUrlAvatar} from "../Common/helper.js";
 
 const userSchema = new mongoose.Schema(
@@ -83,7 +82,6 @@ const userSchema = new mongoose.Schema(
     id: false,
   }
 );
-userSchema.plugin(mongoosePaginate);
 userSchema.virtual('notifications', {
   ref: 'Notification',
   localField: '_id',

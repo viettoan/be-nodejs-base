@@ -3,7 +3,7 @@ import {
   ACTION_LOGS,
   DEFAULT_PASWORD,
   JOB_QUEUES,
-  NOTIFICATION_TEMPLATES, NOTIFICATIONS,
+  NOTIFICATION_TEMPLATES, NOTIFICATIONS, PAGINATE_OPTIONS,
   STORAGE_PATHS,
   USER_IMPORTS,
   USERS
@@ -40,10 +40,11 @@ class UserService {
 
   index (params)
   {
-    return this.userRepository.paginate(params.query, {
-      page: +params.query?.pagination?.page,
-      limit: +params.query?.pagination?.limit
-    });
+    return this.userRepository.paginate(
+      params.query,
+      +params.query?.pagination?.limit,
+      +params.query?.pagination?.page,
+    );
   }
 
   all (params)

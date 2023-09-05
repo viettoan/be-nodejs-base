@@ -64,22 +64,30 @@ class BaseRepository
     });
   }
 
-  paginate(conditions = {}, options = {})
+  async paginate(
+    conditions = {},
+    limit = PAGINATE_OPTIONS.limit,
+    page = PAGINATE_OPTIONS.page,
+    softDelete = true
+  )
   {
-    if (typeof options.sort !== 'object') {
-      options.sort = PAGINATE_OPTIONS.sort;
+    limit = limit || PAGINATE_OPTIONS.limit;
+    page = page || PAGINATE_OPTIONS.page;
+    if (softDelete) {
+      conditions.deleted_at = null;
     }
+    const [data, total] = await Promise.all([
+      this.getModel().find(conditions).skip(limit * (page - 1)).limit(limit),
+      this.getModel().count(conditions)
+    ]);
 
-    if (!options.page || options.page < 1) {
-      options.page = PAGINATE_OPTIONS.page;
-    }
-
-    if (!options.limit || options.limit < 0) {
-      options.limit = PAGINATE_OPTIONS.limit;
-    }
-    delete conditions.pagination;
-
-    return this.getModel().paginate({...conditions, deleted_at: null}, options);
+    return {
+      data,
+      total,
+      limit,
+      page,
+      totalPage: Math.ceil(total/limit)
+    };
   }
 }
 
