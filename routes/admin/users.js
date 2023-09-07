@@ -1,6 +1,6 @@
 import express from 'express';
 import {authMiddleware} from '../../app/Http/Middlewares/AuthMiddleware.js';
-import {validateIndexUser, validateStoreOrUpdateUser} from '../../app/Http/Requests/UserRequest.js';
+import {validateIndexUser, validateStoreOrUpdateUser} from '../../app/Http/Validations/UserValidation.js';
 import UserController from '../../app/Http/Controllers/UserController.js';
 import {importUserMiddleware} from '../../app/Http/Middlewares/ImportUserMiddleware.js';
 

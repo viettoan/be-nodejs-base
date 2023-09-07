@@ -1,9 +1,9 @@
 import express from 'express';
 import {authMiddleware} from '../../app/Http/Middlewares/AuthMiddleware.js';
 import RoomController from "../../app/Http/Controllers/Me/RoomController.js";
-import {addRoomValidator} from "../../app/Http/Requests/Me/ChatRequest.js";
+import {addRoomValidator} from "../../app/Http/Validations/Me/ChatValidation.js";
 import MessageController from "../../app/Http/Controllers/Me/MessageController.js";
-import {storeMessage} from "../../app/Http/Requests/Me/MessageRequest.js";
+import {storeMessage} from "../../app/Http/Validations/Me/MessageValidation.js";
 
 const chatRouter = (app) => {
   const router = express.Router();

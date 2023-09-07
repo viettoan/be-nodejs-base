@@ -1,19 +1,28 @@
 class BaseController
 {
-    handleFieldSearchLike(req, fields = [])
+    handleFieldSearchLike(params, fields = [])
     {
-        if (!fields.length) {
-            return req;
-        }
-        for (const field of fields) {
-            const fieldValue = req.query[field];
+        const conditions = {};
 
-            if (fieldValue) {
-                req.query[field] = new RegExp(`${fieldValue}`);
+        for (const key in params) {
+            if (key !== 'limit' && key !== 'page') {
+                conditions[key] = params[key];
             }
         }
 
-        return req;
+        if (!fields.length) {
+            return conditions;
+        }
+
+        for (const field of fields) {
+            const fieldValue = conditions[field];
+
+            if (fieldValue) {
+                conditions[field] = new RegExp(`${fieldValue}`);
+            }
+        }
+
+        return conditions;
     }
 }
 

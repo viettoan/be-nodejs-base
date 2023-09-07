@@ -12,7 +12,12 @@ class UserController extends BaseController
   async index(req, res)
   {
     try {
-      const users = await UserController.userService.index(super.handleFieldSearchLike(req, ['name']));
+      const {query} = req;
+      const users = await UserController.userService.index({
+        conditions: super.handleFieldSearchLike(query, ['name']),
+        limit: query.limit,
+        page: query.page
+      });
 
       return responseJsonByStatus(res, responseSuccess(users));
     } catch (e) {
@@ -23,8 +28,9 @@ class UserController extends BaseController
   async all(req, res)
   {
     try {
-      req = super.handleFieldSearchLike(req, ['name']);
-      const users = await UserController.userService.all(req.query);
+      const users = await UserController.userService.all(
+        super.handleFieldSearchLike(req.query, ['name'])
+      );
 
       return responseJsonByStatus(res, responseSuccess(users));
     } catch (e) {

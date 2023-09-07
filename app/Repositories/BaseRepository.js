@@ -71,8 +71,8 @@ class BaseRepository
     softDelete = true
   )
   {
-    limit = limit || PAGINATE_OPTIONS.limit;
-    page = page || PAGINATE_OPTIONS.page;
+    limit = +limit || PAGINATE_OPTIONS.limit;
+    page = +page || PAGINATE_OPTIONS.page;
     if (softDelete) {
       conditions.deleted_at = null;
     }

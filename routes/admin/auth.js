@@ -1,5 +1,5 @@
 import express from 'express';
-import {validateChangePassword, validateConfirmAccount, validateUserLogin} from '../../app/Http/Requests/AuthRequest.js';
+import {validateChangePassword, validateConfirmAccount, validateUserLogin} from '../../app/Http/Validations/AuthValidation.js';
 import AuthController from '../../app/Http/Controllers/AuthController.js';
 
 const authAdminRouter = (app) => {

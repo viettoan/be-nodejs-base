@@ -2,7 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import './loadEnvironment.js';
-import 'express-async-errors';
 import {logging} from './config/logging.js';
 import winston from 'winston';
 import {createServer} from 'http';

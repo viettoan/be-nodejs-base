@@ -3,7 +3,7 @@ import {
   ACTION_LOGS,
   DEFAULT_PASWORD,
   JOB_QUEUES,
-  NOTIFICATION_TEMPLATES, NOTIFICATIONS, PAGINATE_OPTIONS,
+  NOTIFICATION_TEMPLATES, NOTIFICATIONS,
   STORAGE_PATHS,
   USER_IMPORTS,
   USERS
@@ -19,8 +19,6 @@ import HttpError from "../Exceptions/HttpError.js";
 import Bull from "bull";
 import winston from "winston";
 import NotifyService from "./NotifyService.js";
-import User from "../Models/User.js";
-import {ObjectId} from "mongodb";
 import NotificationRepository from "../Repositories/NotificationRepository.js";
 import moment from "moment";
 
@@ -41,9 +39,9 @@ class UserService {
   index (params)
   {
     return this.userRepository.paginate(
-      params.query,
-      +params.query?.pagination?.limit,
-      +params.query?.pagination?.page,
+      params.conditions,
+      params.limit,
+      params.page,
     );
   }
 

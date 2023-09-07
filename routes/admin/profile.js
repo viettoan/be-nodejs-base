@@ -2,7 +2,7 @@ import express from 'express';
 import {authMiddleware} from '../../app/Http/Middlewares/AuthMiddleware.js';
 import ProfileController from '../../app/Http/Controllers/Me/ProfileController.js';
 import {updateProfileMiddleware} from '../../app/Http/Middlewares/UpdateProfileMiddleware.js';
-import {validateProfileChangePassword, validateUpdateDetailUser} from '../../app/Http/Requests/Me/ProfileRequest.js';
+import {validateProfileChangePassword, validateUpdateDetailUser} from '../../app/Http/Validations/Me/ProfileValidation.js';
 
 const profileAdminRouter = (app) => {
   const router = express.Router();
