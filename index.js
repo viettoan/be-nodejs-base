@@ -1,6 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import mongoose from 'mongoose';
 import './loadEnvironment.js';
 import {logging} from './config/logging.js';
 import winston from 'winston';
@@ -10,14 +9,12 @@ import SocketServerHandler from './app/Socket/SocketServerHandler.js';
 import router from './routes/index.js';
 import multer from "multer";
 import {responseErrors, responseJsonByStatus} from "./app/Common/helper.js";
+import mongoDbConnect from "./database/mongodb.js";
 // init winston logger
 logging();
-// connect mongoose
-mongoose.connect(process.env.ATLAS_URI, {
-  autoIndex: true,
-}).then(() => console.log('Connected!'));
+// connect mongodb
+mongoDbConnect();
 // setup express
-const PORT = process.env.PORT || 5050;
 const app = express();
 // third-party middleware: config cors
 app.use(cors());
@@ -43,8 +40,9 @@ app.use((err, _req, res, next) => {
     err.statusCode
   )
 });
-// create the Express server
+// create the Http server
 const httpServer = createServer(app);
+
 // handle socket
 const socketIOServer = new Server(httpServer, {
   cors: {
@@ -54,6 +52,9 @@ const socketIOServer = new Server(httpServer, {
 export {socketIOServer};
 const socketServerHandler = new SocketServerHandler();
 socketServerHandler.handle();
+
+// instruct the server to start listening for incoming HTTP requests on a specific port.
+const PORT = process.env.PORT || 5050;
 httpServer.listen(PORT, () => {
   console.log(
       `Server is running on port: ${PORT} and Worker ${process.pid} started`
