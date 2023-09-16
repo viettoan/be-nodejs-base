@@ -1,9 +1,12 @@
-import crypto from "crypto";
+import crypto from "node:crypto";
 import moment from "moment";
 
 export const hashHmacString = (string, algorithm = 'sha1') => {
+  // Create an HMAC object and initialize it with the algorithm and private key
   return crypto.createHmac(algorithm, process.env.PRIVATE_KEY)
+    // Update the HMAC with the string you want to hash
     .update(string)
+    // Generate the HMAC digest in hexadecimal format
     .digest('hex');
 }
 
