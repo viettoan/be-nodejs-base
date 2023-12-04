@@ -10,6 +10,7 @@ import UserService from "../../../services/user.service.js";
 class ProfileController extends BaseController
 {
   static userService = new UserService();
+
   show (req, res)
   {
     let user = res.locals.authUser;
@@ -27,7 +28,7 @@ class ProfileController extends BaseController
       if (req.file) {
         params.avatar = req.file.filename;
       }
-      const userUpdated = await ProfileController.userService.update(res.locals.authUser._id, params, res.locals.authUser);
+      await ProfileController.userService.update(res.locals.authUser._id, params, res.locals.authUser);
 
       return responseJsonByStatus(res, responseSuccess(true));
     } catch (e) {
@@ -41,7 +42,7 @@ class ProfileController extends BaseController
       const params = {
         password: hashHmacString(req.body.password)
       }
-      const userUpdated = await ProfileController.userService.update(res.locals.authUser._id, params, res.locals.authUser);
+      await ProfileController.userService.update(res.locals.authUser._id, params, res.locals.authUser);
 
       return responseJsonByStatus(res, responseSuccess(true));
     } catch (e) {

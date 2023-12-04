@@ -9,6 +9,7 @@ class ImportUserJob {
     this.userImportRepository = new UserImportRepository();
     this.userService = new UserService();
   }
+
   async handle(users, userImport) {
     try {
       const userImportQueue = new Bull(JOB_QUEUES.userImports,  {
@@ -49,7 +50,6 @@ class ImportUserJob {
     } catch (e) {
       winston.loggers.get('user_imports').error('Import Error', e)
     }
-
   }
 }
 

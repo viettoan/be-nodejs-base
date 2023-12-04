@@ -19,6 +19,7 @@ const fileFilter = (req, file, cb) => {
     cb(new Error('Invalid file type')); // Reject the upload
   }
 };
+
 export const updateProfileMiddleware = multer({
   storage: storage,
   limits:{

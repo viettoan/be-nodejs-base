@@ -26,7 +26,6 @@ const socketIOServer = new Server(httpServer, {
 });
 const pubClient = createClient({url: "redis://localhost:6379"});
 const subClient = pubClient.duplicate();
-
 export {socketIOServer};
 socketIOServer.adapter(createAdapter(pubClient, subClient));
 const socketServerHandler = new SocketServerHandler();

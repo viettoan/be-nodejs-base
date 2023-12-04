@@ -4,6 +4,7 @@ import winston from 'winston';
 import router from './routes/index.route.js';
 import multer from "multer";
 import {responseErrors, responseJsonByStatus} from "./src/common/helper.js";
+
 // setup express
 const app = express();
 // third-party middleware: config cors
@@ -24,6 +25,7 @@ app.use((err, _req, res, next) => {
   if (!(err instanceof multer.MulterError)) {
     winston.loggers.get('system').error('ERROR', err);
   }
+
   return responseJsonByStatus(
     res,
     responseErrors(err.statusCode, err.message),

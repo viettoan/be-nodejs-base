@@ -11,4 +11,5 @@ const storage = multer.diskStorage({
     cb(null, uniqueSuffix + '-' + file.originalname);
   },
 });
+
 export const importUserMiddleware = multer({storage: storage});
