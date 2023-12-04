@@ -6,6 +6,7 @@ export const validateUpdateDetailUser = baseJoiValidator(
     name: Joi.string().max(50).required(),
   })
 );
+
 export const validateProfileChangePassword = baseJoiValidator(
   Joi.object({
     password: Joi.string().min(6).max(20).required(),

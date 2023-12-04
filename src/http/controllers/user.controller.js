@@ -5,6 +5,7 @@ import UserService from "../../services/user.service.js";
 class UserController extends BaseController
 {
   static userService= new UserService();
+
   constructor() {
     super();
   }
@@ -64,7 +65,7 @@ class UserController extends BaseController
   async update(req, res)
   {
     try {
-      const userUpdated = await UserController.userService.update(req.params.userId, req.body, res.locals.authUser);
+      await UserController.userService.update(req.params.userId, req.body, res.locals.authUser);
 
       return responseJsonByStatus(res, responseSuccess(true));
     } catch (e) {
@@ -75,7 +76,7 @@ class UserController extends BaseController
   async destroy(req, res)
   {
     try {
-      const userDestroyed = await UserController.userService.destroy(req.params.userId);
+      await UserController.userService.destroy(req.params.userId);
 
       return responseJsonByStatus(res, responseSuccess(true));
     } catch (e) {

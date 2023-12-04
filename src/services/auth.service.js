@@ -63,7 +63,7 @@ class AuthService
       throw new HttpErrorException('User đã xác thực tài khoản.', 401);
     }
 
-    const userUpdated = await this.userRepository.update(
+    await this.userRepository.update(
       userId,
       {
         is_confirm_account: USERS.is_confirm_account.true
@@ -92,7 +92,7 @@ class AuthService
       throw new HttpErrorException('User đã xác thực tài khoản.', 401);
     }
 
-    const userUpdated = await this.userRepository.update(userId, {
+    await this.userRepository.update(userId, {
       password: hashHmacString(password)
     });
 
