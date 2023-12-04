@@ -1,6 +1,7 @@
 node_modules
 yarn.lock
 config.env
-.env
+.env.development
 .idea
 storage/logs
+coverage
