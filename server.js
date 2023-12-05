@@ -1,12 +1,13 @@
 import './loadEnvironment.js';
-import mongoDbConnect from "./database/mongodb.js";
+import mongoDbConnect from "./database/mongodb/index.js";
 import {logging} from './config/logging.js';
 import {createServer} from 'http';
 import {Server} from 'socket.io';
 import SocketServerHandler from './src/socket/socket-server.handler.js';
 import app from './app.js';
 import { createAdapter } from '@socket.io/redis-adapter';
-import { createClient } from 'redis';
+import redis from './database/redis/index.js';
+import './database/mysql/index.js';
 
 // init winston logger
 logging();
@@ -24,7 +25,7 @@ const socketIOServer = new Server(httpServer, {
         origin: process.env.SOCKET_IO_CLIENT,
     },
 });
-const pubClient = createClient({url: "redis://localhost:6379"});
+const pubClient = redis;
 const subClient = pubClient.duplicate();
 export {socketIOServer};
 socketIOServer.adapter(createAdapter(pubClient, subClient));

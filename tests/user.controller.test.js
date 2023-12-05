@@ -1,5 +1,5 @@
 import '../loadEnvironment.js';
-import mongoDbConnect from "../database/mongodb.js";
+import mongoDbConnect from "../database/mongodb/index.js";
 import request from 'supertest';
 import app from '../app.js';
 import { faker } from '@faker-js/faker';
