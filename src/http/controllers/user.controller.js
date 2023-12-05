@@ -1,6 +1,8 @@
 import BaseController from "./base.controller.js";
 import {responseSuccess, responseErrors, responseJsonByStatus} from "../../common/helper.js";
 import UserService from "../../services/user.service.js";
+import User from '../../models/mysql/user.model.js'
+import Post from "../../models/mysql/post.model.js";
 
 class UserController extends BaseController
 {
