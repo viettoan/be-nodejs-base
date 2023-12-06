@@ -3,6 +3,7 @@ import {responseSuccess, responseErrors, responseJsonByStatus} from "../../commo
 import UserService from "../../services/user.service.js";
 import User from '../../models/mysql/user.model.js'
 import Post from "../../models/mysql/post.model.js";
+import { run } from '../../utils/kafka/producer.js'
 
 class UserController extends BaseController
 {
@@ -15,6 +16,12 @@ class UserController extends BaseController
   async index(req, res)
   {
     try {
+      run({
+        topic: 'test-topic',
+        message: {
+          test: 1
+        }
+      })
       const {query} = req;
       const users = await UserController.userService.index({
         conditions: super.handleFieldSearchLike(query, ['name']),

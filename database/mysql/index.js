@@ -11,6 +11,5 @@ try {
 } catch (error) {
     console.error('Unable to connect to the MySQL database:', error);
 }
-console.log(2222);
 
 export default sequelize;
