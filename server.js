@@ -8,6 +8,7 @@ import app from './app.js';
 import { createAdapter } from '@socket.io/redis-adapter';
 import redis from './database/redis/index.js';
 import './database/mysql/index.js';
+import { run } from './src/utils/kafka/consumer.js';
 
 // init winston logger
 logging();
@@ -39,3 +40,5 @@ httpServer.listen(PORT, () => {
         `Server is running on port: ${PORT} and Worker ${process.pid} started`
     );
 });
+
+run().catch('Kafka consumer error:', console.error);
