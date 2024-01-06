@@ -16,12 +16,6 @@ class UserController extends BaseController
   async index(req, res)
   {
     try {
-      run({
-        topic: 'test-topic',
-        message: {
-          test: 1
-        }
-      })
       const {query} = req;
       const users = await UserController.userService.index({
         conditions: super.handleFieldSearchLike(query, ['name']),

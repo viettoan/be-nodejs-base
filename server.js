@@ -41,4 +41,4 @@ httpServer.listen(PORT, () => {
     );
 });
 
-run().catch('Kafka consumer error:', console.error);
+// run().catch('Kafka consumer error:', console.info);

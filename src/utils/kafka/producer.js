@@ -9,14 +9,18 @@ const kafka = new Kafka({
 const producer = kafka.producer();
 
 export const run = async ({ topic, message }) => {
-    await producer.connect();
-    await producer.send({
-        topic,
-        messages: [
-            {
-                value: JSON.stringify(message)
-            }
-        ]
-    });
-    console.log('Message sent successfully', message);
+    try {
+        await producer.connect();
+        await producer.send({
+            topic,
+            messages: [
+                {
+                    value: JSON.stringify(message)
+                }
+            ]
+        });
+        console.log('Message sent successfully', message);
+    } catch (error) {
+        console.log(error);
+    }
 }

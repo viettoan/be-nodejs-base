@@ -11,14 +11,18 @@ const consumer = kafka.consumer({
 });
 
 export const run = async () => {
-    await consumer.connect();
-    await consumer.subscribe({
-        topic: 'test-topic',
-        fromBeginning: true
-    });
-    await consumer.run({
-        eachMessage: async ({ message, topic}) => {
-            console.log('Consumer message ', topic, message.value, message.value.toString());
-        }
-    })
+    try {
+        await consumer.connect();
+        await consumer.subscribe({
+            topic: 'test-topic',
+            fromBeginning: true
+        });
+        await consumer.run({
+            eachMessage: async ({ message, topic}) => {
+                console.log('Consumer message ', topic, message.value, message.value.toString());
+            }
+        })
+    } catch (error) {
+        console.log(error);
+    }
 }
